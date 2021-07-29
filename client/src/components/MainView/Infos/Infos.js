@@ -46,7 +46,7 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
 
 <div className={classes.root}>
     <Box  mx={13} mt={5} >  
-      <Box mb={1}>
+      <Box mb={2}>
       <Accordion TransitionProps={{ unmountOnExit: true }} className={classes.accordion} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
             id="panel1bh-header"
@@ -63,7 +63,7 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
         </Accordion>
         </Box>
 
-        <Box mb={1}>
+        <Box mb={2}>
         <Accordion TransitionProps={{ unmountOnExit: true }} className={classes.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary
                  id="panel2bh-header"

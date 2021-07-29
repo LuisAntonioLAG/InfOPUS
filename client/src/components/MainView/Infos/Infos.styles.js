@@ -15,7 +15,6 @@ export const useStyles = makeStyles((theme) => ({
       heading: {
         color: theme.palette.primary.contrastText,
         fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
       },
 
 //---------------------------------------------------------------

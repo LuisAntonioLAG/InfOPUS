@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useSelector } from 'react-redux';
+
 
 import { Box, Typography, Grid, Fab } from "@material-ui/core";
 import ContactsIcon from '@material-ui/icons/Contacts';
@@ -13,10 +13,7 @@ import Formulario from "./Formulario/Formulario";
 
 
 const Contatos = () => {
-    const contatos = useSelector((state) => state.contatos);
     const classes = useStyles();
-
-    console.log(contatos);
 
     const [open, setOpen] = useState(false);
 
@@ -46,7 +43,7 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
 </Box>
 </div>
 
-<Fab className={classes.fab} variant="extended" onClick={handleClickFab}>
+<Fab color='primary' className={classes.fab} variant="extended" onClick={handleClickFab}>
   <AddIcon/>
   <Box component="span" fontWeight='fontWeightBold'> Novo Contato </Box>
 </Fab>

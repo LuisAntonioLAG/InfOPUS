@@ -1,5 +1,4 @@
-import React,{useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import React,{useState} from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import HomeIcon from '@material-ui/icons/Home';
@@ -17,19 +16,11 @@ import WorkIcon from '@material-ui/icons/Work';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
 
-
-import { getContatos } from './actions/contatos.js';
 import Interface from './components/Interface/Interface';
 import * as theme from './assets/themes/themes.js';
 
 
 const App = () => {
-  const dispatch = useDispatch();
-
-
-  useEffect(() => {
-    dispatch(getContatos());
-  },[dispatch])
 
     //states
 
@@ -54,7 +45,7 @@ const App = () => {
   ]
 
   return (
-    <ThemeProvider theme={theme.BlueLight}>
+    <ThemeProvider theme={theme.GreenLightTheme}>
     <CssBaseline />
     <Interface isDarkMode={isDarkMode} setDarkMode={setDarkMode} menuItems={menuItems} />
     </ThemeProvider>

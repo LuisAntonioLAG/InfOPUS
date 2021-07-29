@@ -1,7 +1,8 @@
-import { createTheme } from '@material-ui/core'
+import { createTheme, responsiveFontSizes } from '@material-ui/core'
 
 
-export const BlueLight = createTheme({
+
+const BlueLight = createTheme({
     palette: {
         type:'dark',
         primary: {
@@ -19,7 +20,11 @@ export const BlueLight = createTheme({
     }
 });
 
-export const GreenLight = createTheme({
+
+export const BlueLightTheme = responsiveFontSizes(BlueLight);
+
+
+const GreenLight = createTheme({
     palette: {
         type:'light',
         primary: {
@@ -42,3 +47,6 @@ export const GreenLight = createTheme({
         ].join(','),
     },
 });
+
+
+export const GreenLightTheme = responsiveFontSizes(GreenLight);

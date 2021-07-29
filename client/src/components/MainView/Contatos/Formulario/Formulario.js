@@ -2,7 +2,6 @@ import React from 'react';
 import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions} from '@material-ui/core';
 
 
-
 //import { useStyles } from './Formulario.styles.js'
 
 
@@ -13,12 +12,16 @@ const Formulario = props => {
 
     //const classes = useStyles();
 
+
+
     const handleClose = () => {
         setOpen(false);
       };
 
-      const handleSubmit = () => {
-        setOpen(false);
+
+
+
+      const handleSubmit = (e) => {
     };
 
     return(
@@ -30,15 +33,15 @@ const Formulario = props => {
             Preencha os dados do novo contato.
           </DialogContentText>
                  <TextField margin='dense' name='empresa' variant='outlined' label='Empresa' fullWidth />
-                <TextField margin='dense' name='cargo' variant='outlined' label='Cargo' fullWidth />
-                <TextField margin='dense' name='nome' variant='outlined' label='Nome' fullWidth />
-                <TextField margin='dense' name='telefone' variant='outlined' label='Telefone' fullWidth />
+                 <TextField margin='dense' name='cargo' variant='outlined' label='Cargo' fullWidth />
+                 <TextField margin='dense' name='nome' variant='outlined' label='Nome' fullWidth />
+                 <TextField margin='dense' name='numero' variant='outlined' label='Numero' fullWidth />
         </DialogContent>    
         <DialogActions>
-          <Button disableRipple variant='contained' onClick={handleClose} color="primary">
+          <Button disableRipple variant='contained' onClick={handleClose} size='small' color="secondary">
             Cancelar
           </Button>
-          <Button disableRipple variant='contained' color="secondary" type="submit">
+          <Button disableRipple variant='contained' color="primary" size='small' type="submit">
             Adicionar
           </Button>
         </DialogActions>
