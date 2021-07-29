@@ -4,7 +4,7 @@ const contatoSchema = mongoose.Schema({
     empresa: String,
     cargo: String,
     nome: String,
-    number: String,
+    numero: String,
     foto: String,
     data: {
         type: Date,
