@@ -87,7 +87,6 @@ export const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
   },
   drawerOpen: {
-    boxShadow: theme.shadows[20],
     width: drawerWidth,
     background: theme.palette.primary.main,
     transition: theme.transitions.create("width", {
@@ -96,7 +95,6 @@ export const useStyles = makeStyles((theme) => ({
     })
   },
   drawerClose: {
-    boxShadow: theme.shadows[20],
     background: theme.palette.primary.main,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
