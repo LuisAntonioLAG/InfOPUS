@@ -173,6 +173,15 @@ const Interface = props => {
         </List>
         <Divider />
 
+        <Typography style={{ paddingTop: "20px" }} align="center" variant="caption" >
+          InfOPUS
+        </Typography>
+        <Typography style={{ paddingBottom: "20px" }} align="center" variant="caption"
+        >
+          v1.0.0
+        </Typography>     
+
+
 
       </Drawer>
 

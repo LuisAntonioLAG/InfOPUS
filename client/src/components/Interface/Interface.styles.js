@@ -16,6 +16,7 @@ export const MenuItemTooltip = withStyles((theme) => ({
 export const MenuItem = withStyles((theme) => ({
 
   root: {
+    overflowX:'hidden',
     "&$selected": {
       backgroundColor: theme.palette.background.default,
       color: theme.palette.secondary.main,
