@@ -10,8 +10,14 @@ export const useStyles = makeStyles((theme) => ({
         flexDirection: "column"
       },
     
+      imageContainer: {
+        height: 200,
+        width: 150
+      },
+
       image: {
-        width: 150,
+        maxHeight: '100%',
+        maxWidth: '100%'
       },
       expand: {
         transform: "rotate(0deg)",

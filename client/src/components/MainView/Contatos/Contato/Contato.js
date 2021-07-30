@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import moment from 'moment';
 import clsx from "clsx";
-import { Card, Collapse, CardActions, CardActionArea, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography } from "@material-ui/core";
+import { Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -18,18 +18,21 @@ const Contato = ({ post }) => {
     return (
 
         <Card variant="outlined">
-        <div className={classes.card}>
+        <div className={classes.card}> 
           <Hidden only="xs">
+          <div className={classes.imageContainer}>
             {post.foto !== '' && 
             <CardMedia
+              component="img"
               className={classes.image}
               image={post.foto}
               title={post.nome}
             />
             }
+            </div>
           </Hidden>
+          
           <div className={classes.details}>
-            <CardActionArea disableRipple>
               <CardContent>
                 <Typography variant="h6">{post.nome}</Typography>
                 <Typography variant="subtitle2" color="textSecondary">
@@ -42,7 +45,6 @@ const Contato = ({ post }) => {
                   {post.numero}
                 </Typography>
               </CardContent>
-            </CardActionArea>
           </div>
         </div>
         <CardActions className={classes.content}>

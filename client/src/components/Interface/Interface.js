@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-import {Container, Grid, AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
+import {Container, AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -121,7 +121,7 @@ const Interface = props => {
         <Divider />
 
         <Container style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}>
-        <img className={classes.logoside} src={LogoGrandeBranco}/>
+        <img className={classes.logoside} alt='Logo da OPUS' src={LogoGrandeBranco}/>
         </Container>
 
         <List component="nav">
