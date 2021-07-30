@@ -1,47 +1,19 @@
 import { createTheme, responsiveFontSizes } from '@material-ui/core'
+import colors from './colors';
 
-
-
-const BlueLight = createTheme({
+const BlueLightTheme = createTheme({
     palette: {
-        type:'dark',
+        type: 'light',
         primary: {
-            main: '#19a2b1',
-            light: '#23e7fc',
-            dark: '#106770',
+            main: colors.green3,
+            light: colors.green1,
+            dark: colors.green5 ,
         },
         secondary: {
-            main: '#8cc640',
-            light: '#95d444',
-            dark: '#324717',
+            main: colors.blue3,
+            light: colors.blue1,
+            dark: colors.blue5 ,
         },
-    },
-    typography:{
-        fontFamily: [
-            'Ubuntu',
-            'sans-serif',
-        ].join(','),
-    },
-    
-});
-
-
-export const BlueLightTheme = responsiveFontSizes(BlueLight);
-
-
-const GreenLight = createTheme({
-    palette: {
-        type:'dark',
-        primary: {
-            main: '#8cc640',
-            light: '#95d444',
-            dark: '#324717',
-        },
-        secondary: {
-            main: '#19a2b1',
-            light: '#23e7fc',
-            dark: '#106770',
-        }
     },
     typography:{
         fontFamily: [
@@ -51,5 +23,30 @@ const GreenLight = createTheme({
     },
 });
 
+export const blueLightTheme = responsiveFontSizes(BlueLightTheme);
 
-export const GreenLightTheme = responsiveFontSizes(GreenLight);
+
+const BlueDarkTheme = createTheme({
+    palette: {
+        type: 'dark',
+        primary: {
+            main: colors.green3,
+            light: colors.green1,
+            dark: colors.green5 ,
+        },
+        secondary: {
+            main: colors.blue3,
+            light: colors.blue1,
+            dark: colors.blue5 ,
+        },
+    },
+    typography:{
+        fontFamily: [
+            'Ubuntu',
+            'sans-serif',
+        ].join(','),
+    },
+});
+
+export const blueDarkTheme = responsiveFontSizes(BlueDarkTheme);
+

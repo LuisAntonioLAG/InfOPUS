@@ -20,10 +20,44 @@ import 'moment/locale/pt-br';
 
 
 import Interface from './components/Interface/Interface';
-import * as theme from './assets/themes/themes.js';
 import { getPosts } from './actions/posts.js'
 
+
+
+import { createTheme, responsiveFontSizes } from '@material-ui/core'
+import colors from './assets/themes/colors';
+
 const App = () => {
+
+  const [isDarkMode, setDarkMode] = useState({DarkModeSwitch: false,});
+  const [isGreenMode, setGreenMode] = useState(false);
+
+
+  const theme = createTheme({
+    palette: {
+        type: isDarkMode.DarkModeSwitch === true ? 'dark' : 'light' ,
+        primary: {
+            main: isGreenMode === true ? colors.green3 : colors.blue3,
+            light: isGreenMode === true ? colors.green1 : colors.blue1,
+            dark: isGreenMode === true ? colors.green5 : colors.blue5,
+        },
+        secondary: {
+            main: isGreenMode === true ? colors.blue3 : colors.green3,
+            light: isGreenMode === true ? colors.blue1 : colors.green1,
+            dark: isGreenMode === true ? colors.blue3 : colors.green3,
+        },
+    },
+    typography:{
+        fontFamily: [
+            'Ubuntu',
+            'sans-serif',
+        ].join(','),
+    },
+});
+
+
+const Theme = responsiveFontSizes(theme);
+
 
     const dispatch = useDispatch();
 
@@ -35,7 +69,7 @@ const App = () => {
 moment.locale('pt-br');
     //states
 
-    const [isDarkMode, setDarkMode] = useState({DarkModeSwitch: false,});
+    
 
 
 
@@ -56,9 +90,9 @@ moment.locale('pt-br');
   ]
 
   return (
-    <ThemeProvider theme={theme.GreenLightTheme}>
+    <ThemeProvider theme={Theme}>
     <CssBaseline />
-    <Interface isDarkMode={isDarkMode} setDarkMode={setDarkMode} menuItems={menuItems} />
+    <Interface isDarkMode={isDarkMode} setDarkMode={setDarkMode} isGreenMode={isGreenMode} setGreenMode={setGreenMode} menuItems={menuItems} />
     </ThemeProvider>
   );
 }

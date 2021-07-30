@@ -11,8 +11,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 
+
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import Routes from '../../Routes.js'
+
 
 import { useStyles, MenuItemTooltip, MenuItem} from './Interface.styles.js';
 
@@ -21,10 +23,12 @@ const Interface = props => {
     const {
         menuItems = [],
         isDarkMode, setDarkMode = [],
+        isGreenMode, setGreenMode = [],
     } = props;
 
     const classes = useStyles();
     const theme = useTheme();
+
 
 
     //states
@@ -32,14 +36,19 @@ const Interface = props => {
     const [open, setOpen] = useState(false);
     const [selectedListItem, setSelectedListItem] = useState();
 
-  const handleListItemClick = (event, index) => {
-    setSelectedListItem(index);
-  };
 
     
 
     //handlers
 
+
+    const handleColorChange = () => {
+      setGreenMode(!isGreenMode);
+    }
+
+    const handleListItemClick = (event, index) => {
+      setSelectedListItem(index);
+    };
 
     const handleDarkModeSwitch = (event) => {
       setDarkMode({ ...isDarkMode, [event.target.name]: event.target.checked });
@@ -82,7 +91,7 @@ const Interface = props => {
 
                     
                       
-                    <IconButton color='secondary' aria-label="configurations">
+                    <IconButton color='secondary' aria-label="configurations" onClick = {handleColorChange}>
                         <Brightness1Icon/>
                     </IconButton>
                     
@@ -119,6 +128,7 @@ const Interface = props => {
           </IconButton>
         </div>
         <Divider />
+
 
         <Container style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}>
         <img className={classes.logoside} alt='Logo da OPUS' src={LogoGrandeBranco}/>
