@@ -46,7 +46,7 @@ const Formulario = props => {
           <DialogContentText>
             Preencha os dados do novo contato:
           </DialogContentText>
-            <TextField name="empresa" variant="outlined" label="Empresa" margin='dense' fullWidth value={postData.empresa} onChange={(e) => setPostData({ ...postData, empresa: e.target.value })} />
+            <TextField required={true} name="empresa" variant="outlined" label="Empresa" margin='dense' fullWidth value={postData.empresa} onChange={(e) => setPostData({ ...postData, empresa: e.target.value })} />
             <TextField name="cargo" variant="outlined" label="Cargo" margin='dense' fullWidth value={postData.cargo} onChange={(e) => setPostData({ ...postData, cargo: e.target.value })} />
             <TextField name="nome" variant="outlined" label="Nome" margin='dense' fullWidth value={postData.nome} onChange={(e) => setPostData({ ...postData, nome: e.target.value })} />
             <TextField name="numero" variant="outlined" label="Telefone" margin='dense' multiline fullWidth value={postData.numero} onChange={(e) => setPostData({ ...postData, numero: e.target.value })} />

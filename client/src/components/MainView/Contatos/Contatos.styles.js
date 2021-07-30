@@ -4,8 +4,8 @@ export const useStyles = makeStyles((theme) => ({
 
 
     root: {
-        display:'flex',
-    },
+        flexGrow: 1
+      },
 
     titleIcon: {
         marginRight: 15,

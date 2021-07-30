@@ -15,6 +15,8 @@ import ColorLensIcon from '@material-ui/icons/ColorLens';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import WorkIcon from '@material-ui/icons/Work';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 
 import Interface from './components/Interface/Interface';
@@ -30,7 +32,7 @@ const App = () => {
     }, [dispatch])
 
 
-
+moment.locale('pt-br');
     //states
 
     const [isDarkMode, setDarkMode] = useState({DarkModeSwitch: false,});

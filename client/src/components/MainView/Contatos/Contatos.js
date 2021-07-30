@@ -59,11 +59,16 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
 
 
 <Box mx={13} mt={5} >
-<Typography>CONTATOS</Typography>
-<Grid container justifyContent='space-between' alignItems='stretch' spacing={3}>
-<Contato/>
-<Contato/>
-</Grid>
+  {!posts.length ? <Typography variant='h6'> Parece que a lista de contatos está vazia. Por que não tenta adicionar o primeiro? </Typography> : (
+      <Grid className={classes.root} container spacing={2}>
+          {posts.map((post) => ( 
+              <Grid  key={post._id} item xs={12} md={6} lg={4}>
+                  <Contato post={post} />
+              </Grid>
+          ))}
+      </Grid>
+
+  )}
 </Box>
 
 
