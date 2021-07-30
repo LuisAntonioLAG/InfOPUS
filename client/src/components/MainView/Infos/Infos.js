@@ -52,10 +52,10 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
             id="panel1bh-header"
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography className={classes.heading}> <Box component="span" fontWeight='fontWeightBold'>O QUE É O INFOPUS?</Box> </Typography>
+          <Typography variant='subtitle1'> O QUE É O INFOPUS? </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className={classes.description}>
+          <Typography variant='body1'>
             O InfOPUS é um repositório onde os membros da OPUS podem arquivar e consultar, de forma fácil e centralizada, informações variadas que sejam relevantes 
             para todos na empresa. 
           </Typography>
@@ -69,10 +69,10 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
                  id="panel2bh-header"
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography className={classes.heading}><Box component="span" fontWeight='fontWeightBold'>QUAL É O OBJETIVO DO INFOPUS</Box> </Typography>
+          <Typography  variant='subtitle1'> QUAL É O OBJETIVO DO INFOPUS? </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant='body1'>
             O principal objetivo desse portal é facilitar a transmissão de conhecimento dentro da empresa, auxiliando, principalmente, os processos de mudança de gestão e acolhimento
             de novos membros. 
           </Typography>
@@ -87,10 +87,10 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
                  id="panel3bh-header"
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography className={classes.heading}> <Box component="span" fontWeight='fontWeightBold'>COMO POSSO CONTRIBUIR COM O INFOPUS?</Box> </Typography>
+          <Typography variant='subtitle1'> COMO POSSO CONTRIBUIR COM O INFOPUS? </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography variant='body1'>
             A maioria das páginas do site possuem botões para acrescentar, editar e deletar dados. Ainda assim, caso você queira alterar um conteúdo que não
             apresenta essas opções, entre em contato com o atual moderador do portal. Você também pode utilizar a aba <Link className={classes.link} to={'/feedback/'}>
             <Box component="span" fontWeight='fontWeightBold'>FEEDBACK <FeedbackIcon fontSize='inherit'/></Box> </Link> para compartilhar com o moderador sugestões ou 

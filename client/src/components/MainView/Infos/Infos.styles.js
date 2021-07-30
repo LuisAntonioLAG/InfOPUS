@@ -12,10 +12,6 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
         boxShadow: theme.shadows[4],
     },
-      heading: {
-        color: theme.palette.primary.contrastText,
-        fontSize: theme.typography.pxToRem(15),
-      },
 
 //---------------------------------------------------------------
       link: {

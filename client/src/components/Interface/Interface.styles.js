@@ -117,7 +117,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(5)
+    padding: theme.spacing(3)
   },
 
 //---------------------------------------------------------------
@@ -169,16 +169,16 @@ export const useStyles = makeStyles((theme) => ({
 //---------------------------------------------------------------
 
     logoside: {
-      width: '30px',
+      width: 30,
     },
 
 
     link: {
       textDecoration: 'none', 
-      color: theme.palette.primary.contrastText
+      color: 'inherit'
     },
 
     listItemIcon: {
-      color: theme.palette.primary.contrastText
+      color: 'inherit'
     },
 }));

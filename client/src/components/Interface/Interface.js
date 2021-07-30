@@ -60,7 +60,7 @@ const Interface = props => {
                 <Toolbar >
 
 
-                    <IconButton onClick={handleDrawerOpen} edge = 'start' className={clsx(classes.menuButton, {[classes.hide]: open,})} color="inherit" aria-label="menu">
+                    <IconButton onClick={handleDrawerOpen} edge = 'start' className={clsx(classes.menuButton, {[classes.hide]: open,})} aria-label="menu">
                         <MenuIcon />
                     </IconButton>
                     <Typography style={{ flex: 1 }} variant="h6" noWrap>InfOPUS</Typography>
@@ -93,7 +93,7 @@ const Interface = props => {
                             inputProps={{ 'aria-label': 'primary checkbox' }}
                         />
                         <Avatar/>
-                        <IconButton color="inherit" aria-label="configurations">
+                        <IconButton aria-label="configurations">
                             <ExitToAppIcon />
                         </IconButton>
 
