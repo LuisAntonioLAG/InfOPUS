@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import HomeIcon from '@material-ui/icons/Home';
@@ -18,9 +19,17 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 
 import Interface from './components/Interface/Interface';
 import * as theme from './assets/themes/themes.js';
-
+import { getPosts } from './actions/posts.js'
 
 const App = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getPosts());
+    }, [dispatch])
+
+
 
     //states
 

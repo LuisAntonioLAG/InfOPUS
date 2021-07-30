@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import { useSelector } from 'react-redux';
 
 import { Box, Typography, Grid, Fab } from "@material-ui/core";
 import ContactsIcon from '@material-ui/icons/Contacts';
@@ -13,6 +13,9 @@ import Formulario from "./Formulario/Formulario";
 
 
 const Contatos = () => {
+    const posts = useSelector((state) => state.posts);
+    console.log(posts)
+
     const classes = useStyles();
 
     const [open, setOpen] = useState(false);
