@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-import {AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
+import {Container, Grid, AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -10,6 +10,8 @@ import Brightness1Icon from '@material-ui/icons/Brightness1';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
+
+import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import Routes from '../../Routes.js'
 
 import { useStyles, MenuItemTooltip, MenuItem} from './Interface.styles.js';
@@ -116,9 +118,12 @@ const Interface = props => {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
-
-
         <Divider />
+
+        <Container style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}>
+        <img className={classes.logoside} src={LogoGrandeBranco}/>
+        </Container>
+
         <List component="nav">
             {menuItems.slice(0, 2).map((item, index) => (
                 <React.Fragment key={item.name}>

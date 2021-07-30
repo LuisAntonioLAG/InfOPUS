@@ -167,6 +167,10 @@ export const useStyles = makeStyles((theme) => ({
 
 //---------------------------------------------------------------
 
+    logoside: {
+      width: '30px',
+    },
+
 
     link: {
       textDecoration: 'none', 
