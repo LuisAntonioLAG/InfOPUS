@@ -46,9 +46,9 @@ const Formulario = props => {
           <DialogContentText>
             Preencha os dados do novo contato:
           </DialogContentText>
-            <TextField required={true} name="empresa" variant="outlined" label="Empresa" margin='dense' fullWidth value={postData.empresa} onChange={(e) => setPostData({ ...postData, empresa: e.target.value })} />
-            <TextField name="cargo" variant="outlined" label="Cargo" margin='dense' fullWidth value={postData.cargo} onChange={(e) => setPostData({ ...postData, cargo: e.target.value })} />
             <TextField name="nome" variant="outlined" label="Nome" margin='dense' fullWidth value={postData.nome} onChange={(e) => setPostData({ ...postData, nome: e.target.value })} />
+            <TextField name="empresa" variant="outlined" label="Empresa" margin='dense' fullWidth value={postData.empresa} onChange={(e) => setPostData({ ...postData, empresa: e.target.value })} />
+            <TextField name="cargo" variant="outlined" label="Cargo" margin='dense' fullWidth value={postData.cargo} onChange={(e) => setPostData({ ...postData, cargo: e.target.value })} />
             <TextField name="numero" variant="outlined" label="Telefone" margin='dense' multiline fullWidth value={postData.numero} onChange={(e) => setPostData({ ...postData, numero: e.target.value })} />
             <TextField name="mensagem" variant="outlined" label="Informações Adicionais" margin='dense' multiline fullWidth value={postData.mensagem} onChange={(e) => setPostData({ ...postData, mensagem: e.target.value })} />
             <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, foto: base64 })} /></div> 
