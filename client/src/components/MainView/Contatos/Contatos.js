@@ -16,6 +16,7 @@ const Contatos = () => {
     const posts = useSelector((state) => state.posts);
     console.log(posts)
 
+
     const classes = useStyles();
 
     const [open, setOpen] = useState(false);

@@ -1,14 +1,13 @@
 import React, { useState, useContext } from 'react';
 import {Link} from 'react-router-dom';
-import {Box, Container, AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
+import { Container, AppBar, Paper ,Toolbar, Typography, IconButton, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom, useTheme} from '@material-ui/core';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import Brightness1Icon from '@material-ui/icons/Brightness1';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
+
 
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import Routes from '../../Routes.js'
@@ -24,7 +23,7 @@ const Interface = props => {
     const classes = useStyles();
     const { currentTheme, setTheme } = useContext(CustomThemeContext)
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
-  
+    const theme = useTheme();
 
 
 
@@ -74,30 +73,11 @@ const Interface = props => {
                     </IconButton>
                     <Typography style={{ flex: 1 }} variant="h6" noWrap>InfOPUS</Typography>
 
-                  
-                    <div className={classes.search} >
-                        <div className={classes.searchIcon}>
-                        <SearchIcon />
-                        </div>
-                        <InputBase
-                        placeholder="Pesquise…"
-                        classes={{
-                            root: classes.inputRoot,
-                            input: classes.inputInput,
-                        }}
-                        inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-
-                    
-                     
-                    <IconButton color='secondary' aria-label="configurations" onClick>
-                        <Brightness1Icon/>
-                    </IconButton>
+            
 
 
                     {isDark === false &&
-                    <WbSunnyIcon/>
+                    <WbSunnyIcon fontSize='small'/>
                     }
                     <Switch
                       checked={isDark}
@@ -105,12 +85,12 @@ const Interface = props => {
                       name="Modo Escuro"
                     />
                     {isDark === true &&
-                    <NightsStayIcon />
+                    <NightsStayIcon fontSize='small'/>
                     }
 
 
                         <Avatar/>
-                        <IconButton aria-label="configurations">
+                        <IconButton disableRipple>
                             <ExitToAppIcon />
                         </IconButton>
 
