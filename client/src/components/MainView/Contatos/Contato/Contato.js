@@ -33,7 +33,7 @@ const Contato = ({ post, currentId, setCurrentId }) => {
      };
 
     const handleClickDelete = () => {
-      setCurrentId(`deletou ${post._id}`)
+      setCurrentId(post._id)
       dispatch(deletePost(post._id))
     };
 
