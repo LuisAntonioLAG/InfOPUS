@@ -7,13 +7,24 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { useStyles} from './Contato.styles';
+import Formulario from '../Formulario/Formulario'; 
 
-const Contato = ({ post }) => {
+const Contato = ({ post, currentId, setCurrentId }) => {
+
     const classes = useStyles();
+
+    const [open, setOpen] = useState(false);
     const [expanded, setExpanded] = useState(false);
+
     const handleExpandClick = () => {
         setExpanded(!expanded);
       };
+
+    const handleClickEdit = () => {
+       setCurrentId(post._id);
+       setOpen(true);
+     };
+
 
     return (
 
@@ -55,9 +66,12 @@ const Contato = ({ post }) => {
             spacing={1}
           >
             <Grid item>
-              <IconButton size="small" color="primary">
+              <IconButton size="small" color="primary" onClick={handleClickEdit}>
                 <EditIcon />
               </IconButton>
+
+              <Formulario currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
+
               <IconButton
                 disableRipple
                 size="small"
@@ -66,6 +80,8 @@ const Contato = ({ post }) => {
               >
                 <DeleteIcon />
               </IconButton>
+
+
             </Grid>
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">

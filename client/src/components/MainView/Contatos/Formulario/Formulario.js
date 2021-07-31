@@ -1,5 +1,5 @@
-import React, { useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Grid, TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions} from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import BusinessIcon from '@material-ui/icons/Business';
@@ -9,26 +9,28 @@ import SubjectIcon from '@material-ui/icons/Subject';
 import FileBase from 'react-file-base64';
 
 
-
 import { useStyles } from './Formulario.styles.js'
-import { createPost } from '../../../../actions/posts.js';
+import { createPost, updatePost } from '../../../../actions/posts.js';
 
 
-const Formulario = props => {
-  const [postData, setPostData] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: '' });
+
+
+
+const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
+
+    const [postData, setPostData] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: '' });
+
+    const post = useSelector((state) => 'currentId' ? state.posts.find((p) => p._id === currentId) : null);
   
-  const dispatch = useDispatch();
-
-
-    const { 
-        open, setOpen = [],
-    } = props;
-
+    const dispatch = useDispatch();
+  
     const classes = useStyles();
 
 
     const clear = () => {
+      setCurrentId(null); 
       setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''});
+      console.log(currentId)
     };
 
     const handleClose = () => {
@@ -36,17 +38,28 @@ const Formulario = props => {
         clear();
       };
 
-
       const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPost(postData));
+        
+        if(currentId) {
+          dispatch(updatePost( currentId,postData));
+        } else{
+          dispatch(createPost(postData));
+        }
+
+        
         clear();
         setOpen(false);
     };
 
+    useEffect(() => {
+      if(post) setPostData(post);
+    }, [post])
+    
+
     return(
         <Dialog open={open} onClose={handleClose}>
-        <DialogTitle id="form-dialog-title">NOVO CONTATO</DialogTitle>
+        <DialogTitle id="form-dialog-title">{ currentId ? 'EDITANDO' : 'NOVO'} CONTATO</DialogTitle>
         <form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <DialogContent>
           <DialogContentText>
@@ -116,7 +129,7 @@ const Formulario = props => {
          <Button disableRipple variant='contained' onClick={handleClose}>
             Cancelar
           </Button>
-          <Button disableRipple variant='contained' onClick={clear} color="secondary">
+          <Button disableRipple variant='contained' onClick={() => {setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''})}} color="secondary">
             Limpar
           </Button>
           <Button disableRipple variant="contained" type="submit" color="primary">

@@ -13,8 +13,10 @@ import Formulario from "./Formulario/Formulario";
 
 
 const Contatos = () => {
+
+    const [currentId, setCurrentId] = useState(null);
+
     const posts = useSelector((state) => state.posts);
-    console.log(posts)
 
 
     const classes = useStyles();
@@ -52,7 +54,7 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
   <Box component="span" fontWeight='fontWeightBold'> Novo Contato </Box>
 </Fab>
 
-<Formulario open={open} setOpen={setOpen}/>
+<Formulario currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
 
 
 
@@ -64,7 +66,7 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
       <Grid className={classes.root} container spacing={2}>
           {posts.map((post) => ( 
               <Grid  key={post._id} item xs={12} md={6} lg={4}>
-                  <Contato post={post} />
+                  <Contato currentId={currentId} setCurrentId={setCurrentId} post={post} />
               </Grid>
           ))}
       </Grid>
