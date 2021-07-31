@@ -124,10 +124,10 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
             <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, foto: base64 })} /></div> 
         </DialogContent>    
         <DialogActions>
-        <Button className={classes.margin} disableRipple variant='contained' onClick={() => {setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''})}} color="secondary">
+        <Button className={classes.margin} disableRipple variant='contained' onClick={() => {setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''})}} >
             Limpar
           </Button>
-         <Button className={classes.margin} disableRipple variant='contained' onClick={handleClose}>
+         <Button color="secondary" className={classes.margin} disableRipple variant='contained' onClick={handleClose}>
             Cancelar
           </Button>
           <Button className={classes.margin} disableRipple variant="contained" type="submit" color="primary">

@@ -29,8 +29,8 @@ const Contato = ({ post, currentId, setCurrentId }) => {
      };
 
     const handleClickDelete = () => {
-      setCurrentId(`Post deletado: ${post.id}`)
       dispatch(deletePost(post._id))
+      window.location.reload();
     };
 
 
