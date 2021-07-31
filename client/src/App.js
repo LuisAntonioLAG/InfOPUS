@@ -20,7 +20,6 @@ import 'moment/locale/pt-br';
 
 
 import Interface from './components/Interface/Interface';
-import { getPosts } from './actions/posts.js'
 
 
 const App = () => {
@@ -30,11 +29,7 @@ const App = () => {
 
 
 
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(getPosts());
-    }, [dispatch])
 
 
     moment.locale('pt-br');

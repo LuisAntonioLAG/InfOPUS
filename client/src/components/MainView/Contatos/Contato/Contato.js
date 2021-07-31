@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import clsx from "clsx";
 import { Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography } from "@material-ui/core";
@@ -6,12 +7,18 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import { useStyles} from './Contato.styles';
-import Formulario from '../Formulario/Formulario'; 
+import { useStyles} from './Contato.styles.js';
+import Formulario from '../Formulario/Formulario.js'; 
+import { getPosts, deletePost } from '../../../../actions/posts.js'
 
 const Contato = ({ post, currentId, setCurrentId }) => {
 
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getPosts());
+    }, [dispatch])
 
     const [open, setOpen] = useState(false);
     const [expanded, setExpanded] = useState(false);
@@ -24,6 +31,11 @@ const Contato = ({ post, currentId, setCurrentId }) => {
        setCurrentId(post._id);
        setOpen(true);
      };
+
+    const handleClickDelete = () => {
+      setCurrentId(`deletou ${post._id}`)
+      dispatch(deletePost(post._id))
+    };
 
 
     return (
@@ -77,6 +89,7 @@ const Contato = ({ post, currentId, setCurrentId }) => {
                 size="small"
                 variant="contained"
                 color="secondary"
+                onClick = {handleClickDelete}
               >
                 <DeleteIcon />
               </IconButton>
@@ -91,6 +104,7 @@ const Contato = ({ post, currentId, setCurrentId }) => {
               </Typography>
             </Grid>
           </Grid>
+
           <IconButton
             disableRipple
             className={clsx(classes.expand, {

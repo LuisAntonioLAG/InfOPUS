@@ -28,9 +28,7 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
 
 
     const clear = () => {
-      setCurrentId(null); 
       setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''});
-      console.log(currentId)
     };
 
     const handleClose = () => {
@@ -47,9 +45,9 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
           dispatch(createPost(postData));
         }
 
-        
-        clear();
         setOpen(false);
+        clear();
+   
     };
 
     useEffect(() => {

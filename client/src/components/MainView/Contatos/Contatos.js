@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 
 import { Box, Typography, Grid, Fab } from "@material-ui/core";
@@ -10,7 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { useStyles} from './Contatos.styles';
 import Contato from './Contato/Contato.js';
 import Formulario from "./Formulario/Formulario";
-
+import { getPosts } from "../../../actions/posts";
 
 const Contatos = () => {
 
@@ -24,8 +25,17 @@ const Contatos = () => {
     const [open, setOpen] = useState(false);
 
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getPosts());
+    }, [currentId, dispatch])
+
+
+
     const handleClickFab = () => {
       setOpen(true);
+      setCurrentId(null)
     };
 
 
@@ -54,7 +64,7 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
   <Box component="span" fontWeight='fontWeightBold'> Novo Contato </Box>
 </Fab>
 
-<Formulario currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
+<Formulario open={open} setOpen={setOpen}/>
 
 
 

@@ -42,6 +42,17 @@ export const updatePost = async (req, res) => {
 }
 
 
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) res.status(404).send('Nenhum contato com esse id');
+
+    await PostMessage.findByIdAndRemove(id);
+
+    console.log('DELETE!')
+
+    res.json({ message: 'Contato deletado com sucesso' });
+}
 
 
 
