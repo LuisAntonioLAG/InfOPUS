@@ -61,7 +61,7 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
         <form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <DialogContent>
           <DialogContentText>
-            Preencha os dados do novo contato:
+          { currentId ? 'Atualize os dados desse contato:' : 'Preencha os dados do novo contato:'}
           </DialogContentText>
 
 
@@ -124,14 +124,14 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
             <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, foto: base64 })} /></div> 
         </DialogContent>    
         <DialogActions>
-         <Button disableRipple variant='contained' onClick={handleClose}>
-            Cancelar
-          </Button>
-          <Button disableRipple variant='contained' onClick={() => {setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''})}} color="secondary">
+        <Button className={classes.margin} disableRipple variant='contained' onClick={() => {setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''})}} color="secondary">
             Limpar
           </Button>
-          <Button disableRipple variant="contained" type="submit" color="primary">
-            Adicionar
+         <Button className={classes.margin} disableRipple variant='contained' onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button className={classes.margin} disableRipple variant="contained" type="submit" color="primary">
+          { currentId ? 'Salvar' : 'Adicionar' }
           </Button>
         </DialogActions>
         </form>

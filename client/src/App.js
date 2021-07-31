@@ -1,5 +1,4 @@
-import React,{useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import React,{useState} from 'react';
 import { CssBaseline } from '@material-ui/core';
 import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
 import HomeIcon from '@material-ui/icons/Home';

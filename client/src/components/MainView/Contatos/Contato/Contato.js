@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import clsx from "clsx";
@@ -9,16 +9,12 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { useStyles} from './Contato.styles.js';
 import Formulario from '../Formulario/Formulario.js'; 
-import { getPosts, deletePost } from '../../../../actions/posts.js'
+import { deletePost } from '../../../../actions/posts.js'
 
 const Contato = ({ post, currentId, setCurrentId }) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch(getPosts());
-    }, [dispatch])
 
     const [open, setOpen] = useState(false);
     const [expanded, setExpanded] = useState(false);
