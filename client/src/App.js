@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { CssBaseline } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
+import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
 import HomeIcon from '@material-ui/icons/Home';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -23,40 +23,11 @@ import Interface from './components/Interface/Interface';
 import { getPosts } from './actions/posts.js'
 
 
-
-import { createTheme, responsiveFontSizes } from '@material-ui/core'
-import colors from './assets/themes/colors';
-
 const App = () => {
 
-  const [isDarkMode, setDarkMode] = useState({DarkModeSwitch: false,});
+
   const [isGreenMode, setGreenMode] = useState(false);
 
-
-  const theme = createTheme({
-    palette: {
-        type: isDarkMode.DarkModeSwitch === true ? 'dark' : 'light' ,
-        primary: {
-            main: isGreenMode === true ? colors.green3 : colors.blue3,
-            light: isGreenMode === true ? colors.green1 : colors.blue1,
-            dark: isGreenMode === true ? colors.green5 : colors.blue5,
-        },
-        secondary: {
-            main: isGreenMode === true ? colors.blue3 : colors.green3,
-            light: isGreenMode === true ? colors.blue1 : colors.green1,
-            dark: isGreenMode === true ? colors.blue3 : colors.green3,
-        },
-    },
-    typography:{
-        fontFamily: [
-            'Ubuntu',
-            'sans-serif',
-        ].join(','),
-    },
-});
-
-
-const Theme = responsiveFontSizes(theme);
 
 
     const dispatch = useDispatch();
@@ -66,11 +37,10 @@ const Theme = responsiveFontSizes(theme);
     }, [dispatch])
 
 
-moment.locale('pt-br');
+    moment.locale('pt-br');
     //states
 
     
-
 
 
   const menuItems = [
@@ -90,10 +60,10 @@ moment.locale('pt-br');
   ]
 
   return (
-    <ThemeProvider theme={Theme}>
-    <CssBaseline />
-    <Interface isDarkMode={isDarkMode} setDarkMode={setDarkMode} isGreenMode={isGreenMode} setGreenMode={setGreenMode} menuItems={menuItems} />
-    </ThemeProvider>
+      <CustomThemeProvider>
+      <CssBaseline />
+      <Interface isGreenMode={isGreenMode} setGreenMode={setGreenMode} menuItems={menuItems} />
+      </CustomThemeProvider>
   );
 }
 

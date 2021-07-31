@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {Link} from 'react-router-dom';
-import {Container, AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import {Box, Container, AppBar, Paper ,Toolbar, Typography, IconButton, InputBase, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-
-
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import NightsStayIcon from '@material-ui/icons/NightsStay';
 
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import Routes from '../../Routes.js'
 
-
+import { CustomThemeContext } from '../../assets/themes/CustomThemeProvider'
 import { useStyles, MenuItemTooltip, MenuItem} from './Interface.styles.js';
-
 
 const Interface = props => {
     const {
         menuItems = [],
-        isDarkMode, setDarkMode = [],
-        isGreenMode, setGreenMode = [],
     } = props;
 
     const classes = useStyles();
-    const theme = useTheme();
+    const { currentTheme, setTheme } = useContext(CustomThemeContext)
+    const isDark = Boolean(currentTheme === 'GreenDarkTheme')
+  
 
 
 
@@ -41,18 +38,21 @@ const Interface = props => {
 
     //handlers
 
-
-    const handleColorChange = () => {
-      setGreenMode(!isGreenMode);
+    const handleThemeChange = (event) => {
+      const { checked } = event.target
+      if (checked) {
+        setTheme('GreenDarkTheme')
+      } else {
+        setTheme('GreenLightTheme')
+      }
     }
+
+
 
     const handleListItemClick = (event, index) => {
       setSelectedListItem(index);
     };
 
-    const handleDarkModeSwitch = (event) => {
-      setDarkMode({ ...isDarkMode, [event.target.name]: event.target.checked });
-    };
     
     const handleDrawerOpen = () => {
       setOpen(true);
@@ -90,17 +90,25 @@ const Interface = props => {
                     </div>
 
                     
-                      
-                    <IconButton color='secondary' aria-label="configurations" onClick = {handleColorChange}>
+                     
+                    <IconButton color='secondary' aria-label="configurations" onClick>
                         <Brightness1Icon/>
                     </IconButton>
-                    
-                        <Switch 
-                            checked={isDarkMode.DarkModeSwitch}
-                            onChange={handleDarkModeSwitch}
-                            name="DarkModeSwitch"
-                            inputProps={{ 'aria-label': 'primary checkbox' }}
-                        />
+
+
+                    {isDark === false &&
+                    <WbSunnyIcon/>
+                    }
+                    <Switch
+                      checked={isDark}
+                      onChange={handleThemeChange}
+                      name="Modo Escuro"
+                    />
+                    {isDark === true &&
+                    <NightsStayIcon />
+                    }
+
+
                         <Avatar/>
                         <IconButton aria-label="configurations">
                             <ExitToAppIcon />
@@ -124,7 +132,7 @@ const Interface = props => {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose} className={classes.listItemIcon} >
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            <ChevronLeftIcon />
           </IconButton>
         </div>
         <Divider />
