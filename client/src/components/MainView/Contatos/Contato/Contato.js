@@ -36,10 +36,10 @@ const Contato = ({ post }) => {
               <CardContent>
                 <Typography variant="h6">{post.nome}</Typography>
                 <Typography variant="subtitle2" color="textSecondary">
-                  {post.cargo}
+                  {post.empresa}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
-                  {post.empresa}
+                  {post.cargo}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
                   {post.numero}
