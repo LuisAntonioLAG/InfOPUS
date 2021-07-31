@@ -5,8 +5,7 @@ import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import NightsStayIcon from '@material-ui/icons/NightsStay';
+
 
 
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
