@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import {Link} from 'react-router-dom';
-import { Container, AppBar, Paper ,Toolbar, Typography, IconButton, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom, useTheme} from '@material-ui/core';
+import { Container, AppBar, Paper ,Toolbar, Typography, IconButton, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom, FormControlLabel, useTheme} from '@material-ui/core';
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -75,18 +75,17 @@ const Interface = props => {
 
             
 
-
-                    {isDark === false &&
-                    <WbSunnyIcon fontSize='small'/>
-                    }
-                    <Switch
-                      checked={isDark}
-                      onChange={handleThemeChange}
-                      name="Modo Escuro"
+                    <FormControlLabel
+                      control={<Switch
+                                  size='small'
+                                  checked={isDark}
+                                  onChange={handleThemeChange}
+                                  name="Modo Escuro"
+                              />
+                      }
+                    label="Modo Escuro"
+                    labelPlacement="bottom"
                     />
-                    {isDark === true &&
-                    <NightsStayIcon fontSize='small'/>
-                    }
 
 
                         <Avatar/>
