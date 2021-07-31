@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import clsx from "clsx";
-import { Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography } from "@material-ui/core";
+import { Divider, Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -33,7 +33,7 @@ const Contato = ({ post, currentId, setCurrentId }) => {
      };
 
     const handleClickDelete = () => {
-      setCurrentId(post._id)
+      setCurrentId(`Post deletado: ${post.id}`)
       dispatch(deletePost(post._id))
     };
 
@@ -57,16 +57,19 @@ const Contato = ({ post, currentId, setCurrentId }) => {
           
           <div className={classes.details}>
               <CardContent>
-                <Typography variant="h6">{post.nome}</Typography>
+                <Typography variant="h5">{post.nome}</Typography>
+                <Divider/>
                 <Typography variant="subtitle2" color="textSecondary">
                   {post.empresa}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
                   {post.cargo}
                 </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
+                <Box my={3}>
+                <Typography variant="h6" >
                   {post.numero}
                 </Typography>
+                </Box>
               </CardContent>
           </div>
         </div>
