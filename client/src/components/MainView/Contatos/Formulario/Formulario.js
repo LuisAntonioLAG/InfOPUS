@@ -7,6 +7,8 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SubjectIcon from '@material-ui/icons/Subject';
 import FileBase from 'react-file-base64';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+
 
 
 import { useStyles } from './Formulario.styles.js'
@@ -34,6 +36,7 @@ const Formulario = ({open, setOpen, currentId}) => {
 
     const handleClose = () => {
         setOpen(false);
+        clear();
       };
 
       const handleSubmit = (e) => {
@@ -55,14 +58,15 @@ const Formulario = ({open, setOpen, currentId}) => {
     }, [contato])
     
 
+
+
     return(
-        
         
         <Dialog open={open} onClose={handleClose}>
         <DialogTitle id="form-dialog-title">{ currentId ? 'EDITANDO' : 'NOVO'} CONTATO</DialogTitle>
    
  
-        <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+        <ValidatorForm autoComplete="off" onSubmit={handleSubmit}>
         <DialogContent>
           <DialogContentText>
           { currentId ? 'Atualize os dados desse contato:' : 'Preencha os dados do novo contato:'}
@@ -75,7 +79,12 @@ const Formulario = ({open, setOpen, currentId}) => {
                   <AccountCircleIcon/>
                 </Grid>
                 <Grid style={{flexGrow:1, }} item>
-                <TextField  name="nome" variant="outlined" fullWidth label="Nome" value={infoContato.nome} onChange={(e) => setInfoContato({ ...infoContato, nome: e.target.value })} /> 
+                <TextValidator name="nome"  label="Nome*" value={infoContato.nome} onChange={(e) => setInfoContato({ ...infoContato, nome: e.target.value })} 
+                  variant="outlined"
+                  fullWidth
+                  validators={['required']}
+                  errorMessages={['Esse campo é obrigatório.']}
+                  /> 
                 </Grid>
               </Grid>
             </div>
@@ -97,7 +106,12 @@ const Formulario = ({open, setOpen, currentId}) => {
                       <PhoneIcon/>
                     </Grid>
                     <Grid style={{flexGrow:1, }} item>
-                    <TextField name="numero" variant="outlined" label="Telefone" multiline fullWidth value={infoContato.numero} onChange={(e) => setInfoContato({ ...infoContato, numero: e.target.value })} />
+                    <TextValidator name="numero"  label="Telefone*" value={infoContato.numero} onChange={(e) => setInfoContato({ ...infoContato, numero: e.target.value })} 
+                      variant="outlined"
+                      fullWidth
+                      validators={['required', 'isNumber', 'minStringLength:8', 'maxStringLength:13']}
+                      errorMessages={['Esse campo é obrigatório.','Preencha apenas com os números.','Não necessários, no mínimo, 8 dígitos.','São permitidos, no máximo, 13 dígitos.']}
+                    />
                     </Grid>
                   </Grid>
             </div>
@@ -135,7 +149,7 @@ const Formulario = ({open, setOpen, currentId}) => {
           { currentId ? 'Salvar' : 'Adicionar' }
           </Button>
         </DialogActions>
-        </form>
+        </ValidatorForm>
       </Dialog>
       
     );
