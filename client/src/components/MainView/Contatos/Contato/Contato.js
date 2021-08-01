@@ -10,6 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useStyles} from './Contato.styles.js';
 import Formulario from '../Formulario/Formulario.js'; 
 import { deleteContato } from '../../../../actions/contatos.js'
+import ContatoFotoPadrao from '../../../../assets/images/ContatoFotoPadrao.png'
 
 const Contato = ({ contato, currentId, setCurrentId }) => {
 
@@ -40,14 +41,12 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
         <div className={classes.card}> 
           <Hidden only="xs">
           <div className={classes.imageContainer}>
-            {contato.foto !== '' && 
             <CardMedia
               component="img"
               className={classes.image}
-              image={contato.foto}
+              image={contato.foto !== '' ? contato.foto : ContatoFotoPadrao}
               title={contato.nome}
             />
-            }
             </div>
           </Hidden>
           
