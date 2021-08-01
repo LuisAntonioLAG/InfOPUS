@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
 
-import { useStyles} from './Infos.styles.js';
+import { useStyles} from './Sobre.styles.js';
 
 
 const Infos = () => {

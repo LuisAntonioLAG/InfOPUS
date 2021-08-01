@@ -12,7 +12,7 @@ import WebConferencia from './components/MainView/WebConferencia/WebConferencia'
 import Atas from './components/MainView/Atas/Atas';
 import Biblioteca from './components/MainView/Biblioteca/Biblioteca';
 import Contatos from './components/MainView/Contatos/Contatos';
-import Sobre from './components/MainView/Infos/Infos';
+import Sobre from './components/MainView/Sobre/Sobre';
 import Feedback from './components/MainView/Feedback/Feedback';
 
 
