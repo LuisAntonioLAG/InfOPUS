@@ -33,7 +33,6 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
 
     const handleClose = () => {
         setOpen(false);
-        clear();
       };
 
       const handleSubmit = (e) => {
