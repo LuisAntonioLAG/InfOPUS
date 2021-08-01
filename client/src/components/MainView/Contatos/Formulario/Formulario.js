@@ -16,7 +16,8 @@ import { createPost, updatePost } from '../../../../actions/posts.js';
 
 
 
-const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
+const Formulario = ({open, setOpen, currentId}) => {
+
 
     const [postData, setPostData] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: '' });
 
@@ -55,8 +56,12 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
     
 
     return(
+        
+        
         <Dialog open={open} onClose={handleClose}>
         <DialogTitle id="form-dialog-title">{ currentId ? 'EDITANDO' : 'NOVO'} CONTATO</DialogTitle>
+   
+ 
         <form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <DialogContent>
           <DialogContentText>
@@ -135,6 +140,7 @@ const Formulario = ({open, setOpen, currentId, setCurrentId}) => {
         </DialogActions>
         </form>
       </Dialog>
+      
     );
 }
 
