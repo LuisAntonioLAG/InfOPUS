@@ -12,7 +12,7 @@ import WebConferencia from './components/MainView/WebConferencia/WebConferencia'
 import Atas from './components/MainView/Atas/Atas';
 import Biblioteca from './components/MainView/Biblioteca/Biblioteca';
 import Contatos from './components/MainView/Contatos/Contatos';
-import Infos from './components/MainView/Infos/Infos';
+import Sobre from './components/MainView/Infos/Infos';
 import Feedback from './components/MainView/Feedback/Feedback';
 
 
@@ -20,7 +20,7 @@ const Routes = () => {
 
     return (
         <Switch>
-            <Route exact path='/' component={Inicio}/>
+            <Route exact path='/inicio' component={Inicio}/>
             <Route exact path='/presidencia' component={Presidencia}/>
             <Route exact path='/admfin' component={AdmFinanceiro}/>
             <Route exact path='/comercial' component={Comercial}/>
@@ -31,7 +31,7 @@ const Routes = () => {
             <Route exact path='/atas' component={Atas}/>
             <Route exact path='/biblioteca' component={Biblioteca}/>
             <Route exact path='/contatos' component={Contatos}/>
-            <Route exact path='/info' component={Infos}/>
+            <Route exact path='/sobre' component={Sobre}/>
             <Route exact path='/feedback' component={Feedback}/>
         </Switch>
 )}

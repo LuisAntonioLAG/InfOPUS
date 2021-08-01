@@ -38,19 +38,19 @@ const App = () => {
 
 
   const menuItems = [
-    {name: 'Inicio', icon: <HomeIcon/>, to:'/'},
-    {name:'Feedback', icon: <FeedbackIcon/>, to:'/feedback/'},
-    {name: 'Presidência', icon: <LocalParkingIcon/>, to:'/presidencia/'},
-    {name: 'Adm-Financeiro', icon: <AccountBalanceWalletIcon/>, to: '/admfin/'},
-    {name: 'Comercial', icon: <MonetizationOnIcon/>, to: '/comercial/'} ,
-    {name: 'Gente e Gestão', icon: <PeopleIcon/>, to: '/gg/'},
-    {name: 'Marketing', icon: <ColorLensIcon/>, to: '/marketing/'},
-    {name: 'Projetos', icon: <WorkIcon/>, to: '/projetos/'},
-    {name: 'WebConferência', icon: <VideoCallIcon/>, to: '/meet/'},
-    {name: 'Atas', icon: <DescriptionIcon/>, to: '/atas/'},
-    {name: 'Biblioteca', icon: <MenuBookIcon/>, to: '/biblioteca/'},
-    {name: 'Contatos', icon: <ContactsIcon/> , to: '/contatos/'},
-    {name: 'Informações', icon: <InfoIcon/> , to: '/info/'},
+    {txtname: 'Início', name: 'Inicio', icon: <HomeIcon/>, to:'/inicio'},
+    {txtname:'Feedback', name: 'Feedback', icon: <FeedbackIcon/>, to:'/feedback/'},
+    {txtname: 'Presidência', name: 'Presidencia', icon: <LocalParkingIcon/>, to:'/presidencia/'},
+    {txtname: 'Adm-Financeiro', name: 'Admfin', icon: <AccountBalanceWalletIcon/>, to: '/admfin/'},
+    {txtname: 'Comercial', name: 'Comercial', icon: <MonetizationOnIcon/>, to: '/comercial/'} ,
+    {txtname: 'Gente e Gestão', name: 'Gg', icon: <PeopleIcon/>, to: '/gg/'},
+    {txtname: 'Marketing', name: 'Marketing', icon: <ColorLensIcon/>, to: '/marketing/'},
+    {txtname: 'Projetos', name: 'Projetos', icon: <WorkIcon/>, to: '/projetos/'},
+    {txtname: 'WebConferência', name: 'meet', icon: <VideoCallIcon/>, to: '/meet/'},
+    {txtname: 'Atas', name: 'Atas', icon: <DescriptionIcon/>, to: '/atas/'},
+    {txtname: 'Biblioteca', name: 'Biblioteca', icon: <MenuBookIcon/>, to: '/biblioteca/'},
+    {txtname: 'Contatos', name: 'Contatos', icon: <ContactsIcon/> , to: '/contatos/'},
+    {txtname: 'Sobre', name: 'Sobre', icon: <InfoIcon/> , to: '/sobre/'},
   ]
 
   return (

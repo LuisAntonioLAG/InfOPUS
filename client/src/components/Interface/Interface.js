@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useLayoutEffect } from 'react';
 import {Link} from 'react-router-dom';
 import { Container, AppBar, Paper ,Toolbar, Typography, IconButton, Switch, Avatar, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom, FormControlLabel} from '@material-ui/core';
 import clsx from 'clsx';
@@ -24,12 +24,24 @@ const Interface = props => {
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
 
 
+        //states
+
+        const [open, setOpen] = useState(false);
+        const [selectedListItem, setSelectedListItem] = useState();
+    
 
 
-    //states
+    useLayoutEffect(() => {
+      const path = window.location.pathname;
+      const parts = path.split('/');
+  
+      if (path !== '/' && parts[1].charAt(0).toUpperCase() !== menuItems[0].name) {
+        const selectedItem = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+        setSelectedListItem(selectedItem)
+      }
+    }, [menuItems])
 
-    const [open, setOpen] = useState(false);
-    const [selectedListItem, setSelectedListItem] = useState();
+
 
 
     
@@ -124,10 +136,10 @@ const Interface = props => {
             {menuItems.slice(0, 2).map((item, index) => (
                 <React.Fragment key={item.name}>
                 <Link className={classes.link} to={item.to}>
-                <MenuItemTooltip interactive placement="right" title={open===false ? item.name : ''} TransitionComponent={Zoom}>
+                <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                 <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
                 <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.name} />
+                <ListItemText primary={item.txtname} />
                 </MenuItem>
                 </MenuItemTooltip>
                 </Link>
@@ -139,11 +151,11 @@ const Interface = props => {
             {menuItems.slice(2,8).map((item, index) => (
                 <React.Fragment key={item.name}>
                 <Link className={classes.link} to={item.to}>
-                <MenuItemTooltip interactive placement="right" title={open===false ? item.name : ''} TransitionComponent={Zoom}>
+                <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                 <MenuItem disableRipple button selected={selectedListItem === item.name}
                  onClick={(event) => handleListItemClick(event, item.name)}>
                 <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.name} />
+                <ListItemText primary={item.txtname} />
                 </MenuItem>
                 </MenuItemTooltip>
                 </Link>
@@ -155,11 +167,11 @@ const Interface = props => {
             {menuItems.slice(8).map((item, index) => (
                 <React.Fragment key={item.name}>
                 <Link className={classes.link} to={item.to}>
-                <MenuItemTooltip interactive placement="right" title={open===false ? item.name : ''} TransitionComponent={Zoom}>
+                <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                 <MenuItem disableRipple button selected={selectedListItem === item.name}
                  onClick={(event) => handleListItemClick(event, item.name)}>
                 <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.name} />
+                <ListItemText primary={item.txtname} />
                 </MenuItem>
                 </MenuItemTooltip>
                 </Link>
