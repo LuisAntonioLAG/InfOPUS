@@ -11,13 +11,13 @@ import AddIcon from '@material-ui/icons/Add';
 import { useStyles} from './Contatos.styles';
 import Contato from './Contato/Contato.js';
 import Formulario from "./Formulario/Formulario";
-import { getPosts } from "../../../actions/posts";
+import { getContatos } from "../../../actions/contatos";
 
 const Contatos = () => {
 
     const [currentId, setCurrentId] = useState(null);
 
-    const posts = useSelector((state) => state.posts);
+    const contatos = useSelector((state) => state.contatos);
 
 
     const classes = useStyles();
@@ -28,7 +28,7 @@ const Contatos = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(getPosts());
+      dispatch(getContatos());
     }, [currentId, dispatch])
 
 
@@ -70,11 +70,11 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
 
 
 <Box mt={5} >
-  {!posts.length ? <CircularProgress color="secondary" /> : (
+  {!contatos.length ? <CircularProgress color="secondary" /> : (
       <Grid className={classes.root} container spacing={2}>
-          {posts.map((post) => ( 
-              <Grid  key={post._id} item xs={12} md={6} lg={4}>
-                  <Contato currentId={currentId} setCurrentId={setCurrentId} post={post} />
+          {contatos.map((contato) => ( 
+              <Grid  key={contato._id} item xs={12} md={6} lg={4}>
+                  <Contato currentId={currentId} setCurrentId={setCurrentId} contato={contato} />
               </Grid>
           ))}
       </Grid>

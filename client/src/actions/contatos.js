@@ -5,9 +5,9 @@ import * as api from '../api/index.js';
 
 //ACTION CREATORS
 
-export const getPosts = () => async (dispatch) => {
+export const getContatos = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchPosts();
+    const { data } = await api.fetchContatos();
 
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
@@ -15,9 +15,9 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createContato = (post) => async (dispatch) => {
   try {
-    const { data } = await api.createPost(post);
+    const { data } = await api.createContato(post);
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
@@ -25,9 +25,9 @@ export const createPost = (post) => async (dispatch) => {
   }
 };
 
-export const updatePost = (id, post) => async (dispatch) => {
+export const updateContato = (id, post) => async (dispatch) => {
   try {
-    const { data } = await api.updatePost(id, post);
+    const { data } = await api.updateContato(id, post);
 
     dispatch({type: UPDATE, payload: data})
   } catch(error) {
@@ -35,9 +35,9 @@ export const updatePost = (id, post) => async (dispatch) => {
   };
 };
 
-export const deletePost = (id) => async (dispatch) => {
+export const deleteContato = (id) => async (dispatch) => {
   try {
-    await api.deletePost(id);
+    await api.deleteContato(id);
 
     dispatch({ type: DELETE, payload: id});
   } catch (error) {

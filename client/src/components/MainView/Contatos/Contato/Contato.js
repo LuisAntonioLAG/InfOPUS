@@ -9,9 +9,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { useStyles} from './Contato.styles.js';
 import Formulario from '../Formulario/Formulario.js'; 
-import { deletePost } from '../../../../actions/posts.js'
+import { deleteContato } from '../../../../actions/contatos.js'
 
-const Contato = ({ post, currentId, setCurrentId }) => {
+const Contato = ({ contato, currentId, setCurrentId }) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -24,12 +24,12 @@ const Contato = ({ post, currentId, setCurrentId }) => {
       };
 
     const handleClickEdit = () => {
-       setCurrentId(post._id);
+       setCurrentId(contato._id);
        setOpen(true);
      };
 
     const handleClickDelete = () => {
-      dispatch(deletePost(post._id))
+      dispatch(deleteContato(contato._id))
       window.location.reload();
     };
 
@@ -40,12 +40,12 @@ const Contato = ({ post, currentId, setCurrentId }) => {
         <div className={classes.card}> 
           <Hidden only="xs">
           <div className={classes.imageContainer}>
-            {post.foto !== '' && 
+            {contato.foto !== '' && 
             <CardMedia
               component="img"
               className={classes.image}
-              image={post.foto}
-              title={post.nome}
+              image={contato.foto}
+              title={contato.nome}
             />
             }
             </div>
@@ -53,17 +53,17 @@ const Contato = ({ post, currentId, setCurrentId }) => {
           
           <div className={classes.details}>
               <CardContent>
-                <Typography variant="h5">{post.nome}</Typography>
+                <Typography variant="h5">{contato.nome}</Typography>
                 <Divider/>
                 <Typography variant="subtitle2" color="textSecondary">
-                  {post.empresa}
+                  {contato.empresa}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
-                  {post.cargo}
+                  {contato.cargo}
                 </Typography>
                 <Box my={3}>
                 <Typography variant="h6" >
-                  {post.numero}
+                  {contato.numero}
                 </Typography>
                 </Box>
               </CardContent>
@@ -121,7 +121,7 @@ const Contato = ({ post, currentId, setCurrentId }) => {
               Informações Adicionais:
             </Typography>
             <Typography align="justify" paragraph variant="body1">
-              {post.mensagem}
+              {contato.mensagem}
             </Typography>
           </CardContent>
         </Collapse>

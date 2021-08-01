@@ -10,7 +10,7 @@ import FileBase from 'react-file-base64';
 
 
 import { useStyles } from './Formulario.styles.js'
-import { createPost, updatePost } from '../../../../actions/posts.js';
+import { createContato, updateContato } from '../../../../actions/contatos.js';
 
 
 
@@ -19,9 +19,9 @@ import { createPost, updatePost } from '../../../../actions/posts.js';
 const Formulario = ({open, setOpen, currentId}) => {
 
 
-    const [postData, setPostData] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: '' });
+    const [infoContato, setInfoContato] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: '' });
 
-    const post = useSelector((state) => 'currentId' ? state.posts.find((p) => p._id === currentId) : null);
+    const contato = useSelector((state) => 'currentId' ? state.contatos.find((p) => p._id === currentId) : null);
   
     const dispatch = useDispatch();
   
@@ -29,7 +29,7 @@ const Formulario = ({open, setOpen, currentId}) => {
 
 
     const clear = () => {
-      setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''});
+      setInfoContato({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''});
     };
 
     const handleClose = () => {
@@ -40,9 +40,9 @@ const Formulario = ({open, setOpen, currentId}) => {
         e.preventDefault();
         
         if(currentId) {
-          dispatch(updatePost( currentId,postData));
+          dispatch(updateContato( currentId,infoContato));
         } else{
-          dispatch(createPost(postData));
+          dispatch(createContato(infoContato));
         }
 
         setOpen(false);
@@ -51,8 +51,8 @@ const Formulario = ({open, setOpen, currentId}) => {
     };
 
     useEffect(() => {
-      if(post) setPostData(post);
-    }, [post])
+      if(contato) setInfoContato(contato);
+    }, [contato])
     
 
     return(
@@ -75,7 +75,7 @@ const Formulario = ({open, setOpen, currentId}) => {
                   <AccountCircleIcon/>
                 </Grid>
                 <Grid style={{flexGrow:1, }} item>
-                <TextField  name="nome" variant="outlined" fullWidth label="Nome" value={postData.nome} onChange={(e) => setPostData({ ...postData, nome: e.target.value })} /> 
+                <TextField  name="nome" variant="outlined" fullWidth label="Nome" value={infoContato.nome} onChange={(e) => setInfoContato({ ...infoContato, nome: e.target.value })} /> 
                 </Grid>
               </Grid>
             </div>
@@ -86,7 +86,7 @@ const Formulario = ({open, setOpen, currentId}) => {
                       <BusinessIcon/>
                     </Grid>
                     <Grid style={{flexGrow:1, }} item>
-                    <TextField name="empresa" variant="outlined" label="Empresa" fullWidth value={postData.empresa} onChange={(e) => setPostData({ ...postData, empresa: e.target.value })} /> 
+                    <TextField name="empresa" variant="outlined" label="Empresa" fullWidth value={infoContato.empresa} onChange={(e) => setInfoContato({ ...infoContato, empresa: e.target.value })} /> 
                     </Grid>
                   </Grid>
             </div>
@@ -97,7 +97,7 @@ const Formulario = ({open, setOpen, currentId}) => {
                       <PhoneIcon/>
                     </Grid>
                     <Grid style={{flexGrow:1, }} item>
-                    <TextField name="numero" variant="outlined" label="Telefone" multiline fullWidth value={postData.numero} onChange={(e) => setPostData({ ...postData, numero: e.target.value })} />
+                    <TextField name="numero" variant="outlined" label="Telefone" multiline fullWidth value={infoContato.numero} onChange={(e) => setInfoContato({ ...infoContato, numero: e.target.value })} />
                     </Grid>
                   </Grid>
             </div>
@@ -108,7 +108,7 @@ const Formulario = ({open, setOpen, currentId}) => {
                       <AssignmentIcon/>
                     </Grid>
                     <Grid style={{flexGrow:1, }} item>
-                    <TextField name="cargo" variant="outlined" label="Cargo" fullWidth value={postData.cargo} onChange={(e) => setPostData({ ...postData, cargo: e.target.value })} />
+                    <TextField name="cargo" variant="outlined" label="Cargo" fullWidth value={infoContato.cargo} onChange={(e) => setInfoContato({ ...infoContato, cargo: e.target.value })} />
                     </Grid>
                   </Grid>
             </div>
@@ -119,18 +119,15 @@ const Formulario = ({open, setOpen, currentId}) => {
                       <SubjectIcon/>
                     </Grid>
                     <Grid style={{flexGrow:1, }} item>
-                    <TextField name="mensagem" variant="outlined" label="Informações Adicionais" multiline fullWidth value={postData.mensagem} onChange={(e) => setPostData({ ...postData, mensagem: e.target.value })} />
+                    <TextField name="mensagem" variant="outlined" label="Informações Adicionais" multiline fullWidth value={infoContato.mensagem} onChange={(e) => setInfoContato({ ...infoContato, mensagem: e.target.value })} />
                     </Grid>
                   </Grid>
             </div>
             
             
-            <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, foto: base64 })} /></div> 
+            <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoContato({ ...infoContato, foto: base64 })} /></div> 
         </DialogContent>    
         <DialogActions>
-        <Button className={classes.margin} disableRipple variant='contained' onClick={() => {setPostData({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''})}} >
-            Limpar
-          </Button>
          <Button color="secondary" className={classes.margin} disableRipple variant='contained' onClick={handleClose}>
             Cancelar
           </Button>
