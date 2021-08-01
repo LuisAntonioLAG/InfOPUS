@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const contatoSchema = mongoose.Schema({
     cargo: String,
     nome: String,
     empresa: String,
@@ -13,6 +13,6 @@ const postSchema = mongoose.Schema({
     },
 })
 
-var PostMessage = mongoose.model('PostMessage', postSchema);
+var ModeloContato = mongoose.model('ModeloContato', contatoSchema);
 
-export default PostMessage;
+export default ModeloContato;

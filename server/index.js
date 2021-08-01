@@ -5,7 +5,7 @@ import cors from 'cors';
 
 
 
-import postRoutes from './routes/contatos.js';
+import contatosRoutes from './routes/contatos.js';
 
 const app = express();
 dotenv.config();
@@ -14,7 +14,7 @@ app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
-app.use('/posts', postRoutes);
+app.use('/contatos', contatosRoutes);
 
 const PORT = process.env.PORT|| 5000;
 
