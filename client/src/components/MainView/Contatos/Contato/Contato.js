@@ -97,7 +97,7 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">
                 <Box component="span" fontStyle="italic">
-                  Atualizado em: {moment(contato.dataAtualizacao).format('lll')}
+                  Atualizado: {moment(contato.dataAtualizacao).fromNow()}
                 </Box>
               </Typography>
             </Grid>
