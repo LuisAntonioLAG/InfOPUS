@@ -8,7 +8,7 @@ const router = express.Router();
 export const getContatos = async (req, res) => { 
     try {
         const modelosContato = await ModeloContato.find();
-                
+
         res.status(200).json(modelosContato);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -16,7 +16,7 @@ export const getContatos = async (req, res) => {
 }
 
 export const createContato = async (req, res) => {
-    const { cargo, nome, foto, empresa, mensagem, numero } = req.body;
+    const { cargo, nome, foto, empresa, mensagem, numero} = req.body;
 
     const newModeloContato = new ModeloContato({ cargo, nome, foto, empresa, mensagem, numero })
 

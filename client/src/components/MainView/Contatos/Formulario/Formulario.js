@@ -21,7 +21,7 @@ import { createContato, updateContato } from '../../../../actions/contatos.js';
 const Formulario = ({open, setOpen, currentId}) => {
 
 
-    const [infoContato, setInfoContato] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: '' });
+    const [infoContato, setInfoContato] = useState({ empresa: '', cargo: '', nome: '', foto: '', mensagem: '', numero: ''});
 
     const contato = useSelector((state) => 'currentId' ? state.contatos.find((p) => p._id === currentId) : null);
   
@@ -36,12 +36,11 @@ const Formulario = ({open, setOpen, currentId}) => {
 
     const handleClose = () => {
         setOpen(false);
-        clear();
       };
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         if(currentId) {
           dispatch(updateContato( currentId,infoContato));
         } else{

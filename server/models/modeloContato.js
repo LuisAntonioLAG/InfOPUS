@@ -7,11 +7,7 @@ const contatoSchema = mongoose.Schema({
     numero: String,
     mensagem: String,
     foto: String,
-    data: {
-        type: Date,
-        default: new Date(),
-    },
-})
+}, {timestamps: {updatedAt: 'dataAtualizacao'}})
 
 var ModeloContato = mongoose.model('ModeloContato', contatoSchema);
 
