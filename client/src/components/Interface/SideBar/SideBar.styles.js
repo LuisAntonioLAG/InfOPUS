@@ -1,5 +1,5 @@
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Tooltip, ListItem } from '@material-ui/core'
+import { Tooltip, ListItem, Hidden } from '@material-ui/core'
 
 const drawerWidth = 240;
 
@@ -65,9 +65,8 @@ export const useStyles = makeStyles((theme) => ({
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen
         }),
-        overflowX: "hidden",
         width: theme.spacing(7) + 1,
-        [theme.breakpoints.up("sm")]: {
+        [theme.breakpoints.up("md")]: {
           width: theme.spacing(8) + 1
         }
       },
@@ -83,14 +82,15 @@ export const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: theme.spacing(3)
       },
-
-
+      drawerContainer: {
+        overflowX: 'hidden',
+      },
+      drawerPaper: {
+        width: '80%',
+        background: theme.palette.primary.main,
+      },
 
     //------------------
-
-    avatar: {
-    },
-
     logoside: {
         width: 30,
       },

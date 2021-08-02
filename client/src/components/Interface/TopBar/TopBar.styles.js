@@ -7,6 +7,7 @@ export const useStyles = makeStyles((theme) => ({
 
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
+        whiteSpace:'noWrap',
         transition: theme.transitions.create(["width", "margin"], {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen
@@ -27,6 +28,9 @@ export const useStyles = makeStyles((theme) => ({
         width: theme.spacing(3),
         height: theme.spacing(3),
         margin: '0 auto',
+      },
+      hide: {
+        display: "none"
       },
 }))
 
