@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { CssBaseline } from '@material-ui/core';
 import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
 import HomeIcon from '@material-ui/icons/Home';
@@ -22,12 +22,6 @@ import Interface from './components/Interface/Interface';
 
 
 const App = () => {
-
-
-  const [isGreenMode, setGreenMode] = useState(false);
-
-
-
 
 
 
@@ -56,7 +50,7 @@ const App = () => {
   return (
       <CustomThemeProvider>
       <CssBaseline />
-      <Interface isGreenMode={isGreenMode} setGreenMode={setGreenMode} menuItems={menuItems} />
+      <Interface menuItems={menuItems} />
       </CustomThemeProvider>
   );
 }
