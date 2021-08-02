@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import clsx from 'clsx';
-import {AppBar, Toolbar, Switch, IconButton, Typography, Avatar, FormControlLabel} from '@material-ui/core'
+import {AppBar, Box, Toolbar, Switch, IconButton, Typography, Avatar, FormControlLabel} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
@@ -54,7 +54,10 @@ const TopBar = props => {
             labelPlacement="bottom"
           />
 
-          <Avatar/>
+          <Box px={2}>
+          <Avatar className={classes.small}/>
+          <Typography >Nome do Usuário</Typography>
+          </Box>
 
           <IconButton disableRipple> <ExitToAppIcon /> </IconButton>
 

@@ -1,7 +1,7 @@
 import React, {useState, useLayoutEffect} from 'react'
 import {Link} from 'react-router-dom';
 import clsx from 'clsx';
-import {Container, Typography, IconButton, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core'
+import {Avatar, Container, Typography, IconButton, Drawer, List, ListItemIcon, ListItemText, Divider, Zoom} from '@material-ui/core'
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
@@ -62,6 +62,8 @@ const SideBar = props => {
         >
 
             <div className={classes.toolbar}>
+            <Avatar className={classes.avatar}/>
+            <Typography >Nome do Usuário</Typography>
             <IconButton onClick={handleDrawerClose} className={classes.listItemIcon} > <ChevronLeftIcon/> </IconButton>
             </div>
 

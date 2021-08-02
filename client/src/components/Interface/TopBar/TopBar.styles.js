@@ -23,6 +23,11 @@ export const useStyles = makeStyles((theme) => ({
       menuButton: {
         marginRight: 36
       },
+      small: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+        margin: '0 auto',
+      },
 }))
 
 
