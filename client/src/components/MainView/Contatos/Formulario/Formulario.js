@@ -110,7 +110,7 @@ const Formulario = ({open, setOpen, currentId}) => {
                       variant="outlined"
                       fullWidth
                       validators={['required', 'isNumber', 'minStringLength:8', 'maxStringLength:13']}
-                      errorMessages={['Esse campo é obrigatório.','Preencha apenas com os números.','Não necessários, no mínimo, 8 dígitos.','São permitidos, no máximo, 13 dígitos.']}
+                      errorMessages={['Esse campo é obrigatório.','Preencha apenas com os números.','São necessários, no mínimo, 8 dígitos.','São permitidos, no máximo, 13 dígitos.']}
                     />
                     </Grid>
                   </Grid>
