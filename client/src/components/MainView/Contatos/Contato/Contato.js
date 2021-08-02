@@ -56,12 +56,12 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setConfirmacao(false)} color="primary">
+            <Button onClick={() => setConfirmacao(false)} color="secondary">
               Cancelar
             </Button>
             <Button onClick={handleDelete} 
               color="primary">
-              Confirmar
+              Apagar contato
             </Button>
           </DialogActions>
         </Dialog>
