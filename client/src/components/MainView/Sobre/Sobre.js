@@ -31,7 +31,7 @@ return(
 <Box p={5} style={{display:'flex'}} alignItems='center'>
 <InfoIcon className={classes.titleIcon} color='secondary' style={{ fontSize: 50 }}/>
 <Typography color='secondary' align='left' variant='h2'>
-Informações
+  Sobre
 </Typography>
 </Box>
 </div>

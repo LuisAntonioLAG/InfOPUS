@@ -69,8 +69,8 @@ Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busqu
 
 
 
-<Box mt={5} >
-  {!contatos.length ? <CircularProgress color="secondary" /> : (
+<Box className={classes.container} mt={5} >
+  {!contatos.length ? (<div className={classes.center}><CircularProgress color="secondary"/> </div>)  : (
       <Grid className={classes.root} container spacing={2}>
           {contatos.map((contato) => ( 
               <Grid  key={contato._id} item xs={12} md={6} lg={4}>
