@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import clsx from "clsx";
-import { Divider, Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography } from "@material-ui/core";
+import {Button, Divider, Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle  } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -18,6 +18,7 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
     const dispatch = useDispatch();
 
     const [open, setOpen] = useState(false);
+    const [confirmacao, setConfirmacao] = useState(false);
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -30,9 +31,42 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
      };
 
     const handleClickDelete = () => {
-      dispatch(deleteContato(contato._id))
-      window.location.reload();
+      setConfirmacao(true);
     };
+
+    const handleDelete = () => {
+      dispatch(deleteContato(contato._id))
+      setConfirmacao(false);
+      window.location.reload()
+    };
+
+
+    const ConfirmarDelete = () => {
+      return(
+        <Dialog
+          open={confirmacao}
+          onClose={() => setConfirmacao(false)}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir este contato?</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Essa ação é irreversível. Todos os dados do contato serão perdidos.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setConfirmacao(false)} color="primary">
+              Cancelar
+            </Button>
+            <Button onClick={handleDelete} 
+              color="primary">
+              Confirmar
+            </Button>
+          </DialogActions>
+        </Dialog>
+        )
+    }
 
 
     return (
@@ -92,12 +126,13 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
                 <DeleteIcon />
               </IconButton>
 
+              <ConfirmarDelete/>
 
             </Grid>
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">
                 <Box component="span" fontStyle="italic">
-                  Atualizado: {moment(contato.dataAtualizacao).fromNow()}
+                  Atualizado em: {moment(contato.dataAtualizacao).format('MMM [de] YYYY')}
                 </Box>
               </Typography>
             </Grid>
