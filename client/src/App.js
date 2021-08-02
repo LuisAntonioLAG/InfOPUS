@@ -46,7 +46,7 @@ const App = () => {
     {txtname: 'Gente e Gestão', name: 'Gg', icon: <PeopleIcon/>, to: '/gg/'},
     {txtname: 'Marketing', name: 'Marketing', icon: <ColorLensIcon/>, to: '/marketing/'},
     {txtname: 'Projetos', name: 'Projetos', icon: <WorkIcon/>, to: '/projetos/'},
-    {txtname: 'WebConferência', name: 'meet', icon: <VideoCallIcon/>, to: '/meet/'},
+    {txtname: 'WebConferência', name: 'Meet', icon: <VideoCallIcon/>, to: '/meet/'},
     {txtname: 'Atas', name: 'Atas', icon: <DescriptionIcon/>, to: '/atas/'},
     {txtname: 'Biblioteca', name: 'Biblioteca', icon: <MenuBookIcon/>, to: '/biblioteca/'},
     {txtname: 'Contatos', name: 'Contatos', icon: <ContactsIcon/> , to: '/contatos/'},
