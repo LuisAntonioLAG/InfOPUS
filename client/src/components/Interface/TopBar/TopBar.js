@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import clsx from 'clsx';
 import {AppBar, Box, Toolbar, Switch, IconButton, Typography, Avatar, FormControlLabel} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
@@ -14,6 +14,7 @@ const TopBar = props => {
     } = props;
 
     const classes = useStyles();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const { currentTheme, setTheme } = useContext(CustomThemeContext)
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
 
@@ -55,8 +56,8 @@ const TopBar = props => {
           />
 
           <Box px={2}>
-          <Avatar className={classes.small}/>
-          <Typography >Nome do Usuário</Typography>
+          <Avatar className={classes.small} src={user?.result.imageUrl}/>
+          <Typography >{user?.result.name}</Typography>
           </Box>
 
           <IconButton disableRipple> <ExitToAppIcon /> </IconButton>

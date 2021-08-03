@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 
+
 import LoginImage from '../../assets/images/LoginImage.JPG'
 
 
@@ -32,11 +33,8 @@ export const useStyles = makeStyles((theme) => ({
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
       },
-      margin: {
-        margin: theme.spacing(2,0,0),
-      },
       submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 0),
       },
       
 

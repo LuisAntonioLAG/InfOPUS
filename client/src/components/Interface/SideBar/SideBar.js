@@ -20,17 +20,20 @@ const SideBar = props => {
 
     const classes = useStyles();
     const theme= useTheme();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [selectedListItem, setSelectedListItem] = useState();
     
     //Effects
 
-     useLayoutEffect(() => {
+    useLayoutEffect(() => {
         const path = window.location.pathname;
         const parts = path.split('/');
     
         if (path !== '/' && parts[1].charAt(0).toUpperCase() !== menuItems[0].name) {
           const selectedItem = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
           setSelectedListItem(selectedItem)
+        } else {
+          setSelectedListItem(menuItems[0].name)
         }
       }, [menuItems])
 
@@ -57,8 +60,8 @@ const SideBar = props => {
         
         {open ? (
             <div className={classes.toolbar}>
-                <Avatar/>
-                <Typography >Nome do Usuário</Typography>
+                <Avatar src={user?.result.imageUrl}/>
+                <Typography >{user?.result.givenName}</Typography>
                 <IconButton onClick={handleDrawerClose} className={classes.listItemIcon} > <ChevronLeftIcon/> </IconButton>
             </div>
         ) : ''}

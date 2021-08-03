@@ -1,7 +1,10 @@
 
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
+import { GoogleLogin } from 'react-google-login';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
@@ -9,6 +12,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 import { useStyles } from './LoginPage.styles';
+import GoogleIcon from './GoogleIcon';
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
 
@@ -16,7 +20,8 @@ const LoginPage = () => {
 
     const classes = useStyles();
     const theme = useTheme();
-
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -32,6 +37,28 @@ const LoginPage = () => {
     const handleSubmit = () => {
 
     };
+
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    console.log(user)
+    const googleSuccess = async (res) => {
+      const result = res?.profileObj;
+      const token = res?.tokenId;
+
+      try {
+        dispatch({ type: 'AUTH', data: { result, token } })
+
+        history.push('/'); 
+      } catch (error) {
+        console.log(error)
+      }
+    };
+
+    const googleError = (error) => {
+      console.log(error);
+      console.log('Login com o Google Falhou. Tente novamente mais tarde.')
+    };
+
+
 
     return (
 
@@ -103,13 +130,21 @@ const LoginPage = () => {
           >
             Entrar
           </Button>
-            
-            
-
 
           <Link href="contatos" variant="body2">
                 Esqueceu a senha?
               </Link>
+
+          <GoogleLogin
+            clientId="763772287440-dap091kdgvk00ihm4kmuhpgcg5u0e06r.apps.googleusercontent.com"
+            render={(renderProps) => (
+                <Button 
+                  className={classes.submit} color='secondary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<GoogleIcon/>} variant='contained'> Login com o Google </Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleError}
+            cookiePolicy="single_host_origin"
+          />
 
           <Box mt={5}>
             <Typography variant="body2" color="textSecondary" align="center">
