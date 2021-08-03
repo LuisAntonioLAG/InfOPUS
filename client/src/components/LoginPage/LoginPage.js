@@ -53,7 +53,7 @@ const LoginPage = () => {
               fullWidth
               margin='normal'
               color='secondary'
-              label="E-mail*"
+              label="E-mail"
               type='email'
               validators={['required','isEmail']}
               errorMessages={['Esse campo é obrigatório.','Escreva um e-mail válido.']}
@@ -71,7 +71,7 @@ const LoginPage = () => {
           <TextValidator
             fullWidth
             color='secondary'
-            label="Senha*"
+            label="Senha"
             type={showPassword ? "text" : "password"}
             validators={['required']}
             errorMessages={['Esse campo é obrigatório.']}
@@ -104,6 +104,9 @@ const LoginPage = () => {
             Entrar
           </Button>
             
+            
+
+
           <Link href="contatos" variant="body2">
                 Esqueceu a senha?
               </Link>
