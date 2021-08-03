@@ -20,7 +20,7 @@ const SideBar = props => {
 
     const classes = useStyles();
     const theme= useTheme();
-    const [user] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [user] = useState(JSON.parse(sessionStorage.getItem('profile')));
     const [selectedListItem, setSelectedListItem] = useState();
     
     //Effects

@@ -16,7 +16,7 @@ const TopBar = props => {
     } = props;
 
     const classes = useStyles();
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('profile')));
     const { currentTheme, setTheme } = useContext(CustomThemeContext)
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
     const dispatch = useDispatch();
