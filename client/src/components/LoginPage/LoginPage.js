@@ -1,10 +1,12 @@
 
-import React from 'react';
-import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, InputAdornment} from '@material-ui/core'
+import React, {useState} from 'react';
+import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 import { useStyles } from './LoginPage.styles';
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
@@ -15,6 +17,16 @@ const LoginPage = () => {
     const classes = useStyles();
     const theme = useTheme();
 
+
+    const [showPassword, setShowPassword] = useState(false);
+
+
+
+    const handleChange = () => {
+
+    };
+
+    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
 
     const handleSubmit = () => {
@@ -33,7 +45,7 @@ const LoginPage = () => {
           <Container style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}> <img className={classes.logo} alt='Logo da OPUS' src={theme.palette.type === 'light' ? LogoGrandePreto: LogoGrandeBranco}/> </Container>
           
           <Typography component="h1" variant="h5" color='primary'>
-            Login
+            Bem-vindo ao InfOPUS!
           </Typography>
 
           <ValidatorForm autoComplete="off" onSubmit={handleSubmit}>
@@ -42,6 +54,7 @@ const LoginPage = () => {
               margin='normal'
               color='secondary'
               label="E-mail*"
+              type='email'
               validators={['required','isEmail']}
               errorMessages={['Esse campo é obrigatório.','Escreva um e-mail válido.']}
               InputProps={{
@@ -51,19 +64,26 @@ const LoginPage = () => {
                   </InputAdornment>
                 ),
               }}
+              onChange={handleChange}
+              autoFocus
           />
 
           <TextValidator
             fullWidth
             color='secondary'
             label="Senha*"
-            type='password'
+            type={showPassword ? "text" : "password"}
             validators={['required']}
             errorMessages={['Esse campo é obrigatório.']}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
                   <LockIcon color='secondary'/>
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end" >
+                  <IconButton color='secondary' onClick={handleShowPassword}>{showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}</IconButton>
                 </InputAdornment>
               ),
             }}
