@@ -23,7 +23,7 @@ import Routes from '../../Routes.js'
 import { useStyles} from './Interface.styles.js';
 
 
-const Interface = () => {
+const Interface = (user) => {
 
     const classes = useStyles();
 

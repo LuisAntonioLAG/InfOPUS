@@ -16,11 +16,11 @@ import Sobre from './components/MainView/Sobre/Sobre';
 import Feedback from './components/MainView/Feedback/Feedback';
 
 
-const Routes = () => {
+const Routes = (user) => {
 
     return (
         <Switch>
-                <Route exact path='/' component={Inicio}/>
+                <Route exact path='/' component={Inicio} user={user}/>
                 <Route exact path='/presidencia' component={Presidencia}/>
                 <Route exact path='/admfin' component={AdmFinanceiro}/>
                 <Route exact path='/comercial' component={Comercial}/>

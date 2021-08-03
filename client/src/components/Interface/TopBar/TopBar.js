@@ -1,4 +1,6 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import {AppBar, Box, Toolbar, Switch, IconButton, Typography, Avatar, FormControlLabel} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
@@ -17,6 +19,8 @@ const TopBar = props => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const { currentTheme, setTheme } = useContext(CustomThemeContext)
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
+    const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const handleThemeChange = (event) => {
@@ -33,6 +37,11 @@ const TopBar = props => {
         setOpen(true);
     };
 
+    const logout = () => {
+      dispatch( {type: 'LOGOUT'});
+      history.push('/login');
+      setUser(null);
+    }
 
 
     return (
@@ -60,7 +69,7 @@ const TopBar = props => {
           <Typography >{user?.result.name}</Typography>
           </Box>
 
-          <IconButton disableRipple> <ExitToAppIcon /> </IconButton>
+          <IconButton disableRipple onClick={logout}> <ExitToAppIcon /> </IconButton>
 
         </Toolbar>
          

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Switch, Route} from 'react-router-dom'
 import { CssBaseline } from '@material-ui/core';
 import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
@@ -11,7 +11,6 @@ import LoginPage from './components/LoginPage/LoginPage.js'
 
 
 const App = () => {
-
 
 
     moment.locale('pt-br');
