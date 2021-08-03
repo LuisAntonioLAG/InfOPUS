@@ -25,17 +25,28 @@ export const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
       },
+      logoContainer: {
+        display: 'flex', 
+        justifyContent: 'center', 
+        padding: '20px 0'   
+      },
       logo: {
         margin: theme.spacing(1),
         width: theme.spacing(5),    
       },
       form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
+        width: '50%',
+        [theme.breakpoints.only("md")]: {
+          width: '70%',
+        },
+        [theme.breakpoints.down("sm")]: {
+          width: '90%',
+        },
       },
       submit: {
         margin: theme.spacing(3, 0, 0),
       },
+
       
 
 
