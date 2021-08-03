@@ -19,7 +19,7 @@ const LoginPage = () => {
 
     const classes = useStyles();
     const theme = useTheme();
-    const [infoUser,setInfoUser] = useState({name: '', email: '', senha:'', confirmSenha:''});
+    const [infoUser,setInfoUser] = useState({nome: '', email: '', senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -65,7 +65,7 @@ const LoginPage = () => {
             
           {
             isCadastro && (
-              <TextValidator fullWidth name='name' color='secondary'  margin='normal' label='Nome' onChange={handleChange} value={infoUser.name} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
+              <TextValidator fullWidth name='nome' color='secondary'  margin='normal' label='Nome' onChange={handleChange} value={infoUser.nome} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position="start">
