@@ -1,4 +1,5 @@
 import React, {useState, useLayoutEffect} from 'react'
+import { useTheme } from '@material-ui/styles';
 import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import {Avatar, Container, Toolbar, Typography, IconButton, Drawer, List, ListItemIcon, Hidden, ListItemText, Divider, Zoom} from '@material-ui/core'
@@ -6,6 +7,7 @@ import {Avatar, Container, Toolbar, Typography, IconButton, Drawer, List, ListIt
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import LogoGrandeBranco from '../../../assets/images/LogoGrandeBranco.png'
+import LogoGrandePreto from '../../../assets/images/LogoGrandePreto.png'
 import { useStyles, MenuItemTooltip, MenuItem } from './SideBar.styles.js';
 
 
@@ -16,7 +18,8 @@ const SideBar = props => {
         menuItems = [],
     } = props;
 
-    const classes = useStyles()
+    const classes = useStyles();
+    const theme= useTheme();
     const [selectedListItem, setSelectedListItem] = useState();
     
     //Effects
@@ -64,7 +67,7 @@ const SideBar = props => {
         <Divider />
 
 
-        <Container style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}> <img className={classes.logoside} alt='Logo da OPUS' src={LogoGrandeBranco}/> </Container>
+        <Container style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}> <img className={classes.logoside} alt='Logo da OPUS' src={theme.palette.type === 'light' ? LogoGrandeBranco: LogoGrandePreto}/> </Container>
 
         <List component="nav">
             {menuItems.slice(0, 2).map((item, index) => (
