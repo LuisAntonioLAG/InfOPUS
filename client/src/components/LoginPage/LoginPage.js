@@ -20,6 +20,7 @@ const LoginPage = () => {
 
     const classes = useStyles();
     const theme = useTheme();
+    const [infoUser,setInfoUser] = useState({firstName: '', lastName: '', email: '', senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -27,15 +28,16 @@ const LoginPage = () => {
 
 
 
-    const handleChange = () => {
-
-    };
+    const handleChange = (e) => 
+    setInfoUser({ ...infoUser, [e.target.name]: e.target.value });
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
 
+      console.log(infoUser)
     };
 
     const googleSuccess = async (res) => {
@@ -76,12 +78,13 @@ const LoginPage = () => {
           <ValidatorForm autoComplete="off" onSubmit={handleSubmit}>
             <TextValidator
               fullWidth
+              name='email'
               margin='normal'
               color='secondary'
               label="E-mail"
-              type='email'
               validators={['required','isEmail']}
               errorMessages={['Esse campo é obrigatório.','Escreva um e-mail válido.']}
+              value={infoUser.email}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -95,11 +98,13 @@ const LoginPage = () => {
 
           <TextValidator
             fullWidth
+            name='senha'
             color='secondary'
             label="Senha"
             type={showPassword ? "text" : "password"}
             validators={['required']}
             errorMessages={['Esse campo é obrigatório.']}
+            value={infoUser.senha}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -112,6 +117,7 @@ const LoginPage = () => {
                 </InputAdornment>
               ),
             }}
+            onChange={handleChange}
           />
           
               <FormControlLabel
