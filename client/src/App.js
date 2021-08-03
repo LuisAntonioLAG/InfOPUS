@@ -17,8 +17,9 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-import './App.css'
+
 import Interface from './components/Interface/Interface';
+import LoginPage from './components/LoginPage/LoginPage.js'
 
 
 const App = () => {

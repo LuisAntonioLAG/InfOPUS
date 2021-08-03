@@ -1,5 +1,5 @@
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Tooltip, ListItem, Hidden } from '@material-ui/core'
+import { Tooltip, ListItem} from '@material-ui/core'
 
 const drawerWidth = 240;
 
