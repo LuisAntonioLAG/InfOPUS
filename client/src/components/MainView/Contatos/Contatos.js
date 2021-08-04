@@ -53,8 +53,8 @@ Contatos
 
 <div>
 <Box  mx={13}>
-<Typography variant='h6'>
-Quer falar com alguma outra EJs pra fazer um bench ou fechar uma parceria? Busque aqui na <Box component="span" fontWeight='fontWeightBold'>LISTA DE CONTATOS</Box>!
+<Typography align='justify' variant='h6'>
+Atrás de alguém pra fazer um bench ou fechar uma parceria? Busque aqui na <Box component="span" fontWeight='fontWeightBold'>LISTA DE CONTATOS</Box>!
 </Typography>
 </Box>
 </div>
