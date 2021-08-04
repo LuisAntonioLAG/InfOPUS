@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Button, Card, CardActions, CardContent, Box, Grid, Typography, Zoom} from "@material-ui/core";
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
@@ -68,7 +69,7 @@ const Comercial = () => {
                                     <Button onClick={onDownload} fullWidth className={classes.button} startIcon={<GetAppIcon/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Button fullWidth className={classes.button} disableRipple variant='contained' color='primary' onClick={handlePDF}>Visualizar</Button>
+                                    <Button fullWidth className={classes.button} disableRipple startIcon={<FindInPageOutlinedIcon/>} variant='contained' color='primary' onClick={handlePDF}>Visualizar</Button>
                                 </Grid>
                             </Grid>
 
