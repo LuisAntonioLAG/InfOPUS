@@ -34,7 +34,7 @@ const Comercial = () => {
         
         <div>
         <Box  mx={13}>
-        <Typography variant='h6'>
+        <Typography align='center' variant='h6'>
         Bem-vindo à página da diretoria <Box component="span" fontWeight='fontWeightBold'>COMERCIAL</Box>!
         </Typography>
         </Box>
@@ -59,7 +59,7 @@ const Comercial = () => {
                                     <Button onClick={onDownload} fullWidth className={classes.button} startIcon={<GetAppIcon/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Button fullWidth className={classes.button} disableRipple variant='contained' color='primary'>Acessar</Button>
+                                    <Button fullWidth className={classes.button} disableRipple variant='contained' color='primary'>Visualizar</Button>
                                 </Grid>
                             </Grid>
 
