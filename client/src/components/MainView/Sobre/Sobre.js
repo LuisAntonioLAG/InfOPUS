@@ -52,7 +52,7 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
             id="panel1bh-header"
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography variant='subtitle1'> O QUE É O INFOPUS? </Typography>
+          <Typography align='justify' variant='subtitle1'> O QUE É O INFOPUS? </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography align='justify' variant='body1'>
@@ -69,25 +69,24 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
                  id="panel2bh-header"
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography  variant='subtitle1'> QUAL É O OBJETIVO DO INFOPUS? </Typography>
+          <Typography align='justify' variant='subtitle1'> QUAL É O OBJETIVO DO INFOPUS? </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography align='justify' variant='body1'>
-            O principal objetivo desse portal é facilitar a transmissão de conhecimento dentro da empresa, auxiliando, principalmente, os processos de mudança de gestão e acolhimento
-            de novos membros. 
+            O principal objetivo desse portal é facilitar a transmissão de conhecimento dentro da empresa, auxiliando, principalmente, os processos de mudança de gestão e                   acolhimento de novos membros. 
           </Typography>
         </AccordionDetails>
         </Accordion>
         </Box>
 
 
-        <Box>
+        <Box mb={2}>
         <Accordion TransitionProps={{ unmountOnExit: true }} className={classes.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <AccordionSummary
                  id="panel3bh-header"
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography variant='subtitle1'> COMO POSSO CONTRIBUIR COM O INFOPUS? </Typography>
+          <Typography align='justify' variant='subtitle1'> COMO POSSO CONTRIBUIR COM O INFOPUS? </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography align='justify' variant='body1'>
@@ -95,6 +94,23 @@ Surgiu alguma dúvida sobre o InfOPUS? Então confere o nosso <Box component="sp
             apresenta essas opções, entre em contato com o atual moderador do portal. Você também pode utilizar a aba <Link className={classes.link} to={'/feedback/'}>
             <Box component="span" fontWeight='fontWeightBold'>FEEDBACK <FeedbackIcon fontSize='inherit'/></Box> </Link> para compartilhar com o moderador sugestões ou 
             outros pedidos relacionados ao InfOPUS.
+          </Typography>
+        </AccordionDetails>
+        </Accordion>
+        </Box>
+
+        
+        <Box>
+        <Accordion TransitionProps={{ unmountOnExit: true }} className={classes.accordion} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <AccordionSummary
+                 id="panel4bh-header"
+          expandIcon={<ExpandMoreIcon />}
+        >
+          <Typography align='justify' variant='subtitle1'> COMO CADASTRAR UM EMAIL E SENHA PARA LOGIN? </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography align='justify' variant='body1'>
+            O membrOPUS interessado em fazer seu cadastro deve pedir ao diretor da sua diretoria para que entre em contato com o moderador do portal. Então, espere até que este             entre em contato com você para a coleta de dados e cadastro efetivo no portal.
           </Typography>
         </AccordionDetails>
         </Accordion>
