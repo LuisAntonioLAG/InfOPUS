@@ -43,7 +43,7 @@ const Comercial = () => {
         
         <div>
         <Box  mx={13}>
-        <Typography align='center' variant='h6'>
+        <Typography variant='h6'>
         Bem-vindo à página da diretoria <Box component="span" fontWeight='fontWeightBold'>COMERCIAL</Box>!
         </Typography>
         </Box>
