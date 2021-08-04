@@ -41,6 +41,7 @@ const LoginPage = () => {
 
     const handleCadastro = () => {
     setCadastro(!isCadastro);
+    setInfoUser({nome:'', confirmSenha:''})
     setShowPassword(false)
   };
 
