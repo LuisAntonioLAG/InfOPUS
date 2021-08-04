@@ -81,6 +81,7 @@ const Formulario = ({open, setOpen, currentId}) => {
                 <TextValidator name="nome"  label="Nome*" value={infoContato.nome} onChange={(e) => setInfoContato({ ...infoContato, nome: e.target.value })} 
                   variant="outlined"
                   fullWidth
+                  autoFocus
                   validators={['required']}
                   errorMessages={['Esse campo é obrigatório.']}
                   /> 

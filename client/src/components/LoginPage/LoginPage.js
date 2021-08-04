@@ -88,7 +88,7 @@ const LoginPage = () => {
             
           {
             isCadastro && (
-              <TextValidator fullWidth name='nome' color='secondary'  margin='normal' label='Nome' onChange={handleChange} value={infoUser.nome} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
+              <TextValidator autoFocus fullWidth name='nome' color='secondary'  margin='normal' label='Nome' onChange={handleChange} value={infoUser.nome} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position="start">
