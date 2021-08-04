@@ -41,7 +41,7 @@ const LoginPage = () => {
 
     const handleCadastro = () => {
     setCadastro(!isCadastro);
-    handleShowPassword(false)
+    setShowPassword(false)
   };
 
 
