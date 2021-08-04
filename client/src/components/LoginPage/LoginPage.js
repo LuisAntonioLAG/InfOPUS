@@ -115,8 +115,8 @@ const LoginPage = () => {
             label="Senha"
             margin='normal'
             type={showPassword ? "text" : "password"}
-            validators={['required']}
-            errorMessages={['Esse campo é obrigatório.']}
+            validators={['required', 'minStringLength:8']}
+            errorMessages={['Esse campo é obrigatório.','Sua senha deve conter, no mínimo, 8 caracteres.']}
             value={infoUser.senha}
             InputProps={{
               startAdornment: (
