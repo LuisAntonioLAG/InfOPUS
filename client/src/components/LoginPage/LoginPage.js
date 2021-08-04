@@ -16,22 +16,23 @@ import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
 
 
-import { logar, cadastrar } from '../../actions/auth.js'
+import { logar, cadastrar, lembrar } from '../../actions/auth.js'
 
 const LoginPage = () => {
 
-
-
-
+    const [lembrado] = useState(JSON.parse(localStorage.getItem('lembrado')));
     const classes = useStyles();
     const theme = useTheme();
-    const [infoUser, setInfoUser] = useState({nome: '', email: '', senha:'', confirmSenha:''});
+    const [infoUser, setInfoUser] = useState({nome: '', email: lembrado ? lembrado.email : "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
 
     const [showPassword, setShowPassword] = useState(false);
-
+    const [devoLembrar, setLembrar] = useState(true);
     const [isCadastro, setCadastro] = useState(false);
+
+
+
 
     const handleChange = (e) => 
     setInfoUser({ ...infoUser, [e.target.name]: e.target.value });
@@ -47,8 +48,18 @@ const LoginPage = () => {
         dispatch(cadastrar(infoUser, history))
       } else {
         dispatch(logar(infoUser, history))
+          if(devoLembrar) 
+          {dispatch(lembrar(infoUser.email))
+          } else{
+            localStorage.clear();
+          }
       }
     };
+
+    const handleLembrar = () => {
+      setLembrar(!devoLembrar)
+      console.log(devoLembrar)
+    }
 
     const handleCadastro = () => {
     setCadastro(!isCadastro);
@@ -166,7 +177,7 @@ const LoginPage = () => {
             {
             !isCadastro && (
               <FormControlLabel className={classes.correcao}
-                  control={<Checkbox value="lembrar" color="primary" />}
+                  control={<Checkbox checked={devoLembrar} onChange={handleLembrar} value="lembrar" color="primary" />}
                   label="Lembre-se de mim"
               />
             )}

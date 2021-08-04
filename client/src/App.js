@@ -10,13 +10,22 @@ import Interface from './components/Interface/Interface';
 import LoginPage from './components/LoginPage/LoginPage.js'
 
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRouteLogado = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     sessionStorage.getItem('profile')
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />
 )
+
+const PrivateRouteDeslogado = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    sessionStorage.getItem('profile')
+      ? <Redirect to='/' />
+      : <Component {...props} />
+  )} />
+)
+
 
 const App = () => {
 
@@ -29,8 +38,8 @@ const App = () => {
       <CustomThemeProvider>
       <CssBaseline />
       <Switch>
-      <Route exact path={'/login'} component={LoginPage}/>
-      <PrivateRoute path={'/'} component={Interface}/>
+      <PrivateRouteDeslogado exact path={'/login'} component={LoginPage}/>
+      <PrivateRouteLogado path={'/'} component={Interface}/>
       </Switch>
       </CustomThemeProvider>
   );

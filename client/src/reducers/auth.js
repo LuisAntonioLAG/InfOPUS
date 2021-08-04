@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT } from "../constants/actionTypes";
+import { AUTH, LOGOUT, LEMBRAR } from "../constants/actionTypes";
 
 
 const authReducer = (state = { authData: null}, action) => {
@@ -8,9 +8,13 @@ const authReducer = (state = { authData: null}, action) => {
 
             return {...state, authData: action?.Data}
         case LOGOUT:
-            localStorage.clear();
+            sessionStorage.clear();
 
             return {...state, authData: null}
+        case LEMBRAR:
+            localStorage.setItem('lembrado', JSON.stringify({ ...action?.data }));
+
+            return state
         default:
             return state
     }

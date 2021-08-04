@@ -1,4 +1,4 @@
-import { AUTH } from '../constants/actionTypes';
+import { AUTH, LEMBRAR } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -7,7 +7,6 @@ import * as api from '../api/index.js';
 export const logar = (infoUser, history) => async (dispatch) => {
     try {
         const { data } = await api.logar(infoUser);
-        console.log(data)
 
         dispatch({ type: AUTH, data })
 
@@ -29,3 +28,9 @@ export const cadastrar = (infoUser, history) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const lembrar = (email) => async (dispatch) => {
+    const  data  = {email}
+    
+        dispatch({type: LEMBRAR, data})
+}
