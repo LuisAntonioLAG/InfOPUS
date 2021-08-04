@@ -15,7 +15,12 @@ import { useStyles } from './LoginPage.styles';
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
 
+
+
 const LoginPage = () => {
+
+
+
 
     const classes = useStyles();
     const theme = useTheme();
@@ -32,6 +37,7 @@ const LoginPage = () => {
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
+    const partialReset = {nome:'', confirmSenha:'', email: infoUser.email, senha: infoUser.senha}
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -41,7 +47,7 @@ const LoginPage = () => {
 
     const handleCadastro = () => {
     setCadastro(!isCadastro);
-    setInfoUser({nome:'', confirmSenha:''})
+    setInfoUser(partialReset)
     setShowPassword(false)
   };
 
