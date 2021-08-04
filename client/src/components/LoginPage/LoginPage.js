@@ -2,7 +2,8 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment, TextField} from '@material-ui/core'
+import FileBase from 'react-file-base64';
+import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -58,7 +59,6 @@ const LoginPage = () => {
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
-      console.log(devoLembrar)
     }
 
     const handleCadastro = () => {
@@ -146,6 +146,7 @@ const LoginPage = () => {
 
             {
             isCadastro && (
+              <>
               <TextValidator
               fullWidth
               name='confirmSenha'
@@ -170,13 +171,16 @@ const LoginPage = () => {
               }}
               onChange={handleChange}
             />
+
+            <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })} /></div>
+            </>
             )
           }
 
 
             {
             !isCadastro && (
-              <FormControlLabel className={classes.correcao}
+              <FormControlLabel
                   control={<Checkbox checked={devoLembrar} onChange={handleLembrar} value="lembrar" color="primary" />}
                   label="Lembre-se de mim"
               />
@@ -194,7 +198,7 @@ const LoginPage = () => {
           </Button>
 
           {!isCadastro &&
-          <Link className={classes.correcao} href="contatos" variant="body2">
+          <Link href="contatos" variant="body2">
                 Esqueci minha senha
               </Link>}
       

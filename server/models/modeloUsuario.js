@@ -5,6 +5,7 @@ const usuarioSchema = mongoose.Schema({
     nome: String,
     email: String,
     senha: String,
+    foto: String,
     id: {type: String},
 }, {timestamps: {createdAt:'dataCriacao', updatedAt: 'dataAtualizacao'}})
 

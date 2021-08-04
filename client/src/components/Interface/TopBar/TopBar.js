@@ -16,7 +16,7 @@ const TopBar = props => {
     } = props;
 
     const classes = useStyles();
-    const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('profile')));
+    const [user] = useState(JSON.parse(sessionStorage.getItem('profile')));
     const { currentTheme, setTheme } = useContext(CustomThemeContext)
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
     const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const TopBar = props => {
           />
 
           <Box px={2}>
-          <Avatar className={classes.small} src={user?.result.imageUrl} alt={user?.result.nome}>{user?.result.nome.charAt(0)}</Avatar>
+          <Avatar className={classes.small} src={user?.result.foto} alt={user?.result.nome}>{user?.result.nome.charAt(0)}</Avatar>
           <Typography >{user?.result.nome}</Typography>
           </Box>
 
