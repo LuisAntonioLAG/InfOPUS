@@ -1,5 +1,5 @@
-import React from "react";
-import {Button, Card, CardActions, CardContent, Box, Grid, Typography, Zoom } from "@material-ui/core";
+import React, {useState} from "react";
+import {Button, Card, CardActions, CardContent, Box, Grid, Typography, Zoom, Dialog } from "@material-ui/core";
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -7,10 +7,12 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import { useStyles} from './Comercial.styles.js';
 
 import { Checklist_de_Entrega } from "../../../assets/pdfs/urls.js";
+import Checklist from "./Checklist.js";
 
 const Comercial = () => {
 
     const classes = useStyles();
+    const [open, setOpen] = useState(false);
 
     const onDownload = () => {
         const link = document.createElement("a");
@@ -19,9 +21,16 @@ const Comercial = () => {
         link.click();
       };
 
+    const handlePDF = () => {
+    setOpen(true);
+    }
+
+
 
     return(
         <>
+
+        <Checklist open={open} setOpen={setOpen} />
 
         <div>
         <Box p={5} style={{display:'flex'}} alignItems='center'>
@@ -59,7 +68,7 @@ const Comercial = () => {
                                     <Button onClick={onDownload} fullWidth className={classes.button} startIcon={<GetAppIcon/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Button fullWidth className={classes.button} disableRipple variant='contained' color='primary'>Visualizar</Button>
+                                    <Button fullWidth className={classes.button} disableRipple variant='contained' color='primary' onClick={handlePDF}>Visualizar</Button>
                                 </Grid>
                             </Grid>
 
