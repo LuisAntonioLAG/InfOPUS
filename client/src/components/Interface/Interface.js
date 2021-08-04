@@ -60,7 +60,7 @@ const Interface = (user) => {
         
         <main className={classes.content}>
           <div className={classes.toolbar} />
-            <Paper className={classes.paper} elevation={4}>
+            <Paper className={classes.paper} elevation={3}>
                 <Routes/>
             </Paper>
         </main>
