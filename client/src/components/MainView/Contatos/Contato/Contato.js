@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import clsx from "clsx";
-import {Button, Divider, Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle  } from "@material-ui/core";
+import {Zoom, Button, Divider, Card, Collapse, CardActions, CardContent, CardMedia, Grid, Hidden, Box, IconButton, Typography, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle  } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -71,6 +71,7 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
 
     return (
 
+      <Zoom in>
         <Card variant="outlined">
         <div className={classes.card}> 
           <Hidden only="xs">
@@ -160,6 +161,7 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
           </CardContent>
         </Collapse>
       </Card>
+    </Zoom>
     )
 } 
 

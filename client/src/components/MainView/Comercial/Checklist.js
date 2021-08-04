@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { Dialog } from '@material-ui/core';
 import { Document, Page } from 'react-pdf/dist/umd/entry.webpack';
 
-import { Checklist_de_Entrega } from '../../../assets/pdfs/urls';
 import checklist from '../../../assets/pdfs/comercial/checklist_entrega.pdf'
 
 const Checklist = ({open,setOpen}) => {
@@ -23,6 +22,8 @@ const Checklist = ({open,setOpen}) => {
       <div>
         <Document
           file={checklist}
+          loading={'Carregando PDF.'}
+          error={'Não foi possível carregar o PDF.'}
           onLoadSuccess={onDocumentLoadSuccess}
         >
           <Page pageNumber={pageNumber} />

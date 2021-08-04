@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Card, CardActions, CardContent, Box, Grid, Typography, Zoom, Dialog } from "@material-ui/core";
+import {Button, Card, CardActions, CardContent, Box, Grid, Typography, Zoom} from "@material-ui/core";
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -60,7 +60,7 @@ const Comercial = () => {
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <AssignmentTurnedInIcon className={classes.cardIcon} color='secondary'/>
                             <Typography align='center' variant='subtitle1' color='textSecondary'>Etapas necessárias para entrega de um projeto</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>pdf</Box></Typography>
+                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
                             <Grid container justifyContent='center' spacing={1}>
