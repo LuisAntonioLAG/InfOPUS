@@ -40,7 +40,7 @@ const TopBar = props => {
     const logout = () => {
       dispatch( {type: 'LOGOUT'});
       history.push('/login');
-      setUser(null);
+      sessionStorage.clear();
     }
 
 
@@ -65,8 +65,8 @@ const TopBar = props => {
           />
 
           <Box px={2}>
-          <Avatar className={classes.small} src={user?.result.imageUrl}/>
-          <Typography >{user?.result.name}</Typography>
+          <Avatar className={classes.small} src={user?.result.imageUrl} alt={user?.result.nome}>{user?.result.nome.charAt(0)}</Avatar>
+          <Typography >{user?.result.nome}</Typography>
           </Box>
 
           <IconButton disableRipple onClick={logout}> <ExitToAppIcon /> </IconButton>

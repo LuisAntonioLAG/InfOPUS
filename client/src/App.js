@@ -12,7 +12,7 @@ import LoginPage from './components/LoginPage/LoginPage.js'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
-    localStorage.getItem('profile')
+    sessionStorage.getItem('profile')
       ? <Component {...props} />
       : <Redirect to='/login' />
   )} />

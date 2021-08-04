@@ -16,6 +16,7 @@ import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
 
 
+import { logar, cadastrar } from '../../actions/auth.js'
 
 const LoginPage = () => {
 
@@ -24,7 +25,7 @@ const LoginPage = () => {
 
     const classes = useStyles();
     const theme = useTheme();
-    const [infoUser,setInfoUser] = useState({nome: '', email: '', senha:'', confirmSenha:''});
+    const [infoUser, setInfoUser] = useState({nome: '', email: '', senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -42,7 +43,11 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      console.log(infoUser)
+      if (isCadastro) {
+        dispatch(cadastrar(infoUser, history))
+      } else {
+        dispatch(logar(infoUser, history))
+      }
     };
 
     const handleCadastro = () => {

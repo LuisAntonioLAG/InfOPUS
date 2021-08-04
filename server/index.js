@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 
-
+import usuariosRoutes from './routes/usuarios.js'
 import contatosRoutes from './routes/contatos.js';
 
 const app = express();
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/contatos', contatosRoutes);
+app.use('/usuarios', usuariosRoutes)
 
 const PORT = process.env.PORT|| 5000;
 

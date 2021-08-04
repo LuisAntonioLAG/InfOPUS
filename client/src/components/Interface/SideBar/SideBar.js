@@ -60,8 +60,8 @@ const SideBar = props => {
         
         {open ? (
             <div className={classes.toolbar}>
-                <Avatar src={user?.result.imageUrl}/>
-                <Typography >{user?.result.givenName}</Typography>
+                <Avatar src={user?.result.imageUrl} alt={user?.result.nome}>{user?.result.nome.charAt(0)}</Avatar>
+                <Typography >{user?.result.nome}</Typography>
                 <IconButton onClick={handleDrawerClose} className={classes.listItemIcon} > <ChevronLeftIcon/> </IconButton>
             </div>
         ) : ''}

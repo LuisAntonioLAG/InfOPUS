@@ -15,7 +15,7 @@ const CustomThemeProvider = (props) => {
   const { children } = props
 
   // Read current theme from localStorage or maybe from an api
-  const currentTheme = localStorage.getItem('appTheme') || 'GreenLightTheme'
+  const currentTheme = sessionStorage.getItem('appTheme') || 'GreenLightTheme'
 
   // State to hold the selected theme name
   const [themeName, _setThemeName] = useState(currentTheme)
@@ -25,7 +25,7 @@ const CustomThemeProvider = (props) => {
 
   // Wrap _setThemeName to store new theme names in localStorage
   const setThemeName = (name) => {
-    localStorage.setItem('appTheme', name)
+    sessionStorage.setItem('appTheme', name)
     _setThemeName(name)
   }
 

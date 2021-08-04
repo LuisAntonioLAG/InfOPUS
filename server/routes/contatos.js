@@ -1,12 +1,13 @@
 import express from 'express';
 
 import { getContatos, createContato, updateContato, deleteContato } from '../controllers/contatos.js';
+import authMid from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', getContatos);
-router.post('/', createContato);
-router.patch('/:id', updateContato);
-router.delete('/:id', deleteContato);
+router.get('/', authMid, getContatos);
+router.post('/', authMid, createContato);
+router.patch('/:id', authMid, updateContato);
+router.delete('/:id', authMid, deleteContato);
 
 export default router;
