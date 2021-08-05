@@ -23,6 +23,8 @@ const Portfolio2 = ({open,setOpen}) => {
       <Document
       file={pesquisa}
       onLoadSuccess={onDocumentLoadSuccess}
+      loading={'Carregando PDF.'}
+      error={'Não foi possível carregar o PDF.'}
     >
       {Array.from(
         new Array(numPages),
@@ -30,6 +32,8 @@ const Portfolio2 = ({open,setOpen}) => {
           <Page
             key={`page_${index + 1}`}
             pageNumber={index + 1}
+            loading={'Carregando página.'}
+            error={'Não foi possível carregar página'}
           />
         ),
       )}

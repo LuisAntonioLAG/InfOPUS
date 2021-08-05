@@ -96,7 +96,7 @@ const Comercial = () => {
                         <Typography align='center' variant='h5'>PORTFÓLIO</Typography>
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <ImportContactsIcon className={classes.cardIcon} color='secondary'/>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Atual portfólio de serviços da empresa</Typography>
+                            <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Atual portfólio de serviços da empresa</Typography>
                             <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
@@ -134,7 +134,7 @@ const Comercial = () => {
                         <Typography align='center' variant='h5'>CHECKLIST</Typography>
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <AssignmentTurnedInIcon className={classes.cardIcon} color='secondary'/>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Etapas necessárias para entrega de um projeto</Typography>
+                            <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Etapas necessárias para entrega de um projeto</Typography>
                             <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
@@ -173,7 +173,7 @@ const Comercial = () => {
                         <Typography align='center' variant='h5'>PESQUISA DE SATISFAÇÃO</Typography>
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <EmojiEmotionsIcon className={classes.cardIcon} color='secondary'/>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Questionário para coleta do NPS com os clientes.</Typography>
+                            <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Questionário para coleta do NPS com os clientes.</Typography>
                             <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
