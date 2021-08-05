@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     }
   },
   root: {
-    display: "flex"
+    display: "flex",
   },
   toolbar: {
     display: "flex",
@@ -36,7 +36,5 @@ export const useStyles = makeStyles((theme) => ({
   paper: {
     height: '100%',
   },
-
-
 //---------------------------------------------------------------
 }));

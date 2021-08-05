@@ -100,9 +100,5 @@ export const useStyles = makeStyles((theme) => ({
         textDecoration: 'none', 
         color: 'inherit'
       },
-  
-      listItemIcon: {
-        color: 'inherit'
-      },
 
 }))

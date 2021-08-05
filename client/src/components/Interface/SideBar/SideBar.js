@@ -78,7 +78,7 @@ const SideBar = props => {
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                     <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
-                    <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
+                    <ListItemIcon >{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
                 </MenuItemTooltip>
@@ -95,7 +95,7 @@ const SideBar = props => {
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                     <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
-                    <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
+                    <ListItemIcon >{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
                 </MenuItemTooltip>
@@ -112,7 +112,7 @@ const SideBar = props => {
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                     <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
-                    <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
+                    <ListItemIcon >{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
                 </MenuItemTooltip>
