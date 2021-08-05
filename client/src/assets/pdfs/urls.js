@@ -1,1 +1,3 @@
 export const Checklist_de_Entrega = "https://export-download.canva.com/Cf34A/DAEmJoCf34A/219/0-5373159644.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20210804%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210804T161826Z&X-Amz-Expires=18077&X-Amz-Signature=bf887a8b1753a0bfc9196641115cff1df01c9a8120e3b53e4454c1789e68a6b4&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Checklist_de_Entrega.pdf&response-expires=Wed%2C%2004%20Aug%202021%2021%3A19%3A43%20GMT";
+export const Portfolio_OPUS = "https://drive.google.com/uc?export=download&id=133s_oHPPIi0dIkKj834CfE8KPf6x_Grg";
+export const Pesquisa_Satisfacao = "https://drive.google.com/uc?export=download&id=1-g1NorMwn39GvDgbL-WY4EPisKBi-p2G";

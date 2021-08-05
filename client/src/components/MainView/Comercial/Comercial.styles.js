@@ -16,6 +16,4 @@ export const useStyles = makeStyles((theme) => ({
     fullWidth: {
         width:'100%',
     },
-    button: {
-      },
 }));
