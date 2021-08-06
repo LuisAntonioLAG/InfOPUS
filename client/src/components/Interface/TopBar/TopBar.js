@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import MenuIcon from '@material-ui/icons/Menu';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import { CustomThemeContext } from '../../../assets/themes/CustomThemeProvider.js';
 import {useStyles} from './TopBar.styles.js'

@@ -7,7 +7,6 @@ import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormCon
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import EmailIcon from '@material-ui/icons/Email';
 import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';

@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import {Button, Hidden, Card, CardActions, CardContent, Box, Grid, Typography, Zoom, IconButton} from "@material-ui/core";
-import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
+import {Button, Card, CardActions, CardContent, Box, Grid, Typography, Zoom} from "@material-ui/core";
+
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import GetAppIcon from '@material-ui/icons/GetApp';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -16,6 +15,8 @@ import Checklist from "./Checklist.js";
 import Portfolio from './Portfolio.js';
 import Pesquisa from './Pesquisa.js';
 
+
+import  Cartao from '../../Interface/Components/Card.js'
 
 const Comercial = () => {
 
@@ -166,6 +167,11 @@ const Comercial = () => {
                     </Card>
                     </Zoom>
                 </Grid>
+
+
+
+                <Cartao pdf={[true, 'ewrewqq']} word={[true, '1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN' ]} excel={[true, 'swdsd a']} ppt={[true, 'swdsd a']}  id='1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN' titulo='PORTFÓLIO' descricao='Atual portfólio de serviços da empresa' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
+
 
 
             </Grid>
