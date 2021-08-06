@@ -84,11 +84,10 @@ const Cartao = ( props ) => {
           const DownloadOpcoes = (
             <Grid  container direction="row" alignItems="center">
             <Grid  item xs={12}>
-              <ButtonGroup fullWidth variant="contained" color="primary" ref={anchorRefDownload}>
-                <Button className={classes.fullWidth} onClick={handleDownload}>{optionsDownload[selectedIndexDownload]}</Button>
+              <ButtonGroup fullWidth variant="contained" color="secondary" ref={anchorRefDownload}>
+                <Button startIcon={<FontAwesomeIcon icon={faFileDownload}/>} className={classes.fullWidth} onClick={handleDownload}>{optionsDownload[selectedIndexDownload]}</Button>
                 <Button
                 className={classes.dropOptions}
-                  color="primary"
                   size="small"
                   onClick={handleDownloadToggle}
                 >
@@ -147,9 +146,6 @@ return (
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
                             <Grid container justifyContent='center' spacing={1}>
-                                <Grid item xs={6}>
-                                    <Button onClick={onDownload} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
-                                </Grid>
                                 <Grid item xs={6}>
                                 {DownloadOpcoes}
                                 </Grid>
