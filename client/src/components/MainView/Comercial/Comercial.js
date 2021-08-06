@@ -94,83 +94,14 @@ const Comercial = () => {
             <Grid className={classes.root} container spacing={3}>
 
 
-                <Grid item xs={12} md={6} lg={4}>
-                    <Zoom in>
-                    <Card elevation={20}>
-                        <Typography align='center' variant='h5'>PORTFÓLIO</Typography>
-                        <CardContent style={{display: 'flex', flexDirection:'column'}}>
-                            <ImportContactsIcon className={classes.cardIcon} color='secondary'/>
-                            <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Atual portfólio de serviços da empresa</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box> <FontAwesomeIcon className={classes.formatIcon} icon={faFilePdf} /></Typography>
-                        </CardContent>
-                        <CardActions style={{display: 'flex'}}>
-                            <Grid container justifyContent='center' spacing={1}>
-                                <Grid item xs={6}>
-                                    <Button onClick={onDownloadPortfolio} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Button fullWidth disableRipple startIcon={<FontAwesomeIcon icon={faExternalLinkAlt}/>} variant='contained' color='primary' onClick={handlePDFPortfolio}>Visualizar</Button>
-                                </Grid>
-                            </Grid>
 
-                        </CardActions>
-                    </Card>
-                    </Zoom>
-                </Grid>
-            
-                <Grid item xs={12} md={6} lg={4}>
-                    <Zoom in>
-                    <Card elevation={20}>
-                        <Typography align='center' variant='h5'>CHECKLIST</Typography>
-                        <CardContent style={{display: 'flex', flexDirection:'column'}}>
-                            <AssignmentTurnedInIcon className={classes.cardIcon} color='secondary'/>
-                            <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Etapas necessárias para entrega de um projeto</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box> <FontAwesomeIcon className={classes.formatIcon} icon={faFilePdf} /></Typography>
-                        </CardContent>
-                        <CardActions style={{display: 'flex'}}>
-                            <Grid container justifyContent='center' spacing={1}>
-                                <Grid item xs={6}>
+        <Cartao pdf={[true, '1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN']} titulo='PORTFÓLIO' descricao='Atual portfólio de serviços da empresa' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>  
 
-                                    <Button onClick={onDownloadChecklist} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
+        <Cartao pdf={[true, '18AhEI13ZVHK0BCF86fJLXF7qM5yfQBm_']} titulo='CHECKLIST' descricao='Etapas necessárias para entrega de um projeto' icone={<AssignmentTurnedInIcon className={classes.cardIcon} color='secondary'/>}/>
 
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Button fullWidth disableRipple startIcon={<FontAwesomeIcon icon={faExternalLinkAlt}/>} variant='contained' color='primary' onClick={handlePDFChecklist}>Visualizar</Button>
-                                </Grid>
-                            </Grid>
-                        </CardActions>
-                    </Card>
-                    </Zoom>
-                </Grid>
+        <Cartao pdf={[true, '1HYP4uI7g-qF3OZb2CrdYKDZQHPAqg0qT']} titulo='PESQUISA DE SATISFAÇÃO' descricao='Questionário para coleta do NPS com os clientes' icone={<EmojiEmotionsIcon className={classes.cardIcon} color='secondary'/>}/>
 
-
-
-                <Grid item xs={12} md={6} lg={4}>
-                    <Zoom in>
-                    <Card elevation={20}>
-                        <Typography align='center' variant='h5'>PESQUISA DE SATISFAÇÃO</Typography>
-                        <CardContent style={{display: 'flex', flexDirection:'column'}}>
-                            <EmojiEmotionsIcon className={classes.cardIcon} color='secondary'/>
-                            <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Questionário para coleta do NPS com os clientes.</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box> <FontAwesomeIcon className={classes.formatIcon} icon={faFilePdf} /></Typography>
-                        </CardContent>
-                        <CardActions style={{display: 'flex'}}>
-                            <Grid container justifyContent='center' spacing={1}>
-                                <Grid item xs={6}>
-                                    <Button onClick={onDownloadPesquisa} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Button fullWidth disableRipple startIcon={<FontAwesomeIcon icon={faExternalLinkAlt}/>} variant='contained' color='primary' onClick={handlePDFPesquisa}>Visualizar</Button>
-                                </Grid>
-                            </Grid>
-                        </CardActions>
-                    </Card>
-                    </Zoom>
-                </Grid>
-
-
-
-                <Cartao pdf={[true, 'ewrewqq']} word={[true, '1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN' ]} excel={[true, 'swdsd a']} ppt={[true, 'swdsd a']}  id='1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN' titulo='PORTFÓLIO' descricao='Atual portfólio de serviços da empresa' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
+        <Cartao pdf={[true, 'ewrewqq']} word={[true, '1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN' ]} excel={[true, 'swdsd a']} ppt={[true, 'swdsd a']} titulo='PORTFÓLIO' descricao='Atual portfólio de serviços da empresa' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
 
 
 
