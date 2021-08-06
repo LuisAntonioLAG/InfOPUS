@@ -22,6 +22,7 @@ export const useStyles = makeStyles((theme) => ({
         })
       },
       menuButton: {
+        marginLeft: -18,
         marginRight: 36
       },
       small: {

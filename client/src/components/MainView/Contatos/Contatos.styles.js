@@ -7,8 +7,10 @@ export const useStyles = makeStyles((theme) => ({
         flexGrow: 1
       },
 
-    titleIcon: {
+      titleIcon: {
         marginRight: 15,
+        fontSize: '44.5px',
+        color: theme.palette.secondary.main
     },
 
     fab: {

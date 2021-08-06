@@ -1,15 +1,17 @@
 import React, {useState} from "react";
 import {Button, Hidden, Card, CardActions, CardContent, Box, Grid, Typography, Zoom, IconButton} from "@material-ui/core";
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { faHandHoldingUsd, faFilePdf, faFileDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { useStyles} from './Comercial.styles.js';
 
-import { Checklist_de_Entrega, Portfolio_OPUS, Pesquisa_Satisfacao } from "../../../assets/pdfs/urls.js";
+import { Checklist_de_Entrega, Portfolio_OPUS, Pesquisa_Satisfacao } from "../../../assets/pdfs/comercial/urlsDownload.js";
 import Checklist from "./Checklist.js";
 import Portfolio from './Portfolio.js';
 import Pesquisa from './Pesquisa.js';
@@ -70,12 +72,13 @@ const Comercial = () => {
 
         <div>
         <Box p={5} style={{display:'flex'}} alignItems='center'>
-        <MonetizationOnIcon className={classes.titleIcon} color='secondary' style={{ fontSize: 50 }}/>
+        <FontAwesomeIcon className={classes.titleIcon} icon={faHandHoldingUsd} />
         <Typography color='secondary' align='left' variant='h2'>
           Comercial
         </Typography>
         </Box>
         </div>
+
         
         <div>
         <Box  mx={13}>
@@ -97,29 +100,15 @@ const Comercial = () => {
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <ImportContactsIcon className={classes.cardIcon} color='secondary'/>
                             <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Atual portfólio de serviços da empresa</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
+                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box> <FontAwesomeIcon className={classes.formatIcon} icon={faFilePdf} /></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
                             <Grid container justifyContent='center' spacing={1}>
                                 <Grid item xs={6}>
-                                    <Hidden smDown>
-                                    <Button onClick={onDownloadPortfolio} fullWidth startIcon={<GetAppIcon/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
-                                    </Hidden>
-                                    <Hidden mdUp>
-                                    <IconButton  onClick={onDownloadPortfolio} color="secondary" >
-                                        <GetAppIcon />
-                                    </IconButton>
-                                    </Hidden>
+                                    <Button onClick={onDownloadPortfolio} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
                                 </Grid>
                                 <Grid item xs={6}>
-                                     <Hidden smDown>
-                                    <Button fullWidth disableRipple startIcon={<FindInPageOutlinedIcon/>} variant='contained' color='primary' onClick={handlePDFPortfolio}>Visualizar</Button>
-                                    </Hidden>
-                                    <Hidden mdUp>
-                                    <IconButton onClick={handlePDFPortfolio} color="primary" >
-                                        <FindInPageOutlinedIcon />
-                                    </IconButton>
-                                    </Hidden>
+                                    <Button fullWidth disableRipple startIcon={<FontAwesomeIcon icon={faExternalLinkAlt}/>} variant='contained' color='primary' onClick={handlePDFPortfolio}>Visualizar</Button>
                                 </Grid>
                             </Grid>
 
@@ -135,29 +124,17 @@ const Comercial = () => {
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <AssignmentTurnedInIcon className={classes.cardIcon} color='secondary'/>
                             <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Etapas necessárias para entrega de um projeto</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
+                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box> <FontAwesomeIcon className={classes.formatIcon} icon={faFilePdf} /></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
                             <Grid container justifyContent='center' spacing={1}>
                                 <Grid item xs={6}>
-                                     <Hidden smDown>
-                                    <Button onClick={onDownloadChecklist} fullWidth startIcon={<GetAppIcon/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
-                                    </Hidden>
-                                    <Hidden mdUp>
-                                    <IconButton  onClick={onDownloadChecklist} color="secondary" >
-                                        <GetAppIcon />
-                                    </IconButton>
-                                    </Hidden>
+
+                                    <Button onClick={onDownloadChecklist} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
+
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Hidden smDown>
-                                    <Button fullWidth disableRipple startIcon={<FindInPageOutlinedIcon/>} variant='contained' color='primary' onClick={handlePDFChecklist}>Visualizar</Button>
-                                    </Hidden>
-                                    <Hidden mdUp>
-                                    <IconButton  onClick={handlePDFChecklist} color="primary" >
-                                        <FindInPageOutlinedIcon />
-                                    </IconButton>
-                                    </Hidden>
+                                    <Button fullWidth disableRipple startIcon={<FontAwesomeIcon icon={faExternalLinkAlt}/>} variant='contained' color='primary' onClick={handlePDFChecklist}>Visualizar</Button>
                                 </Grid>
                             </Grid>
                         </CardActions>
@@ -174,29 +151,15 @@ const Comercial = () => {
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <EmojiEmotionsIcon className={classes.cardIcon} color='secondary'/>
                             <Typography noWrap align='center' variant='subtitle1' color='textSecondary'>Questionário para coleta do NPS com os clientes.</Typography>
-                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box></Typography>
+                            <Typography align='center' variant='subtitle1' color='textSecondary'>Formato: <Box component="span" fontStyle='italic'>.pdf</Box> <FontAwesomeIcon className={classes.formatIcon} icon={faFilePdf} /></Typography>
                         </CardContent>
                         <CardActions style={{display: 'flex'}}>
                             <Grid container justifyContent='center' spacing={1}>
                                 <Grid item xs={6}>
-                                     <Hidden smDown>
-                                    <Button onClick={onDownloadPesquisa} fullWidth startIcon={<GetAppIcon/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
-                                    </Hidden>
-                                    <Hidden mdUp>
-                                    <IconButton  onClick={onDownloadPesquisa} color="secondary" >
-                                        <GetAppIcon />
-                                    </IconButton>
-                                    </Hidden>
+                                    <Button onClick={onDownloadPesquisa} fullWidth startIcon={<FontAwesomeIcon icon={faFileDownload}/>} variant='contained' color='secondary'  disableRipple> Baixar </Button>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Hidden smDown>
-                                    <Button fullWidth disableRipple startIcon={<FindInPageOutlinedIcon/>} variant='contained' color='primary' onClick={handlePDFPesquisa}>Visualizar</Button>
-                                    </Hidden>
-                                    <Hidden mdUp>
-                                    <IconButton  onClick={handlePDFPesquisa} color="primary" >
-                                        <FindInPageOutlinedIcon />
-                                    </IconButton>
-                                    </Hidden>
+                                    <Button fullWidth disableRipple startIcon={<FontAwesomeIcon icon={faExternalLinkAlt}/>} variant='contained' color='primary' onClick={handlePDFPesquisa}>Visualizar</Button>
                                 </Grid>
                             </Grid>
                         </CardActions>

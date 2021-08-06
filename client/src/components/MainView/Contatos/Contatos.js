@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons'
 import { Box, Typography, Grid, Fab, CircularProgress } from "@material-ui/core";
-import ContactsIcon from '@material-ui/icons/Contacts';
 import AddIcon from '@material-ui/icons/Add';
 
 
@@ -44,7 +45,7 @@ return(
 
 <div>
 <Box p={5} style={{display:'flex'}} alignItems='center'>
-<ContactsIcon className={classes.titleIcon} color='secondary' style={{ fontSize: 50 }}/>
+<FontAwesomeIcon className={classes.titleIcon} icon={faAddressCard}/>
 <Typography color='secondary' align='left' variant='h2'>
 Contatos
 </Typography>

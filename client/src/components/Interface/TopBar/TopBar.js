@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import {AppBar, Box, Toolbar, Switch, IconButton, Typography, Avatar, FormControlLabel} from '@material-ui/core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
@@ -64,12 +67,12 @@ const TopBar = props => {
             labelPlacement="bottom"
           />
 
-          <Box px={2}>
+          <Box px={1}>
           <Avatar className={classes.small} src={user?.result.foto} alt={user?.result.nome}>{user?.result.nome.charAt(0)}</Avatar>
           <Typography >{user?.result.nome}</Typography>
           </Box>
 
-          <IconButton disableRipple onClick={logout}> <ExitToAppIcon /> </IconButton>
+          <IconButton disableRipple onClick={logout}> <FontAwesomeIcon className={classes.titleIcon} size='xs' icon={faSignOutAlt} /> </IconButton>
 
         </Toolbar>
          

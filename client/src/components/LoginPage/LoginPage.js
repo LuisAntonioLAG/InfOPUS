@@ -12,6 +12,10 @@ import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { faAt } from '@fortawesome/free-solid-svg-icons'
+
 import { useStyles } from './LoginPage.styles';
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
@@ -112,7 +116,7 @@ const LoginPage = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <EmailIcon color='secondary'/>
+                    <FontAwesomeIcon className={classes.AwesomeIcon} icon={faAt} />
                   </InputAdornment>
                 ),
               }}

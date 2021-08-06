@@ -95,10 +95,9 @@ export const useStyles = makeStyles((theme) => ({
         width: 30,
       },
   
-  
       link: {
         textDecoration: 'none', 
         color: 'inherit'
       },
-
+      
 }))

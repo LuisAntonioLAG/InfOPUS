@@ -8,6 +8,8 @@ export const useStyles = makeStyles((theme) => ({
       },
     titleIcon: {
         marginRight: 15,
+        fontSize: '44.5px',
+        color: theme.palette.secondary.main
     },
     cardIcon: {
        fontSize: '5em',
@@ -16,4 +18,8 @@ export const useStyles = makeStyles((theme) => ({
     fullWidth: {
         width:'100%',
     },
+    formatIcon: {
+        marginLeft: 3,
+        color: '#F40F02'
+    }
 }));
