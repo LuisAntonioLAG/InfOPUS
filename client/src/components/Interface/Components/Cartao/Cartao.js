@@ -139,30 +139,30 @@ return (
                             <Box my={1}>
                             <Typography align='center' variant='subtitle2' color='textSecondary'>{descricao}</Typography>
                             </Box>
+                            <Box mb={espessura>600 ? 10 : 15}>
                             {optionsDownload.length === 1  && <Typography align='center' variant='subtitle1' color='textSecondary'> Formato:{formatos} </Typography>}
                             {optionsDownload.length > 1 && <Typography align='center' variant='subtitle1' color='textSecondary'> Formatos:{formatos} </Typography>}
+                            </Box>
                         </CardContent>
-                        <Box my={espessura>600 ? 5 : 10}>
                         <CardActions style={{width:'100%', display: 'flex', position:'absolute', bottom: 0}}> 
                             <Grid container justifyContent='center' spacing={1}>    
-                            {download && <Grid item xs={12} sm={4}>
+                            {download && <Grid item xs={12} sm={6}>
                                  <BotaoOpcoes titulo={titulo} IDs={IDs} options={optionsDownload} type={'download'}/>
                                 </Grid>
                             }
                             {view &&
-                                <Grid item xs={12} sm={4}>
+                                <Grid item xs={12} sm={6}>
                                  <BotaoOpcoes IDs={IDs} options={optionsView} type={'view'}/> 
                                 </Grid>
                             }
                             {acess &&
-                                <Grid item xs={12} sm={4}>
+                                <Grid item xs={12}>
                                  <BotaoOpcoes IDs={IDs} type={'acess'} acess={acess}/> 
                                 </Grid>
                             }
 
                             </Grid>
                         </CardActions>
-                        </Box>
                     </Card>
                 </Zoom>
                 </Grid>

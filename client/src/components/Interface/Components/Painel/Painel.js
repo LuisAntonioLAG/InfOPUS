@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import clsx from 'clsx'
-import {Card, Button, Collapse, Box, CardActions, CardContent, IconButton, Grid, Typography, Icon, Zoom} from "@material-ui/core";
+import {Card, Collapse, Box, CardActions, CardContent, IconButton, Grid, Typography, Zoom} from "@material-ui/core";
 import PublishIcon from '@material-ui/icons/Publish';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { faFileArchive } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import {useTheme} from '@material-ui/styles'
 import { useStyles} from './Painel.styles';
 
 import BotaoOpcoes from '../BotaoOpcoes/BotaoOpcoes.js';
+import ArvoreArquivos from '../ArvoreArquivos/ArvoreArquivos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -21,22 +22,13 @@ const Painel = ( props ) => {
         acess = '',
         zip = '',
         download = false,
+        data = {},
 } = props
 
 
 const theme= useTheme();
 const [expanded, setExpanded] = useState(false);
-const [espessura, setEspessura] = useState(window.outerWidth)
 
-useEffect(() => {
-    const updateWindowWidth = () => {
-      setEspessura(window.outerWidth)
-    }
-
-    window.addEventListener('resize', updateWindowWidth);
-
-    return () => window.removeEventListener('resize', updateWindowWidth);
-  }, []);
 
 const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -81,7 +73,7 @@ return (
                 </Box>
                 {optionsDownload.length > 0 && <Typography align='center' variant='subtitle1' color='textSecondary'> Formato:{formatos} </Typography>}
             </CardContent>
-            <CardActions style={{display: 'flex', position:'absolute', right:0, bottom: 0 }}> 
+            <CardActions style={{display: 'flex'}}> 
                 <Grid container alignItems='center' justifyContent="flex-end" spacing={1}> 
                
                 {expanded && 
@@ -97,11 +89,7 @@ return (
                         </Grid>)
                     
                     }</>
-                )}
-                 
-                    
-                
-               
+                )} 
 
                     <IconButton 
                         size='small'
@@ -121,15 +109,8 @@ return (
 
 
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph variant="h6">
-              Arquivos
-            </Typography>
-            <Typography align="justify" paragraph variant="body1">
-            </Typography>
-            <Typography align="justify" paragraph variant="body1">
-              dfdgfdgsdfgfdgsdfgdsg erg df gds gs gs dfs gsd fg dsf g
-            </Typography>
+          <CardContent>    
+              <ArvoreArquivos data={data}/>
           </CardContent>
         </Collapse>
 

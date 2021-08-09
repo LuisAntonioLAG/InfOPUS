@@ -7,7 +7,7 @@ import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons'
+import { faHandHoldingUsd, faFilePdf} from '@fortawesome/free-solid-svg-icons'
 
 import { useStyles} from './Comercial.styles.js';
 
@@ -19,6 +19,71 @@ import Painel from '../../Interface/Components/Painel/Painel.js'
 const Comercial = () => {
 
     const classes = useStyles();
+
+    const dataManuais = {
+        id: 'root',
+        name: 'Manuais',
+        format: 'folder',
+        children: [
+          {
+            id: '1',
+            name: 'Manual 01 - O time comercial',
+            to: 'https://drive.google.com/file/d/1dMFWeIRr_QuCQ4QlBVILva7RkS2k-afI/view',
+            format: 'pdf',
+          },
+          {
+            id: '2',
+            name: 'Manual 02 - Cliente na área!',
+            format: 'pdf',
+          },
+          {
+            id: '3',
+            name: 'Manual 03 - Sales Kanbam',
+            format: 'pdf',
+          },
+          {
+            id: '4',
+            name: 'Manual 04 - 5 dicas para uma reunião de negócios',
+            format: 'pdf',
+          },
+          {
+            id: '5',
+            name: 'Manual 05 - Missão Opus no Verde',
+            format: 'pdf',
+          },
+          {
+            id: '6',
+            name: 'Manual 06 - Cold Calling',
+            format: 'pdf',
+          },
+          {
+            id: '7',
+            name: 'Diagnóstico e Spin Selling',
+            format: 'pdf',
+          },
+          {
+            id: '8',
+            name: 'Apresentação de Proposta',
+            format: 'pdf',
+          },
+          {
+            id: '9',
+            name: 'Manual 07 - Roteiro de Cold Calling',
+            format: 'pdf',
+          },
+          {
+            id: '10',
+            name: 'Manual 08 - Proposta',
+            format: 'pdf',
+          },
+          {
+            id: '11',
+            name: 'Manual 09 - Visita Diagnóstica e Spin Selling',
+            format: 'pdf',
+          },
+        ],
+      };
+
 
 
     return(
@@ -58,11 +123,11 @@ const Comercial = () => {
 
         <Cartao ppt={'1typf8BzFVoJatblexzXAQ8_WLuiDXERg'} acess={'https://www.canva.com/design/DAEUcPiLze8/RrMFcBTz4DYkI-PgvoBCdQ/edit'} titulo='CARTA DE AGRADECIMENTO' descricao='Modelo de carta personalizada que deve ser entregue a cada cliente ao final dos projetos' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
 
-        <Cartao acess={'dsfds'} revit={'fsfsdfds'} sketch={'sfsdfdssf'} cad={'fdsfsd'} zip={'232'} pdf={'weeqwe'} word={'dsdas'} excel={'sdsada'} ppt={'sdasdsa'} imagem={'dadsa'} video={'sdasd'} audio={'dfdfsd'} titulo='EXEMPLO DE PAINEL' descricao='Exemplo do modelo e funcionalidade do cartão' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
+        <Cartao acess={'dsfds'} revit={'fsfsdfds'} sketch={'sfsdfdssf'} cad={'fdsfsd'} zip={'232'} pdf={'weeqwe'} word={'dsdas'} excel={'sdsada'} ppt={'sdasdsa'} imagem={'dadsa'} video={'sdasd'} audio={'dfdfsd'} titulo='EXEMPLO DE CARTÃO' descricao='Exemplo do modelo e funcionalidade do cartão' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
 
-        
-
-        <Painel zip={'fdfsd'} acess='dsdsa' download={true} titulo={'EXEMPLO DE PAINEL'} descricao={'Exemplo do modelo e funcionalidade do painel'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
+        <Painel data={dataManuais} zip={'fdfsd'} download={true} titulo={'MANUAIS'} descricao={'Arquivo com os manuais produzidos pela Diretoria Comercial'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
+    
+        <Painel data={dataManuais} zip={'fdfsd'} acess='dsdsa' download={true} titulo={'EXEMPLO DE PAINEL'} descricao={'Exemplo do modelo e funcionalidade do painel'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
 
         
 
