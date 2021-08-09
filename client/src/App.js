@@ -27,6 +27,8 @@ const PrivateRouteDeslogado = ({ component: Component, ...rest }) => (
 )
 
 
+
+
 const App = () => {
 
 
@@ -39,7 +41,7 @@ const App = () => {
       <CssBaseline />
       <Switch>
       <PrivateRouteDeslogado exact path={'/login'} component={LoginPage}/>
-      <PrivateRouteLogado path={'/'} component={Interface}/>
+      <PrivateRouteLogado path={'/'} component={Interface} />
       </Switch>
       </CustomThemeProvider>
   );

@@ -1,8 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import {AppBar, Box, Toolbar, Switch, IconButton, Typography, Avatar, FormControlLabel} from '@material-ui/core'
+import { Route } from 'react-router';
+import {AppBar, Link, Box, Breadcrumbs, Toolbar, Switch, IconButton, Hidden, Typography, Avatar, FormControlLabel} from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +17,7 @@ const TopBar = props => {
 
     const {
       open,setOpen = [],
+      breadcrumbNameMap = [],
     } = props;
 
     const classes = useStyles();
@@ -23,6 +26,19 @@ const TopBar = props => {
     const isDark = Boolean(currentTheme === 'GreenDarkTheme')
     const dispatch = useDispatch();
     const history = useHistory();
+    const LinkRouter = (props) => <Link {...props} component={RouterLink} />;
+    const [espessura, setEspessura] = useState(window.outerWidth)
+
+    useEffect(() => {
+        const updateWindowWidth = () => {
+          setEspessura(window.outerWidth)
+        }
+    
+        window.addEventListener('resize', updateWindowWidth);
+    
+        return () => window.removeEventListener('resize', updateWindowWidth);
+      }, []);
+
 
 
     const handleThemeChange = (event) => {
@@ -32,6 +48,7 @@ const TopBar = props => {
         } else {
           setTheme('GreenLightTheme')
         }
+        console.log(window.outerHeight>600)
       }
 
 
@@ -50,9 +67,42 @@ const TopBar = props => {
         <AppBar color='primary' className={clsx(classes.appBar, {[classes.appBarShift]: open,})} >
         <Toolbar >
 
-          <IconButton onClick={handleDrawerOpen} edge = 'start' className={clsx(classes.menuButton, {[classes.hide]: open,})} aria-label="menu"> <MenuIcon /> </IconButton>
+          <IconButton onClick={handleDrawerOpen} edge = 'start' className={clsx(classes.menuButton, {[classes.hide]: open,})} > <MenuIcon /> </IconButton>
                   
-          <Typography style={{ flex: 1 }} variant="h6" noWrap>InfOPUS</Typography>
+          
+
+        <Hidden xsDown>
+          <Route>
+          {({ location }) => {
+            const pathnames = location.pathname.split('/').filter((x) => x);
+
+            return (
+              <Breadcrumbs style={{ flex: 1 }}>
+                <LinkRouter color="inherit" to="/">
+                  Início
+                </LinkRouter>
+                {pathnames.map((value, index) => {
+                  const last = index === pathnames.length - 1;
+                  const to = `/${pathnames.slice(0, index + 1).join('/')}`;
+
+                  return last ? (
+                    <Typography color="textPrimary" key={to}>
+                      {breadcrumbNameMap[to]}
+                    </Typography>
+                  ) : (
+                    <LinkRouter color="inherit" to={to} key={to}>
+                      {breadcrumbNameMap[to]}
+                    </LinkRouter>
+                  );
+                })}
+              </Breadcrumbs>
+            );
+          }}
+        </Route>
+        </Hidden>
+
+        <Typography style={{ flex: 1 }} variant="h6" noWrap>InfOPUS</Typography>
+        
 
           <FormControlLabel
             control={
@@ -62,13 +112,13 @@ const TopBar = props => {
                 onChange={handleThemeChange}
               />
             }
-            label="Modo Escuro"
+            label={espessura>960 ? "Modo Escuro" : ''}
             labelPlacement="bottom"
           />
 
           <Box px={1}>
           <Avatar className={classes.small} src={user?.result.foto} alt={user?.result.nome}>{user?.result.nome.charAt(0)}</Avatar>
-          <Typography >{user?.result.nome}</Typography>
+          <Hidden smDown><Typography >{user?.result.nome}</Typography></Hidden>
           </Box>
 
           <IconButton disableRipple onClick={logout}> <FontAwesomeIcon className={classes.titleIcon} size='xs' icon={faSignOutAlt} /> </IconButton>

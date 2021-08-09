@@ -44,6 +44,17 @@ const Interface = (user) => {
       {txtname: 'Sobre', name: 'Sobre', icon: <InfoIcon/> , to: '/sobre/'},
     ]
 
+    const breadcrumbNameMap = {
+      '/feedback': 'Feedback',
+      '/presidencia': 'Presidência',
+      '/admfin': 'Adm-Financeiro',
+      '/comercial': 'Comercial',
+      '/gg': 'Gente e Gestão',
+      '/marketing': 'Marketing',
+      '/projetos': 'Projetos ',
+      '/contatos': 'Contatos',
+      '/sobre': 'Sobre',
+    };
 
     //states
 
@@ -54,9 +65,9 @@ const Interface = (user) => {
     return(
       <div className={classes.root}>
 
-        <TopBar open={open} setOpen={setOpen}/>
+        <TopBar open={open} setOpen={setOpen} menuItems={menuItems} breadcrumbNameMap={breadcrumbNameMap}/>
 
-        <SideBar menuItems={menuItems} open={open} setOpen={setOpen}/>
+        <SideBar menuItems={menuItems} open={open} setOpen={setOpen} breadcrumbNameMap={breadcrumbNameMap}/>
 
         
         <main className={classes.content}>
