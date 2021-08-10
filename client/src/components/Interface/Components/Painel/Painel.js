@@ -76,8 +76,7 @@ return (
             <CardActions style={{display: 'flex'}}> 
                 <Grid container alignItems='center' justifyContent="flex-end" spacing={1}> 
                
-                {expanded && 
-                    (<>
+                    
                     {download &&
                     (<Grid item>
                         <BotaoOpcoes titulo={titulo} IDs={IDs} options={optionsDownload} type={'download'}/>
@@ -88,8 +87,8 @@ return (
                         <BotaoOpcoes IDs={IDs} type={'acess'} acess={acess}/> 
                         </Grid>)
                     
-                    }</>
-                )} 
+                    }
+                
 
                     <IconButton 
                         size='small'

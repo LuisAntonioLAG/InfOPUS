@@ -3,6 +3,7 @@ import {Box, Grid, Typography} from "@material-ui/core";
 
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,68 +22,176 @@ const Comercial = () => {
     const classes = useStyles();
 
     const dataManuais = {
-        id: 'root',
-        name: 'Manuais',
+      id: "root",
+      name: "Manuais",
+      format: "folder",
+      children: [
+        {
+          id: "1",
+          name: "Manual 01 - O time comercial",
+          driveId: "1dMFWeIRr_QuCQ4QlBVILva7RkS2k-afI",
+          format: "pdf",
+        },
+        {
+          id: "2",
+          name: "Manual 02 - Cliente na área!",
+          driveId: "1J1_g3YgJEvmUXCHzpOFWIi8dOTnPeIAu",
+          format: "pdf",
+        },
+        {
+          id: "3",
+          name: "Manual 03 - Sales Kanbam",
+          driveId: "1fGCROYduw_LTe5tkuSYemqFfvNEl1Wm1",
+          format: "pdf",
+        },
+        {
+          id: "4",
+          name: "Manual 04 - 5 dicas para uma reunião de negócios",
+          driveId: '17OnImhfXC3Py82sepjVP9v8aYHyihcYX',
+          format: "pdf",
+        },
+        {
+          id: "5",
+          name: "Manual 05 - Missão Opus no Verde",
+          acess: "https://www.canva.com/design/DADjoB__wHE/d6mL7hwHLoSHXMqmIyUxDQ/view?utm_content=DADjoB__wHE&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton",
+          Download:false,
+          View: false,
+          format: "pdf"
+        },
+        {
+          id: "6",
+          name: "Manual 06 - Cold Calling",
+          driveId: '1BzW1w4X8tleRR0gAUBVrSOLRzJKBlw1S',
+          format: "pdf"
+        },
+        {
+          id: "7",
+          name: "Manual 07 - Roteiro de Cold Calling",
+          driveId: '1xy0lhoXFaf6zv1fyhyit7pQ3eGJxYDc5',
+          format: "pdf"
+        },
+        {
+          id: "8",
+          name: "Manual 08 - Proposta",
+          driveId: '18dtEtYUgsxD4r3IAygJ88_l2vkP3SiDd',
+          format: "pdf"
+        },
+        {
+          id: "9",
+          name: "Manual 09 - Visita Diagnóstica e Spin Selling",
+          driveId: '1hlAI99CG4Ob4v-myCrN2D4LXr2pOxs4S',
+          format: "pdf"
+        },
+        {
+          id: "10",
+          name: "Diagnóstico e Spin Selling", 
+          acess: 'https://www.canva.com/design/DADzbvFOlB0/YLX3mrzIcIqqqfRSXSMmjg/view?_branch_match_id=756881309779819524#2',
+          Download:false,
+          View: false,
+          format: "pdf"
+        },
+        {
+          id: "11",
+          name: "Apresentação de Proposta",
+          driveId:'1PnQ89d_MoDFkJXFrleCVjN2dxYTa2ZP7',
+          format: "pdf"
+        }
+      ]
+    };
+
+    const dataExemplo = {
+      id: "root",
+      name: "Pasta Principal",
+      format: 'folder',
+      children: [
+        {id: 1,
+        name: 'Subpasta 1',
         format: 'folder',
         children: [
-          {
-            id: '1',
-            name: 'Manual 01 - O time comercial',
-            to: 'https://drive.google.com/file/d/1dMFWeIRr_QuCQ4QlBVILva7RkS2k-afI/view',
-            format: 'pdf',
+            {id: 1.1,
+            name: 'ZIP',
+            format: 'zip',
+            acess: 'true',
+            },
+            {id: 1.2,
+              name: 'PDF',
+              format: 'pdf',
+              acess: 'true',
+              },
+            {id: 1.3,
+              name: 'WORD',
+              format: 'word',
+              acess: 'true',
+              },
+            {id: 1.4,
+              name: 'EXCEL',
+              format: 'excel',
+              acess: 'true',
+            },
+            {id: 1.5,
+              name: 'POWERPOINT',
+              format: 'ppt',
+              acess: 'true',
+            },
+            {id: 1.6,
+              name: 'IMAGEM',
+              format: 'imagem',
+              acess: 'true',
+            },
+            {id: 1.7,
+              name: 'AUDIO',
+              format: 'audio',
+              acess: 'true',
+            },
+        ]
+        },
+        {id: 2,
+          name: 'Subpasta 2',
+          format: 'folder',
+          children: [
+              {id: 2.1,
+              name: 'ZIP',
+              format: 'zip',
+              acess: 'true',
+              },
+              {id: 2.2,
+                name: 'PDF',
+                format: 'pdf',
+                acess: 'true',
+              },
+              {id: 2.3,
+                name: 'WORD',
+                format: 'word',
+                acess: 'true',
+              },
+              {id: 2.4,
+                name: 'EXCEL',
+                format: 'excel',
+                acess: 'true',
+              },
+              {id: 2.5,
+                name: 'POWERPOINT',
+                format: 'ppt',
+                acess: 'true',
+              },
+              {id: 2.6,
+                name: 'IMAGEM',
+                format: 'imagem',
+                acess: 'true',
+              },
+              {id: 2.7,
+                name: 'AUDIO',
+                format: 'audio',
+                acess: 'true',
+              },
+          ]
           },
-          {
-            id: '2',
-            name: 'Manual 02 - Cliente na área!',
-            format: 'pdf',
-          },
-          {
-            id: '3',
-            name: 'Manual 03 - Sales Kanbam',
-            format: 'pdf',
-          },
-          {
-            id: '4',
-            name: 'Manual 04 - 5 dicas para uma reunião de negócios',
-            format: 'pdf',
-          },
-          {
-            id: '5',
-            name: 'Manual 05 - Missão Opus no Verde',
-            format: 'pdf',
-          },
-          {
-            id: '6',
-            name: 'Manual 06 - Cold Calling',
-            format: 'pdf',
-          },
-          {
-            id: '7',
-            name: 'Diagnóstico e Spin Selling',
-            format: 'pdf',
-          },
-          {
-            id: '8',
-            name: 'Apresentação de Proposta',
-            format: 'pdf',
-          },
-          {
-            id: '9',
-            name: 'Manual 07 - Roteiro de Cold Calling',
-            format: 'pdf',
-          },
-          {
-            id: '10',
-            name: 'Manual 08 - Proposta',
-            format: 'pdf',
-          },
-          {
-            id: '11',
-            name: 'Manual 09 - Visita Diagnóstica e Spin Selling',
-            format: 'pdf',
-          },
-        ],
-      };
+        {id: 2,
+          name: 'Arquivo Solto',
+          format: 'zip',  
+        },
+      ]
+    }
 
 
 
@@ -125,9 +234,13 @@ const Comercial = () => {
 
         <Cartao acess={'dsfds'} revit={'fsfsdfds'} sketch={'sfsdfdssf'} cad={'fdsfsd'} zip={'232'} pdf={'weeqwe'} word={'dsdas'} excel={'sdsada'} ppt={'sdasdsa'} imagem={'dadsa'} video={'sdasd'} audio={'dfdfsd'} titulo='EXEMPLO DE CARTÃO' descricao='Exemplo do modelo e funcionalidade do cartão' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
 
-        <Painel data={dataManuais} zip={'fdfsd'} download={true} titulo={'MANUAIS'} descricao={'Arquivo com os manuais produzidos pela Diretoria Comercial'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
-    
-        <Painel data={dataManuais} zip={'fdfsd'} acess='dsdsa' download={true} titulo={'EXEMPLO DE PAINEL'} descricao={'Exemplo do modelo e funcionalidade do painel'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
+        <Painel data={dataManuais} zip={'1R13kKlVTpPxXT4HM1rV5cDzmv4-xzEBp'} download={true} titulo={'MANUAIS'} descricao={'Arquivo com os manuais produzidos pela Diretoria Comercial'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
+
+        <Painel data={dataExemplo} titulo={'TREINAMENTOS'} descricao={'Vídeos de treinamentos referentes à Diretoria Comercial'} icone={<YouTubeIcon className={classes.cardIcon} color='secondary'/>}/>
+
+        <Painel data={dataExemplo} zip={'fdfsd'} acess='dsdsa' download={true} titulo={'EXEMPLO DE PAINEL'} descricao={'Exemplo do modelo e funcionalidade do painel'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
+
+
 
         
 

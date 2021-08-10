@@ -17,6 +17,15 @@ export const useStyles = makeStyles((theme) => ({
         top: -7,
         marginleft: '20px',
     },
+    expand: {
+        transform: "rotate(0deg)",
+        transition: theme.transitions.create("transform", {
+          duration: theme.transitions.duration.shortest
+        })
+      },
+      expandOpen: {
+        transform: "rotate(180deg)"
+      },
 
 
 

@@ -7,7 +7,7 @@ import { useStyles} from './BotaoOpcoes.styles.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { faFileDownload, faExternalLinkAlt, faLink} from '@fortawesome/free-solid-svg-icons'
+import { faDownload, faExternalLinkAlt, faLink} from '@fortawesome/free-solid-svg-icons'
 
 const BotaoOpcoes = (props) => {
     const {
@@ -58,7 +58,7 @@ const BotaoOpcoes = (props) => {
 
         const icon = (
             <>
-            {type === 'download' && <FontAwesomeIcon icon={faFileDownload}/> }
+            {type === 'download' && <FontAwesomeIcon icon={faDownload}/> }
             {type === 'view' && <FontAwesomeIcon icon={faExternalLinkAlt}/>}
             {type === 'acess' && <FontAwesomeIcon icon={faLink}/>}
             </>
