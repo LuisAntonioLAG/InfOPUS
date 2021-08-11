@@ -48,8 +48,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     uploadIcon: {
         position:'absolute',
-        right: -1,
-        top: -7,
+        right: -2,
+        top: -2,
         marginleft: '20px',
     },
     cadIcon: {

@@ -126,8 +126,8 @@ const SideBar = props => {
 
         <Divider />
 
-        <Typography style={{ paddingTop: "20px" }} align="center" variant="caption" > InfOPUS </Typography>
-        <Typography style={{ paddingBottom: "20px" }} align="center" variant="caption"> v1.0.0 </Typography>     
+        <Typography style={{ paddingTop: "10px" }} align="center" variant="caption" > InfOPUS </Typography>
+        <Typography style={{ paddingBottom: "10px" }} align="center" variant="caption"> v1.0.0 </Typography>     
         </>
     )
 

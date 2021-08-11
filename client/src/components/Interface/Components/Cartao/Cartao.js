@@ -124,7 +124,7 @@ return (
                     duration: theme.transitions.duration.leavingScreen,
             })}}>
                 <Zoom in>
-                    <Card elevation={20}  style= {{position:'relative', height:'100%'}}>
+                    <Card elevation={20}  style= {{position:'relative'}}>
                         <Typography align='center' variant='h6'>{titulo}  </Typography>
                         <Typography variant='h2' align='center'><IconButton disableRipple className={classes.uploadIcon} > <PublishIcon fontSize='small' /> </IconButton> </Typography>
                         <Typography align ='center' variant="subtitle2" color="textSecondary">
@@ -139,12 +139,12 @@ return (
                             <Box my={1}>
                             <Typography align='center' variant='subtitle2' color='textSecondary'>{descricao}</Typography>
                             </Box>
-                            <Box mb={espessura>600 ? 10 : 15}>
+
                             {optionsDownload.length === 1  && <Typography align='center' variant='subtitle1' color='textSecondary'> Formato:{formatos} </Typography>}
                             {optionsDownload.length > 1 && <Typography align='center' variant='subtitle1' color='textSecondary'> Formatos:{formatos} </Typography>}
-                            </Box>
+                           
                         </CardContent>
-                        <CardActions style={{width:'100%', display: 'flex', position:'absolute', bottom: 0}}> 
+                        <CardActions style={{width:'100%', display: 'flex',}}> 
                             <Grid container justifyContent='center' spacing={1}>    
                             {download && <Grid item xs={12} sm={6}>
                                  <BotaoOpcoes titulo={titulo} IDs={IDs} options={optionsDownload} type={'download'}/>

@@ -56,7 +56,7 @@ return (
         duration: theme.transitions.duration.leavingScreen,
 })}}>
     <Zoom in>
-        <Card elevation={20}  style= {{position:'relative', height:'100%'}}>
+        <Card elevation={20}  style= {{position:'relative'}}>
             <Typography align='center' variant='h6'>{titulo}  </Typography>
             <Typography variant='h2' align='center'><IconButton disableRipple className={classes.uploadIcon} > <PublishIcon fontSize='small' /> </IconButton> </Typography>
             <Typography align ='center' variant="subtitle2" color="textSecondary">

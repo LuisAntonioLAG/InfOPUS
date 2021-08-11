@@ -121,7 +121,7 @@ const TopBar = props => {
           <Hidden smDown><Typography >{user?.result.nome}</Typography></Hidden>
           </Box>
 
-          <IconButton disableRipple onClick={logout}> <FontAwesomeIcon className={classes.titleIcon} size='xs' icon={faSignOutAlt} /> </IconButton>
+          <IconButton size='small' disableRipple onClick={logout}> <FontAwesomeIcon className={classes.titleIcon} icon={faSignOutAlt} /> </IconButton>
 
         </Toolbar>
          
