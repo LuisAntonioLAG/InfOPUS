@@ -1,9 +1,9 @@
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
-import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
+import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment , Slide} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -18,9 +18,14 @@ import { faAt } from '@fortawesome/free-solid-svg-icons'
 import { useStyles } from './LoginPage.styles';
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
+import CustomizedSnackbars from '../Interface/Components/Snackbar/Snackbar';
 
 
 import { logar, cadastrar, lembrar } from '../../actions/auth.js'
+
+function SlideTransition(props) {
+  return <Slide {...props} direction="left" />;
+}
 
 const LoginPage = () => {
 
@@ -31,12 +36,12 @@ const LoginPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const errorMessage = useSelector((state) => state.auth.errorMessage)
+
     const [showPassword, setShowPassword] = useState(false);
     const [devoLembrar, setLembrar] = useState(true);
     const [isCadastro, setCadastro] = useState(false);
-
-
-
+    const [isErrorAlert, setErrorAlert] = useState(false);
 
     const handleChange = (e) => 
     setInfoUser({ ...infoUser, [e.target.name]: e.target.value });
@@ -58,7 +63,16 @@ const LoginPage = () => {
             localStorage.clear();
           }
       }
+
+      if (errorMessage) {
+        setErrorAlert(true)
+      }
     };
+
+    useEffect(() => {
+      errorMessage ? setErrorAlert(true) : setErrorAlert(false);
+    }, [errorMessage])
+
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
@@ -68,12 +82,15 @@ const LoginPage = () => {
     setCadastro(!isCadastro);
     setInfoUser(partialReset)
     setShowPassword(false)
+    
   };
 
 
     return (
 
       <Grid container component="main" className={classes.root}>
+
+      <CustomizedSnackbars vertical={'top'} horizontal={'right'} open={isErrorAlert} setOpen={setErrorAlert} message={errorMessage} severity={'error'} />
 
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
@@ -85,7 +102,6 @@ const LoginPage = () => {
           <Typography component="h1" variant="h5" color='primary'>
             {isCadastro ? 'Cadastre-se no InfOPUS!' : 'Bem-vindo ao InfOPUS!'} 
           </Typography>
-
 
           <ValidatorForm className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
             
@@ -199,6 +215,11 @@ const LoginPage = () => {
           >
           { isCadastro ? 'Cadastrar' : 'Entrar'}
           </Button>
+
+
+         
+
+
 
           {!isCadastro &&
           <Link href="contatos" variant="body2">

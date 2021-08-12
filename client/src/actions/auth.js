@@ -1,4 +1,4 @@
-import { AUTH, LEMBRAR } from '../constants/actionTypes';
+import { AUTH, AUTHERROR, LEMBRAR } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -12,7 +12,8 @@ export const logar = (infoUser, history) => async (dispatch) => {
 
         history.push('/')
     } catch (error) {
-        console.log(error);
+
+        dispatch({ type: AUTHERROR, payload: error.response.data.message})
     }
 };
 
@@ -25,7 +26,8 @@ export const cadastrar = (infoUser, history) => async (dispatch) => {
 
         history.push('/')
     } catch (error) {
-        console.log(error);
+        
+        dispatch({ type: AUTHERROR, payload: error.response.data.message})
     }
 };
 

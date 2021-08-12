@@ -29,6 +29,7 @@ const TopBar = props => {
     const LinkRouter = (props) => <Link {...props} component={RouterLink} />;
     const [espessura, setEspessura] = useState(window.outerWidth)
 
+
     useEffect(() => {
         const updateWindowWidth = () => {
           setEspessura(window.outerWidth)
