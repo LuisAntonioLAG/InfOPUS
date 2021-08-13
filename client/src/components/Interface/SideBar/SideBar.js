@@ -79,7 +79,7 @@ const SideBar = props => {
             <React.Fragment key={item.name}>
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
-                    <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
+                    <MenuItem button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
                     <ListItemIcon >{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
@@ -96,7 +96,7 @@ const SideBar = props => {
             <React.Fragment key={item.name}>
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
-                    <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
+                    <MenuItem button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
                     <ListItemIcon >{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
@@ -113,7 +113,7 @@ const SideBar = props => {
             <React.Fragment key={item.name}>
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
-                    <MenuItem disableRipple button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
+                    <MenuItem button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
                     <ListItemIcon >{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>

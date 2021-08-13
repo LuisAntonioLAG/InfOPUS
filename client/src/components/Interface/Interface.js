@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { Paper } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faHome, faWallet, faHandHoldingUsd, faUsers, faAddressCard } from '@fortawesome/free-solid-svg-icons'
-import VideoCallIcon from '@material-ui/icons/VideoCall';
-import DescriptionIcon from '@material-ui/icons/Description';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
 import InfoIcon from '@material-ui/icons/Info';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';

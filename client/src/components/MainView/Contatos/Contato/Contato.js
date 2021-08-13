@@ -118,7 +118,6 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
               <Formulario currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
 
               <IconButton
-                disableRipple
                 size="small"
                 variant="contained"
                 color="secondary"
@@ -140,7 +139,6 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
           </Grid>
 
           <IconButton
-            disableRipple
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded
             })}

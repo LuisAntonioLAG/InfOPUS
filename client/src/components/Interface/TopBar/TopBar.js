@@ -122,7 +122,7 @@ const TopBar = props => {
           <Hidden smDown><Typography >{user?.result.nome}</Typography></Hidden>
           </Box>
 
-          <IconButton size='small' disableRipple onClick={logout}> <FontAwesomeIcon className={classes.titleIcon} icon={faSignOutAlt} /> </IconButton>
+          <IconButton size='small' onClick={logout}> <FontAwesomeIcon className={classes.titleIcon} icon={faSignOutAlt} /> </IconButton>
 
         </Toolbar>
          

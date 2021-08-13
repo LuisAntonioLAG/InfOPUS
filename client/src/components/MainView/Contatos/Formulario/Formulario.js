@@ -142,10 +142,10 @@ const Formulario = ({open, setOpen, currentId}) => {
             <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoContato({ ...infoContato, foto: base64 })} /></div> 
         </DialogContent>    
         <DialogActions>
-         <Button color="secondary" className={classes.margin} disableRipple variant='contained' onClick={handleClose}>
+         <Button color="secondary" className={classes.margin} variant='contained' onClick={handleClose}>
             Cancelar
           </Button>
-          <Button className={classes.margin} disableRipple variant="contained" type="submit" color="primary">
+          <Button className={classes.margin} variant="contained" type="submit" color="primary">
           { currentId ? 'Salvar' : 'Adicionar' }
           </Button>
         </DialogActions>

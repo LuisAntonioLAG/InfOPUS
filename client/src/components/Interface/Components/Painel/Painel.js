@@ -58,7 +58,7 @@ return (
     <Zoom in>
         <Card elevation={20}  style= {{position:'relative'}}>
             <Typography align='center' variant='h6'>{titulo}  </Typography>
-            <Typography variant='h2' align='center'><IconButton disableRipple className={classes.uploadIcon} > <PublishIcon fontSize='small' /> </IconButton> </Typography>
+            <Typography variant='h2' align='center'><IconButton className={classes.uploadIcon} > <PublishIcon fontSize='small' /> </IconButton> </Typography>
             <Typography align ='center' variant="subtitle2" color="textSecondary">
                 <Box component="span" fontStyle="italic">
                 Atualizado em: DATA QUALQUER
@@ -92,7 +92,6 @@ return (
 
                     <IconButton 
                         size='small'
-                        disableRipple
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded
                         })}

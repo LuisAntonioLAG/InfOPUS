@@ -201,7 +201,6 @@ const LoginPage = () => {
             )}
 
           <Button
-            disableRipple
             type="submit"
             fullWidth
             variant="contained"
@@ -223,7 +222,6 @@ const LoginPage = () => {
       
 
           <Button
-            disableRipple
             fullWidth
             variant="contained"
             color="secondary"
