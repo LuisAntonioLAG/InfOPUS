@@ -66,7 +66,7 @@ const LoginPage = () => {
 
     useEffect(() => {
       errorMessage ? setErrorAlert(true) : setErrorAlert(false);
-    }, [authData])
+    }, [authData, errorMessage])
 
 
     const handleLembrar = () => {
