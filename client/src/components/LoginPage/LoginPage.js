@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
-import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment , Slide} from '@material-ui/core'
+import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -23,9 +23,6 @@ import CustomizedSnackbars from '../Interface/Components/Snackbar/Snackbar';
 
 import { logar, cadastrar, lembrar } from '../../actions/auth.js'
 
-function SlideTransition(props) {
-  return <Slide {...props} direction="left" />;
-}
 
 const LoginPage = () => {
 
@@ -62,10 +59,6 @@ const LoginPage = () => {
           } else{
             localStorage.clear();
           }
-      }
-
-      if (errorMessage) {
-        setErrorAlert(true)
       }
     };
 
