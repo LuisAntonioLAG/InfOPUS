@@ -37,9 +37,6 @@ const Interface = (user) => {
       {txtname: 'Gente e Gestão', name: 'Gg', icon: <FontAwesomeIcon size='lg' fixedWidth icon={faUsers}/>, to: '/gg/'},
       {txtname: 'Marketing', name: 'Marketing', icon: <ColorLensIcon/>, to: '/marketing/'},
       {txtname: 'Projetos', name: 'Projetos', icon: <WorkIcon/>, to: '/projetos/'},
-      {txtname: 'WebConferência', name: 'Meet', icon: <VideoCallIcon/>, to: '/meet/'},
-      {txtname: 'Atas', name: 'Atas', icon: <DescriptionIcon/>, to: '/atas/'},
-      {txtname: 'Biblioteca', name: 'Biblioteca', icon: <MenuBookIcon/>, to: '/biblioteca/'},
       {txtname: 'Contatos', name: 'Contatos', icon: <FontAwesomeIcon size='lg' fixedWidth icon={faAddressCard}/> , to: '/contatos/'},
       {txtname: 'Sobre', name: 'Sobre', icon: <InfoIcon/> , to: '/sobre/'},
     ]
@@ -72,9 +69,7 @@ const Interface = (user) => {
         
         <main className={classes.content}>
           <div className={classes.toolbar} />
-            <Paper className={classes.paper} elevation={3}>
                 <Routes/>
-            </Paper>
         </main>
       </div>
     );
