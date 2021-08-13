@@ -33,6 +33,7 @@ const LoginPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const authData = useSelector((state) => state.auth)
     const errorMessage = useSelector((state) => state.auth.errorMessage)
 
     const [showPassword, setShowPassword] = useState(false);
@@ -56,15 +57,16 @@ const LoginPage = () => {
         dispatch(logar(infoUser, history))
           if(devoLembrar) 
           {dispatch(lembrar(infoUser.email))
-          } else{
+          } else {
             localStorage.clear();
           }
       }
     };
+ 
 
     useEffect(() => {
       errorMessage ? setErrorAlert(true) : setErrorAlert(false);
-    }, [errorMessage])
+    }, [authData])
 
 
     const handleLembrar = () => {
