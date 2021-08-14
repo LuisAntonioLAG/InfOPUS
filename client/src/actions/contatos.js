@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE} from '../constants/actionTypes';
+import { FETCH_CONTATOS, CREATE_CONTATO, UPDATE_CONTATO, DELETE_CONTATO} from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -9,7 +9,7 @@ export const getContatos = () => async (dispatch) => {
   try {
     const { data } = await api.fetchContatos();
 
-    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: FETCH_CONTATOS, payload: data });
   } catch (error) {
     console.log(error.message);
   }
@@ -19,7 +19,7 @@ export const createContato = (post) => async (dispatch) => {
   try {
     const { data } = await api.createContato(post);
 
-    dispatch({ type: CREATE, payload: data });
+    dispatch({ type: CREATE_CONTATO, payload: data });
   } catch (error) {
     console.log(error.message);
   }
@@ -29,7 +29,7 @@ export const updateContato = (id, post) => async (dispatch) => {
   try {
     const { data } = await api.updateContato(id, post);
 
-    dispatch({type: UPDATE, payload: data})
+    dispatch({type: UPDATE_CONTATO, payload: data})
   } catch(error) {
     console.log(error);
   };
@@ -39,7 +39,7 @@ export const deleteContato = (id) => async (dispatch) => {
   try {
     await api.deleteContato(id);
 
-    dispatch({ type: DELETE, payload: id});
+    dispatch({ type: DELETE_CONTATO, payload: id});
   } catch (error) {
     console.log(error);
     

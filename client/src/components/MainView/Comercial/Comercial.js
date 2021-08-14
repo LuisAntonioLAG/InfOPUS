@@ -23,6 +23,7 @@ const Comercial = () => {
     const [open, setOpen] = useState(false);
     const [currentId, setCurrentId] = useState(null);
     const cartoes = useSelector((state) => state.cartoes);
+    const [loading, setLoading] = useState(true);
 
     const dispatch = useDispatch();
 

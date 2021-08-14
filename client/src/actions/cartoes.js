@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE} from '../constants/actionTypes';
+import { FETCH_CARTOES, CREATE_CARTAO, UPDATE_CARTAO} from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -9,7 +9,7 @@ export const getCartoes = () => async (dispatch) => {
   try {
     const { data } = await api.fetchCartoes();
 
-    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: FETCH_CARTOES, payload: data });
   } catch (error) {
     console.log(error.message);
   }
@@ -19,7 +19,7 @@ export const createCartao = (cartao) => async (dispatch) => {
   try {
     const { data } = await api.createCartao(cartao);
 
-    dispatch({ type: CREATE, payload: data });
+    dispatch({ type: CREATE_CARTAO, payload: data });
   } catch (error) {
     console.log(error.message);
   }
@@ -29,7 +29,7 @@ export const updateCartao = (id, cartao) => async (dispatch) => {
   try {
     const { data } = await api.updateCartao(id, cartao);
 
-    dispatch({type: UPDATE, payload: data})
+    dispatch({type: UPDATE_CARTAO, payload: data})
   } catch(error) {
     console.log(error);
   };
