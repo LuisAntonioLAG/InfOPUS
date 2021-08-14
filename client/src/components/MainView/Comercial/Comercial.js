@@ -22,8 +22,8 @@ const Comercial = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [currentId, setCurrentId] = useState(null);
-    const cartoes = useSelector((state) => state.cartoes);
-    const [loading, setLoading] = useState(true);
+    const cartoes = useSelector((state) => state.cartoes.cartoes);
+    const loading = useSelector((state) => state.cartoes.loading);
 
     const dispatch = useDispatch();
 
@@ -396,7 +396,7 @@ const Comercial = () => {
             <Grid className={classes.root} container spacing={3}>
 
 
-        {!cartoes.length ? (<div style={{margin: 'auto'}}><CircularProgress color="secondary"/> </div>)  : (
+        {loading === true ? (<div style={{margin: 'auto'}}><CircularProgress color="secondary"/> </div>)  : (
            cartoes.map((cartao) => (
                   <Cartao key={cartao._id} currentId={currentId} setCurrentId={setCurrentId} cartao={cartao} />
 

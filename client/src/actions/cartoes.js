@@ -10,6 +10,7 @@ export const getCartoes = () => async (dispatch) => {
     const { data } = await api.fetchCartoes();
 
     dispatch({ type: FETCH_CARTOES, payload: data });
+
   } catch (error) {
     console.log(error.message);
   }

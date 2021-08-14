@@ -16,7 +16,7 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload}) => {
 
     const dispatch = useDispatch();
 
-    const cartao = useSelector((state) => 'currentId' ? state.cartoes.find((p) => p._id === currentId) : null);
+    const cartao = useSelector((state) => 'currentId' ? state.cartoes.cartoes.find((p) => p._id === currentId) : null);
 
     const [IDs, setIDs] = useState({ zip: '', pdf: '', word: '', excel: '', ppt: '',imagem: '', video: '', audio: '', cad: '', revit: '', sketch: ''})
     const idValues = Object.values(IDs).filter(Boolean)
