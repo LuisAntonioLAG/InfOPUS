@@ -10,6 +10,7 @@ import iconRevit from '../../../../assets/icons/iconRevit.svg'
 import iconSketch from '../../../../assets/icons/iconSketch.svg'
 
 import BotaoOpcoes from '../BotaoOpcoes/BotaoOpcoes.js';
+import Formulario from './Formulario/Formulario.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -39,6 +40,7 @@ const Cartao = ( props ) => {
     const theme = useTheme();
     const classes = useStyles();
     const [espessura, setEspessura] = useState(window.outerWidth)
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const updateWindowWidth = () => {
@@ -49,6 +51,11 @@ const Cartao = ( props ) => {
     
         return () => window.removeEventListener('resize', updateWindowWidth);
       }, []);
+
+
+      const handleClickEdit = () => {
+        setOpen(true);
+      };
 
     const formatos = (
         <>
@@ -118,6 +125,7 @@ const Cartao = ( props ) => {
 
 
 return (
+    
 
                 <Grid item xs={12} md={6} lg={4} style={{transition: theme.transitions.create("all", {
                     easing: theme.transitions.easing.sharp, 
@@ -126,7 +134,10 @@ return (
                 <Zoom in>
                     <Card elevation={20}  style= {{position:'relative'}}>
                         <Typography align='center' variant='h6'>{titulo}  </Typography>
-                        <Typography variant='h2' align='center'><IconButton className={classes.uploadIcon} > <PublishIcon fontSize='small' /> </IconButton> </Typography>
+                        <Typography variant='h2' align='center'><IconButton className={classes.uploadIcon} onClick={handleClickEdit}> <PublishIcon fontSize='small' /> </IconButton> </Typography>
+
+                        <Formulario open={open} setOpen={setOpen}/>
+
                         <Typography align ='center' variant="subtitle2" color="textSecondary">
                             <Box component="span" fontStyle="italic">
                             Atualizado em: DATA QUALQUER
