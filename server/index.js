@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import usuariosRoutes from './routes/usuarios.js'
 import contatosRoutes from './routes/contatos.js';
+import cartaoRoutes from './routes/cartao.js'
 
 const app = express();
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 
 app.use('/contatos', contatosRoutes);
 app.use('/usuarios', usuariosRoutes)
+app.use('/cartoes', cartaoRoutes)
 
 const PORT = process.env.PORT|| 5000;
 

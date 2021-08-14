@@ -1,6 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import { useDispatch } from 'react-redux';
 import {Card, Box, CardActions, CardContent, IconButton, Grid, Typography, Icon, Zoom} from "@material-ui/core";
-import PublishIcon from '@material-ui/icons/Publish';
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import moment from 'moment';
 
 import { useStyles} from './Cartao.styles.js';
 import { useTheme } from '@material-ui/styles';
@@ -16,97 +19,72 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faFilePdf, faFileWord, faFileExcel, faFilePowerpoint, faFileArchive, faFileImage, faFileVideo, faFileAudio,} from '@fortawesome/free-solid-svg-icons'
 
-const Cartao = ( props ) => {
-    const {
-        titulo = '',
-        icone = '',
-        descricao = '',
-        zip = '',
-        pdf = '', 
-        word = '',
-        excel = '', 
-        ppt = '', 
-        imagem = '',
-        video = '',
-        audio = '',
-        cad = '',
-        revit = '',
-        sketch = '',
-        acess = '',
-        download = true,
-        view = true,
-    } = props
+const Cartao = ( {cartao, currentId, setCurrentId} ) => {
+
 
     const theme = useTheme();
     const classes = useStyles();
-    const [espessura, setEspessura] = useState(window.outerWidth)
     const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-        const updateWindowWidth = () => {
-          setEspessura(window.outerWidth)
-        }
-    
-        window.addEventListener('resize', updateWindowWidth);
-    
-        return () => window.removeEventListener('resize', updateWindowWidth);
-      }, []);
-
-
       const handleClickEdit = () => {
+        setCurrentId(cartao._id);
         setOpen(true);
+      };
+
+      const handleClickDelete = () => {
+
       };
 
     const formatos = (
         <>
-        {zip ?
+        {cartao.zip ?
         (
          <FontAwesomeIcon className={classes.zipIcon} icon={faFileArchive}/> 
         ) : ''} 
-        {pdf ?
+        {cartao.pdf ?
         (
          <FontAwesomeIcon className={classes.pdfIcon} icon={faFilePdf}/> 
         ) : ''}  
 
-        {word ?
+        {cartao.word ?
         (
         <FontAwesomeIcon className={classes.wordIcon} icon={faFileWord}/>
         ) : ''}  
 
-        {excel ?
+        {cartao.excel ?
         (
         <FontAwesomeIcon className={classes.excelIcon} icon={faFileExcel}/>
         ) : ''}  
 
-        {ppt ?
+        {cartao.ppt ?
         (
         <FontAwesomeIcon className={classes.pptIcon} icon={faFilePowerpoint}/>
         ) : ''} 
-        {imagem ?
+        {cartao.imagem ?
         (
         <FontAwesomeIcon className={classes.imageIcon} icon={faFileImage}/>
         ) : ''}   
-        {video ?
+        {cartao.video ?
         (
         <FontAwesomeIcon className={classes.videoIcon} icon={faFileVideo}/>
         ) : ''}   
-        {audio ?
+        {cartao.audio ?
         (
         <FontAwesomeIcon className={classes.audioIcon} icon={faFileAudio}/>
         ) : ''}  
-        {cad ?
+        {cartao.cad ?
         (
             <Icon fontSize='small' classes={{root: classes.iconRoot}}>
             <img className={classes.cadIcon} src={iconAutocad}/>
             </Icon>
         ) : ''} 
-        {revit ?
+        {cartao.revit ?
         (
             <Icon fontSize='small' classes={{root: classes.iconRoot}}>
             <img className={classes.revitIcon} src={iconRevit}/>
             </Icon>
         ) : ''} 
-        {sketch ?
+        {cartao.sketch ?
         (
             <Icon fontSize='small' classes={{root: classes.iconRoot}}>
             <img className={classes.revitIcon} src={iconSketch}/>
@@ -117,10 +95,14 @@ const Cartao = ( props ) => {
 
     //------------------------- BOTÃO COM OPÇÕES --------------------------------------------
 
-        const IDs = [zip, pdf, word, excel, ppt, imagem, video, audio, cad, revit, sketch];
-        const optionsDownload = [IDs[0] && 'ZIP', IDs[1] && 'PDF', IDs[2] && 'Word' , IDs[3] && 'Excel', IDs[4] && 'PPT', IDs[5] && 'Imagem', IDs[6] && 'Video', IDs[7] && 'Audio', IDs[8] && 'CAD', IDs[9] && 'RVT', IDs[10] && 'SKP'].filter(Boolean);
-        const optionsView = [IDs[1] && 'PDF', IDs[2] && 'Word' , IDs[3] && 'Excel', IDs[4] && 'PPT', IDs[5] && 'Imagem', IDs[6] && 'Video', IDs[7] && 'Audio'].filter(Boolean);
+        const IDsDownload = [cartao.zip, cartao.pdf, cartao.word, cartao.excel, cartao.ppt, cartao.imagem, cartao.video, cartao.audio, cartao.cad, cartao.revit, cartao.sketch];
+        const IDsView = [cartao.pdf, cartao.word, cartao.excel, cartao.ppt, cartao.imagem, cartao.video, cartao.audio];
+        const optionsDownload = [cartao.zip && 'ZIP', cartao.pdf && 'PDF', cartao.word && 'Word' , cartao.excel && 'Excel', cartao.ppt && 'PPT', cartao.imagem && 'Imagem', cartao.video && 'Vídeo', cartao.audio && 'Áudio', cartao.cad && 'CAD', cartao.revit && 'RVT', cartao.sketch && 'SKP'];
+        const optionsView = [cartao.pdf && 'PDF', cartao.word && 'Word' , cartao.excel && 'Excel', cartao.ppt && 'PPT', cartao.imagem && 'Imagem', cartao.video && 'Vídeo', cartao.audio && 'Áudio'];
         
+
+        const download = optionsDownload.length > 0 ? true : false;
+        const view = optionsView.length > 0 ? true : false;
     //------------------------  ------------------------------------------------------------------------
 
 
@@ -133,22 +115,42 @@ return (
             })}}>
                 <Zoom in>
                     <Card elevation={20}  style= {{position:'relative'}}>
-                        <Typography align='center' variant='h6'>{titulo}  </Typography>
-                        <Typography variant='h2' align='center'><IconButton className={classes.uploadIcon} onClick={handleClickEdit}> <PublishIcon fontSize='small' /> </IconButton> </Typography>
+                        <Typography align='center' variant='h6'>{cartao.titulo}  </Typography>
+                        <Typography variant='h2' align='center'><IconButton color='primary' size='small' className={classes.editIcon} onClick={handleClickEdit}> <EditIcon/> </IconButton> </Typography>
+                        <Typography variant='h2' align='center'><IconButton color='secondary' size='small' className={classes.deleteIcon} onClick={handleClickDelete}> <DeleteIcon /> </IconButton> </Typography>
 
-                        <Formulario open={open} setOpen={setOpen}/>
+                        <Formulario optionsDownload={optionsDownload} currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
 
-                        <Typography align ='center' variant="subtitle2" color="textSecondary">
+                        <Typography
+                            display="block"
+                            color="textSecondary"
+                            variant="caption"
+                            align="center"
+                        >
                             <Box component="span" fontStyle="italic">
-                            Atualizado em: DATA QUALQUER
+                            {`Atualizado em: ${moment(cartao.dataAtualizacao).format('DD [de] MMM [de] YYYY')}`}
+                            {``}
                             </Box>
                         </Typography>
+
+                        <Typography
+                            display="block"
+                            color="textSecondary"
+                            variant="caption"
+                            align="center"
+                        >
+                            <Box component="span" fontStyle="italic">
+                            {`Criado em: ${moment(cartao.dataCriacao).format('DD [de] MMM [de] YYYY')}`}
+                            {``}
+                            </Box>
+                        </Typography>
+
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <Box mx={'auto'} mt={-1}>
-                            {icone}
+                            {cartao.icone}
                             </Box>
                             <Box my={1}>
-                            <Typography align='center' variant='subtitle2' color='textSecondary'>{descricao}</Typography>
+                            <Typography align='center' variant='subtitle2' color='textSecondary'>{cartao.descricao}</Typography>
                             </Box>
 
                             {optionsDownload.length === 1  && <Typography align='center' variant='subtitle1' color='textSecondary'> Formato:{formatos} </Typography>}
@@ -158,17 +160,17 @@ return (
                         <CardActions style={{width:'100%', display: 'flex',}}> 
                             <Grid container justifyContent='center' spacing={1}>    
                             {download && <Grid item xs={12} sm={6}>
-                                 <BotaoOpcoes titulo={titulo} IDs={IDs} options={optionsDownload} type={'download'}/>
+                                 <BotaoOpcoes titulo={cartao.titulo} IDsDownload={IDsDownload} IDsView={IDsView} options={optionsDownload.filter(Boolean)} type={'download'}/>
                                 </Grid>
                             }
                             {view &&
                                 <Grid item xs={12} sm={6}>
-                                 <BotaoOpcoes IDs={IDs} options={optionsView} type={'view'}/> 
+                                 <BotaoOpcoes IDsDownload={IDsDownload} IDsView={IDsView} options={optionsView.filter(Boolean)} type={'view'}/> 
                                 </Grid>
                             }
-                            {acess &&
+                            {cartao.acess &&
                                 <Grid item xs={12}>
-                                 <BotaoOpcoes IDs={IDs} type={'acess'} acess={acess}/> 
+                                 <BotaoOpcoes IDsDownload={IDsDownload} IDsView={IDsView} type={'acess'} acess={cartao.acess}/> 
                                 </Grid>
                             }
 

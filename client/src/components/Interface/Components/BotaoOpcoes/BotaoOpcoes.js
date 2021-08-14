@@ -13,14 +13,16 @@ const BotaoOpcoes = (props) => {
     const {
         titulo='', 
         type='',
-        IDs = [], 
+        IDsDownload = [], 
+        IDsView = [],
         options = [],
         acess = '',
     } = props;
 
-
     
     const classes = useStyles();
+
+
 
     const [open, setOpen] = React.useState(false); 
     const anchorRef = React.useRef(null);
@@ -46,12 +48,12 @@ const BotaoOpcoes = (props) => {
         const handleButtonDownload = () => {
             const link = document.createElement("a");
             link.download = `${titulo}.download`;
-            link.href = `https://drive.google.com/uc?export=download&id=${IDs.filter(Boolean)[selectedIndex]}`;
+            link.href = `https://drive.google.com/uc?export=download&id=${IDsDownload.filter(Boolean)[selectedIndex]}`;
             link.click();
           };
 
         const handleButtonView = () => {
-            window.open(`https://drive.google.com/file/d/${IDs.filter(Boolean)[selectedIndex]}/view`, "_blank", "noreferrer noopener")
+            window.open(`https://drive.google.com/file/d/${IDsView.filter(Boolean)[selectedIndex]}/view`, "_blank", "noreferrer noopener")
         };
 
         const handleAcess = () => {

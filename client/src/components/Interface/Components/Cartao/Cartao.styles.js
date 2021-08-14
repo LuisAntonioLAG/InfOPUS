@@ -46,10 +46,16 @@ export const useStyles = makeStyles((theme) => ({
         color: theme.palette.type === 'light' && ('seagreen'),
         background: theme.palette.type === 'dark' && ('seagreen'),
     },
-    uploadIcon: {
+    editIcon: {
         position:'absolute',
         right: -2,
         top: -2,
+        marginleft: '20px',
+    },
+    deleteIcon: {
+        position:'absolute',
+        right: -2,
+        top: 25,
         marginleft: '20px',
     },
     cadIcon: {

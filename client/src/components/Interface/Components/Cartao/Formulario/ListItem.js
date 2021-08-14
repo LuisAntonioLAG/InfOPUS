@@ -6,6 +6,7 @@ import { TextValidator } from 'react-material-ui-form-validator'
 import { useStyles } from './Formulario.styles'
 
 
+
 const CustomTextField = (props) => {
     const {
         isMobile = {},
@@ -19,13 +20,12 @@ const CustomTextField = (props) => {
     const classes = useStyles();
 
 
-
     const handleToggle = () => {
       const currentIndex = checked.indexOf(format);
       const newChecked = [...checked];
 
-      console.log(checked)
-  
+      if (value === '') {
+
       if (currentIndex === -1) {
         newChecked.push(format);
       } else {
@@ -33,6 +33,7 @@ const CustomTextField = (props) => {
       }
   
       setChecked(newChecked);
+      }
       };
 
     return (
@@ -45,7 +46,6 @@ const CustomTextField = (props) => {
           <Checkbox 
             edge="start"
             checked={checked.indexOf(format) !== -1}
-
           />
         </ListItemIcon>
         <ListItemText primary={`${format}`} />

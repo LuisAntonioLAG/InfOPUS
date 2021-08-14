@@ -15,6 +15,12 @@ export const useStyles = makeStyles((theme) => ({
        fontSize: '5em',
         margin: 'auto',
     },
+    fab: {
+        position: 'fixed',
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+        zIndex: 10000
+      },
     fullWidth: {
         width:'100%',
     },

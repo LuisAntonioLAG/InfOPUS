@@ -1,12 +1,10 @@
-import React from "react";
-import {Box, Grid, Typography} from "@material-ui/core";
+import React, {useState, useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
+import {Box, Grid, Typography, Fab, CircularProgress} from "@material-ui/core";
 
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
-import ImportContactsIcon from '@material-ui/icons/ImportContacts';
-import BurstModeIcon from '@material-ui/icons/BurstMode';
+
+import AddIcon from '@material-ui/icons/Add';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons'
@@ -14,13 +12,28 @@ import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons'
 import { useStyles} from './Comercial.styles.js';
 
 
-
-import  Cartao from '../../Interface/Components/Cartao/Cartao.js'
+import FormularioCartao from "../../Interface/Components/Cartao/Formulario/Formulario.js";
+import { getCartoes } from "../../../actions/cartoes.js";
+import Cartao from '../../Interface/Components/Cartao/Cartao.js'
 import Painel from '../../Interface/Components/Painel/Painel.js'
 
 const Comercial = () => {
 
     const classes = useStyles();
+    const [open, setOpen] = useState(false);
+    const [currentId, setCurrentId] = useState(null);
+    const cartoes = useSelector((state) => state.cartoes);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getCartoes());
+    }, [currentId, dispatch])
+
+    const handleClickFab = () => {
+      setOpen(true);
+      setCurrentId(null)
+    };
 
     const dataManuais = {
       id: "root",
@@ -353,6 +366,11 @@ const Comercial = () => {
     return(
         <>
 
+        <Fab color='primary' className={classes.fab} variant="extended" onClick={handleClickFab}>
+          <AddIcon/>
+          <Box component="span" fontWeight='fontWeightBold'> Cartão </Box>
+        </Fab>
+
         <div>
         <Box p={5} style={{display:'flex'}} alignItems='center'>
         <FontAwesomeIcon className={classes.titleIcon} icon={faHandHoldingUsd} />
@@ -362,6 +380,7 @@ const Comercial = () => {
         </Box>
         </div>
 
+        <FormularioCartao open={open} setOpen={setOpen}/>
         
         <div>
         <Box  mx={13}>
@@ -376,25 +395,12 @@ const Comercial = () => {
             <Grid className={classes.root} container spacing={3}>
 
 
+        {!cartoes.length ? (<div style={{margin: 'auto'}}><CircularProgress color="secondary"/> </div>)  : (
+           cartoes.map((cartao) => (
+                  <Cartao key={cartao._id} currentId={currentId} setCurrentId={setCurrentId} cartao={cartao} />
 
-        <Cartao pdf={'1Qo8uAnTZZl-sh9gYTWXY8lo3FgNx5yUN'} titulo='PORTFÓLIO' descricao='Atual portfólio de serviços da empresa' icone={<BurstModeIcon className={classes.cardIcon} color='secondary'/>}/>  
-
-        <Cartao pdf={'18AhEI13ZVHK0BCF86fJLXF7qM5yfQBm_'} titulo='CHECKLIST' descricao='Etapas necessárias para entrega de um projeto' icone={<AssignmentTurnedInIcon className={classes.cardIcon} color='secondary'/>}/>
-
-        <Cartao pdf={'1HYP4uI7g-qF3OZb2CrdYKDZQHPAqg0qT'} titulo='PESQUISA DE SATISFAÇÃO' descricao='Questionário para coleta do NPS com os clientes' icone={<EmojiEmotionsIcon className={classes.cardIcon} color='secondary'/>}/>
-
-        <Cartao word={'12OxwwVw1M6WZe14k_j0SeYhX0jlnDI_G'} ppt={'1_n2oUGtqFw_GsBJ4OzGudzOy718EF3tO'} acess={'https://www.canva.com/design/DAEWTelGz1k/share/preview?token=rdRHETW6KjR5QcOaWVqAQw&role=EDITOR&utm_content=DAEWTelGz1k&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton'} titulo='MODELO DE PROPOSTA' descricao='Modelos da apresentação e do documento impresso para propostas de serviço' icone={<ChromeReaderModeIcon className={classes.cardIcon} color='secondary'/>}/>
-
-        <Cartao ppt={'1typf8BzFVoJatblexzXAQ8_WLuiDXERg'} acess={'https://www.canva.com/design/DAEUcPiLze8/share/preview?token=XuwOR116MpEsO8YZrD1lYg&role=EDITOR&utm_content=DAEUcPiLze8&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton'} titulo='CARTA DE AGRADECIMENTO' descricao='Modelo de carta personalizada que deve ser entregue a cada cliente ao final dos projetos' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
-
-        <Cartao acess={'dsfds'} revit={'fsfsdfds'} sketch={'sfsdfdssf'} cad={'fdsfsd'} zip={'232'} pdf={'weeqwe'} word={'dsdas'} excel={'sdsada'} ppt={'sdasdsa'} imagem={'dadsa'} video={'sdasd'} audio={'dfdfsd'} titulo='EXEMPLO DE CARTÃO' descricao='Exemplo do modelo e funcionalidade do cartão' icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/> 
-
-        <Painel data={dataManuais} zip={'1R13kKlVTpPxXT4HM1rV5cDzmv4-xzEBp'} download={true} titulo={'MANUAIS'} descricao={'Arquivo com os manuais produzidos pela Diretoria Comercial'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
-
-        <Painel data={dataYoutube} titulo={'TREINAMENTOS'} descricao={'Vídeos de treinamentos referentes à Diretoria Comercial'} icone={<YouTubeIcon className={classes.cardIcon} color='secondary'/>}/>
-
-        <Painel data={dataExemplo} zip={'fdfsd'} acess='dsdsa' download={true} titulo={'EXEMPLO DE PAINEL'} descricao={'Exemplo do modelo e funcionalidade do painel'} icone={<ImportContactsIcon className={classes.cardIcon} color='secondary'/>}/>
-
+        ))
+        )}
 
 
         

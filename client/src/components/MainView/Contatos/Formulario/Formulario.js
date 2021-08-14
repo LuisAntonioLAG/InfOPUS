@@ -58,7 +58,6 @@ const Formulario = ({open, setOpen, currentId}) => {
     
 
 
-
     return(
         
         <Dialog open={open} onClose={handleClose}>

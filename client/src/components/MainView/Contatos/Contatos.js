@@ -62,7 +62,7 @@ Atrás de alguém pra fazer um bench ou fechar uma parceria? Busque aqui na <Box
 
 <Fab color='primary' className={classes.fab} variant="extended" onClick={handleClickFab}>
   <AddIcon/>
-  <Box component="span" fontWeight='fontWeightBold'> Novo Contato </Box>
+  <Box component="span" fontWeight='fontWeightBold'> Contato </Box>
 </Fab>
 
 <Formulario open={open} setOpen={setOpen}/>

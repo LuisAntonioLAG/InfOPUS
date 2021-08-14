@@ -11,7 +11,7 @@ import {
   faLink
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Box, IconButton, Typography } from "@material-ui/core";
+import { IconButton, Typography } from "@material-ui/core";
 
 import { useStyles } from "./ArvoreArquivos.styles.js";
 
