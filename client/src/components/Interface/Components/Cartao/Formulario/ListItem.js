@@ -12,15 +12,27 @@ const CustomTextField = (props) => {
         step = '',
         format = '',
         value = {},
+        checked, setChecked = [],
         onChange = () => {}
     } = props
 
     const classes = useStyles();
 
-    const [checked, setChecked] = React.useState(false);
+
 
     const handleToggle = () => {
-        setChecked((prevChecked) => !prevChecked);
+      const currentIndex = checked.indexOf(format);
+      const newChecked = [...checked];
+
+      console.log(checked)
+  
+      if (currentIndex === -1) {
+        newChecked.push(format);
+      } else {
+        newChecked.splice(currentIndex, 1);
+      }
+  
+      setChecked(newChecked);
       };
 
     return (
@@ -32,7 +44,8 @@ const CustomTextField = (props) => {
         <ListItemIcon className={classes.checkboxMargin} onClick={handleToggle}>
           <Checkbox 
             edge="start"
-            checked={checked}
+            checked={checked.indexOf(format) !== -1}
+
           />
         </ListItemIcon>
         <ListItemText primary={`${format}`} />
@@ -42,7 +55,7 @@ const CustomTextField = (props) => {
           :
           
           (
-          checked===true && (
+            checked.indexOf(format) !== -1 && (
             <TextValidator className={classes.margin} size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
                       validators={['required']}
                       errorMessages={['Esse campo é obrigatório.']}
@@ -59,11 +72,12 @@ const CustomTextField = (props) => {
         <ListItemIcon className={classes.checkboxMargin} onClick={handleToggle}>
           <Checkbox 
             edge="start"
-            checked={checked}
+            checked={checked.indexOf(format) !== -1}
+
           />
         </ListItemIcon>
         <ListItemText primary={`${format}`} />
-        { checked===true &&
+        { checked.indexOf(format) !== -1 &&
         <TextValidator size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
                   validators={['required']}
                   errorMessages={['Esse campo é obrigatório.']}

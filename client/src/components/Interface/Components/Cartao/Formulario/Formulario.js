@@ -19,6 +19,7 @@ const Formulario = ({open, setOpen}) => {
 
     const classes = useStyles();
 
+    const [checked, setChecked] = React.useState([]);
 
     const clear = () => {
         }
@@ -63,33 +64,33 @@ const Formulario = ({open, setOpen}) => {
 
         <Hidden xsDown>
           <List className={classes.listRoot}>
-            <CustomTextField format={'ZIP'} IDs={IDs} value={IDs.zip} onChange={(e) => setIDs({...IDs, zip: e.target.value })}/>
-            <CustomTextField format={'PDF'} value={IDs.pdf} onChange={(e) => setIDs({...IDs, pdf: e.target.value })}/>
-            <CustomTextField format={'Word'} value={IDs.word} onChange={(e) => setIDs({...IDs, word: e.target.value })}/>
-            <CustomTextField format={'Excel'} value={IDs.excel} onChange={(e) => setIDs({...IDs, excel: e.target.value })}/>
-            <CustomTextField format={'PPT'} value={IDs.ppt} onChange={(e) => setIDs({...IDs, ppt: e.target.value })}/>
-            <CustomTextField format={'Imagem'} value={IDs.imagem} onChange={(e) => setIDs({...IDs, imagem: e.target.value })}/>
-            <CustomTextField format={'Vídeo'} value={IDs.video} onChange={(e) => setIDs({...IDs, video: e.target.value })}/>
-            <CustomTextField format={'Áudio'} value={IDs.audio} onChange={(e) => setIDs({...IDs, audio: e.target.value })}/>
-            <CustomTextField format={'CAD'} value={IDs.cad} onChange={(e) => setIDs({...IDs, cad: e.target.value })}/>
-            <CustomTextField format={'Revit'} value={IDs.revit} onChange={(e) => setIDs({...IDs, revit: e.target.value })}/>
-            <CustomTextField format={'Sketch'} value={IDs.sketch} onChange={(e) => setIDs({...IDs, sketch: e.target.value })}/>
+            <CustomTextField format={'ZIP'} IDs={IDs} value={IDs.zip} onChange={(e) => setIDs({...IDs, zip: e.target.value})} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'PDF'} value={IDs.pdf} onChange={(e) => setIDs({...IDs, pdf: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Word'} value={IDs.word} onChange={(e) => setIDs({...IDs, word: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Excel'} value={IDs.excel} onChange={(e) => setIDs({...IDs, excel: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'PPT'} value={IDs.ppt} onChange={(e) => setIDs({...IDs, ppt: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Imagem'} value={IDs.imagem} onChange={(e) => setIDs({...IDs, imagem: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Vídeo'} value={IDs.video} onChange={(e) => setIDs({...IDs, video: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Áudio'} value={IDs.audio} onChange={(e) => setIDs({...IDs, audio: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'CAD'} value={IDs.cad} onChange={(e) => setIDs({...IDs, cad: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Revit'} value={IDs.revit} onChange={(e) => setIDs({...IDs, revit: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField format={'Sketch'} value={IDs.sketch} onChange={(e) => setIDs({...IDs, sketch: e.target.value })} checked={checked} setChecked={setChecked}/>
         </List>
         </Hidden>
 
         <Hidden smUp>
           <List className={classes.listRoot}>
-            <CustomTextField step={step} isMobile format={'ZIP'} IDs={IDs} value={IDs.zip} onChange={(e) => setIDs({...IDs, zip: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'PDF'} value={IDs.pdf} onChange={(e) => setIDs({...IDs, pdf: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Word'} value={IDs.word} onChange={(e) => setIDs({...IDs, word: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Excel'} value={IDs.excel} onChange={(e) => setIDs({...IDs, excel: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'PPT'} value={IDs.ppt} onChange={(e) => setIDs({...IDs, ppt: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Imagem'} value={IDs.imagem} onChange={(e) => setIDs({...IDs, imagem: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Vídeo'} value={IDs.video} onChange={(e) => setIDs({...IDs, video: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Áudio'} value={IDs.audio} onChange={(e) => setIDs({...IDs, audio: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'CAD'} value={IDs.cad} onChange={(e) => setIDs({...IDs, cad: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Revit'} value={IDs.revit} onChange={(e) => setIDs({...IDs, revit: e.target.value })}/>
-            <CustomTextField step={step} isMobile format={'Sketch'} value={IDs.sketch} onChange={(e) => setIDs({...IDs, sketch: e.target.value })}/>
+            <CustomTextField step={step} isMobile format={'ZIP'} IDs={IDs} value={IDs.zip} onChange={(e) => setIDs({...IDs, zip: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'PDF'} value={IDs.pdf} onChange={(e) => setIDs({...IDs, pdf: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Word'} value={IDs.word} onChange={(e) => setIDs({...IDs, word: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Excel'} value={IDs.excel} onChange={(e) => setIDs({...IDs, excel: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'PPT'} value={IDs.ppt} onChange={(e) => setIDs({...IDs, ppt: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Imagem'} value={IDs.imagem} onChange={(e) => setIDs({...IDs, imagem: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Vídeo'} value={IDs.video} onChange={(e) => setIDs({...IDs, video: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Áudio'} value={IDs.audio} onChange={(e) => setIDs({...IDs, audio: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'CAD'} value={IDs.cad} onChange={(e) => setIDs({...IDs, cad: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Revit'} value={IDs.revit} onChange={(e) => setIDs({...IDs, revit: e.target.value })} checked={checked} setChecked={setChecked}/>
+            <CustomTextField step={step} isMobile format={'Sketch'} value={IDs.sketch} onChange={(e) => setIDs({...IDs, sketch: e.target.value })} checked={checked} setChecked={setChecked}/>
         </List>
         </Hidden>
     </div>
@@ -123,7 +124,7 @@ const Formulario = ({open, setOpen}) => {
           </Hidden>
 
           <Hidden smUp>
-          <Button className={classes.margin} variant="contained" color="primary" onClick={handleNextStep} >
+          <Button className={classes.margin} variant="contained" color="primary" onClick={handleNextStep} disabled={checked.length === 0}>
             {step === 1 ? 'Próximo' : 'Salvar'}
           </Button>
           </Hidden>
