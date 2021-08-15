@@ -1,10 +1,12 @@
-import React from 'react';
-import {Snackbar}  from '@material-ui/core';
+import React, {forwardRef} from 'react';
+import {Snackbar, Slide}  from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useStyles } from './Snackbar.styles.js';
 
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
+const Alert = React.forwardRef((props, ref) => <MuiAlert elevation={6} variant="filled" {...props} ref={ref} />);
+
+  function SlideTransition(props) {
+    return <Slide {...props} direction="left" />;
   }
 
 const CustomizedSnackbars = (props) => {
@@ -15,6 +17,7 @@ const CustomizedSnackbars = (props) => {
         horizontal = '',
         open, setOpen = [],
     } = props;
+
   
     const classes = useStyles()
   
@@ -28,7 +31,7 @@ const CustomizedSnackbars = (props) => {
   
     return (
       <>
-        <Snackbar open={open} autoHideDuration={6000} anchorOrigin={{ vertical, horizontal }} onClose={handleClose}>
+        <Snackbar open={open} TransitionComponent={SlideTransition} autoHideDuration={4000} anchorOrigin={{ vertical, horizontal }} onClose={handleClose}>
           <Alert onClose={handleClose} severity={severity}>
             {message}
           </Alert>

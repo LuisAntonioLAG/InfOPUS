@@ -49,7 +49,6 @@ const TopBar = props => {
         } else {
           setTheme('GreenLightTheme')
         }
-        console.log(window.outerHeight>600)
       }
 
 
