@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import clsx from "clsx";
@@ -9,6 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { useStyles} from './Contato.styles.js';
 import Formulario from '../Formulario/Formulario.js'; 
+
 import { deleteContato } from '../../../../actions/contatos.js'
 import ContatoFotoPadrao from '../../../../assets/images/ContatoFotoPadrao.png'
 
@@ -36,18 +37,21 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
 
     const handleDelete = () => {
       dispatch(deleteContato(contato._id))
+      setCurrentId(null)
       setConfirmacao(false);
-      window.location.reload()
     };
 
 
     const ConfirmarDelete = () => {
+
+      useEffect(() => {
+        setCurrentId(contato._id)
+      }, [contato._id])
+
       return(
         <Dialog
           open={confirmacao}
           onClose={() => setConfirmacao(false)}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir este contato?</DialogTitle>
           <DialogContent>
