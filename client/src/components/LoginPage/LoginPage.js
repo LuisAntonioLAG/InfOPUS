@@ -10,6 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { useSnackbar } from 'notistack';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -18,10 +19,9 @@ import { faAt } from '@fortawesome/free-solid-svg-icons'
 import { useStyles } from './LoginPage.styles';
 import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
-import CustomizedSnackbars from '../Interface/Components/Snackbar/Snackbar';
 
 
-import { logar, cadastrar, lembrar } from '../../actions/auth.js'
+import { logar, cadastrar} from '../../actions/auth.js'
 
 
 const LoginPage = () => {
@@ -32,6 +32,7 @@ const LoginPage = () => {
     const [infoUser, setInfoUser] = useState({nome: '', email: lembrado ? lembrado.email : "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const authData = useSelector((state) => state.auth)
     const errorMessage = useSelector((state) => state.auth.errorMessage)
@@ -44,7 +45,7 @@ const LoginPage = () => {
     const handleChange = (e) => 
     setInfoUser({ ...infoUser, [e.target.name]: e.target.value });
 
-    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
+    const handleShowPassword = () =>  setShowPassword((prevShowPassword) => !prevShowPassword)
 
     const partialReset = {nome:'', confirmSenha:'', email: infoUser.email, senha: infoUser.senha}
 
@@ -56,16 +57,19 @@ const LoginPage = () => {
       } else {
         dispatch(logar(infoUser, history, devoLembrar))
       }
+
     };
  
 
     useEffect(() => {
-      errorMessage ? setErrorAlert(true) : setErrorAlert(false);
+      errorMessage &&
+      enqueueSnackbar(errorMessage);
     }, [authData, errorMessage])
 
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
+      console.log(theme)
     }
 
     const handleCadastro = () => {
@@ -79,8 +83,6 @@ const LoginPage = () => {
     return (
 
       <Grid container component="main" className={classes.root}>
-
-      <CustomizedSnackbars vertical={'top'} horizontal={'right'} open={isErrorAlert} setOpen={setErrorAlert} message={errorMessage} severity={'error'} />
 
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
@@ -141,7 +143,7 @@ const LoginPage = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <LockIcon color='secondary'/>
+                  <LockIcon style={{color: theme.palette.secondary.main}}/>
                 </InputAdornment>
               ),
               endAdornment: (
@@ -244,8 +246,6 @@ const LoginPage = () => {
 
         </Grid>
       </Grid>
-
-
 
   );
 }

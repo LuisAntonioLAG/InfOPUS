@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, IconButton } from '@material-ui/core';
 import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+import { SnackbarProvider } from 'notistack';
+import ErrorIcon from '@material-ui/icons/Error';
 
+import CloseIcon from '@material-ui/icons/Close';
 
 import Interface from './components/Interface/Interface';
 import LoginPage from './components/LoginPage/LoginPage.js'
+
+import { useTheme } from '@material-ui/styles';
+
 
 
 const PrivateRouteLogado = ({ component: Component, ...rest }) => (
@@ -18,13 +24,38 @@ const PrivateRouteLogado = ({ component: Component, ...rest }) => (
   )} />
 )
 
-const PrivateRouteDeslogado = ({ component: Component, ...rest }) => (
+const notistackRef = React.createRef();
+
+const onClickDismiss = key => () => { 
+  notistackRef.current.closeSnackbar(key);
+}
+
+const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
+
+  const theme=useTheme()
+
+  return (
+
+  <SnackbarProvider 
+  dense 
+  ref={notistackRef}
+  action={(key) => (<IconButton style={{color: 'white'}} size='small' onClick={onClickDismiss(key)}><CloseIcon/></IconButton>)}
+  iconVariant = {{error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>}}
+  maxSnack={2} 
+  autoHideDuration = {3000}
+  variant = {'error'} 
+  anchorOrigin = {{
+    vertical: 'top',
+    horizontal: 'right'}
+  }>
   <Route {...rest} render={(props) => (
     sessionStorage.getItem('profile')
       ? <Redirect to='/' />
       : <Component {...props} />
   )} />
-)
+  </SnackbarProvider>
+  )
+  }
 
 
 
