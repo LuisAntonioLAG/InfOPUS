@@ -54,12 +54,7 @@ const LoginPage = () => {
       if (isCadastro) {
         dispatch(cadastrar(infoUser, history))
       } else {
-        dispatch(logar(infoUser, history))
-          if(devoLembrar) 
-          {dispatch(lembrar(infoUser.email))
-          } else {
-            localStorage.clear();
-          }
+        dispatch(logar(infoUser, history, devoLembrar))
       }
     };
  

@@ -4,11 +4,20 @@ import * as api from '../api/index.js';
 
 //ACTION CREATORS
 
-export const logar = (infoUser, history) => async (dispatch) => {
+export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
     try {
         const { data } = await api.logar(infoUser);
 
         dispatch({ type: AUTH, data })
+
+        if(devoLembrar === true) {
+            const email = infoUser.email
+            const data  = {email}
+            dispatch({type: LEMBRAR, data})
+        }
+        else {
+            localStorage.clear()
+        }
 
         history.push('/')
     } catch (error) {
@@ -30,9 +39,3 @@ export const cadastrar = (infoUser, history) => async (dispatch) => {
         dispatch({ type: AUTHERROR, payload: error.response.data.message})
     }
 };
-
-export const lembrar = (email) => async (dispatch) => {
-    const  data  = {email}
-    
-        dispatch({type: LEMBRAR, data})
-}
