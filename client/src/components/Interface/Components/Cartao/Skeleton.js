@@ -32,7 +32,7 @@ const CartaoSkeleton = () => {
                         <Typography style={{margin: '0 80px'}} align='center' variant='subtitle2' color='textSecondary'><Skeleton animation="wave" variant='text'/></Typography>
                     </Box>
 
-                    <Typography style={{margin: '0 100px'}} align='center' variant='subtitle1' color='textSecondary'> <Skeleton animation="wave" variant='text'/> </Typography>
+                    <Typography style={{margin: '0 200px'}} align='center' variant='subtitle1' color='textSecondary'> <Skeleton animation="wave" variant='text'/> </Typography>
 
                     </CardContent>
                     <CardActions style={{width:'100%', display: 'flex',}}> 

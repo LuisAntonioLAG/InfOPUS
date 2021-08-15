@@ -114,7 +114,7 @@ return (
                     duration: theme.transitions.duration.leavingScreen,
             })}}>
                 <Zoom in>
-                    <Card elevation={20} style= {{position:'relative'}}>
+                    <Card variant={theme.palette.type === 'dark' && 'outlined'} elevation={20} style= {{position:'relative'}}>
                         <Typography align='center' variant='h6'>{cartao.titulo}  </Typography>
                         <Typography variant='h2' align='center'><IconButton color='primary' size='small' className={classes.editIcon} onClick={handleClickEdit}> <EditIcon/> </IconButton> </Typography>
                         <Typography variant='h2' align='center'><IconButton color='secondary' size='small' className={classes.deleteIcon} onClick={handleClickDelete}> <DeleteIcon /> </IconButton> </Typography>
