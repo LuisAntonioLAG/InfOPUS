@@ -396,7 +396,7 @@ const Comercial = () => {
             <Grid className={classes.root} container spacing={3}>
 
 
-        {(
+        {loading === true ? (<div style={{margin: 'auto'}}><CircularProgress color="secondary"/> </div>)  : (
            cartoes.map((cartao) => (
                   <Cartao key={cartao._id} currentId={currentId} setCurrentId={setCurrentId} cartao={cartao} />
 
