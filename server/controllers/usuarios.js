@@ -11,11 +11,11 @@ export const logar = async (req, res) => {
     try {
         const usuarioExistente = await ModeloUsuario.findOne({ email });
 
-        if (!usuarioExistente) return res.status(404).json({ message: "E-mail não cadastrado." });
+        if (!usuarioExistente) return res.status(404).json({ message: "E-mail não cadastrado" });
 
         const isSenhaCorreta = await bcrypt.compare(senha, usuarioExistente.senha);
     
-        if (!isSenhaCorreta) return res.status(400).json({ message: "Senha incorreta." });
+        if (!isSenhaCorreta) return res.status(400).json({ message: "Senha incorreta" });
     
         const token = jwt.sign({ email: usuarioExistente.email, id: usuarioExistente._id }, secret);
     
@@ -33,9 +33,9 @@ export const cadastrar = async (req, res) => {
     try {
         const usuarioExistente = await ModeloUsuario.findOne({ email });
 
-        if (usuarioExistente) return res.status(400).json({ message: "E-mail já cadastrado." });
+        if (usuarioExistente) return res.status(400).json({ message: "E-mail já cadastrado" });
 
-        if (senha !== confirmSenha) return res.status(400).json({ message: "As senhas devem ser iguais." });
+        if (senha !== confirmSenha) return res.status(400).json({ message: "As senhas devem ser iguais" });
 
         const hashedSenha = await bcrypt.hash(senha, 12);
 

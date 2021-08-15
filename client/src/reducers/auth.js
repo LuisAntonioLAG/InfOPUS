@@ -6,7 +6,6 @@ const authReducer = (state = { authData: null, errorMessage: null}, action) => {
         case AUTH:
             sessionStorage.setItem('profile', JSON.stringify({ ...action?.data }));
 
-            
             return {...state, authData: action?.Data, errorMessage: null};
         case AUTHERROR:
             
