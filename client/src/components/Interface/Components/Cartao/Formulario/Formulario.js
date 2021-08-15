@@ -74,11 +74,10 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) =
     };
 
     const handleNextStep = (e) => {
-        setStep((prevStep) => !prevStep)
+        setStep((prevStep) => prevStep + 1)
     }
 
     const handlePrevStep = (e) => {
-        console.log(step)
         setStep(1)
     }
 
@@ -99,8 +98,7 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) =
           <div className={classes.root}>
 
         <Hidden xsDown>
-          <List>
-            
+          <List> 
             <TextValidator  className={classes.margin} fullWidth name="titulo" label='Título*' value={mainData.titulo} onChange={(e) => setMainData({ ...mainData, titulo: e.target.value })}  variant="outlined" validators={['required']} errorMessages={['Esse campo é obrigatório.']}/>
             <TextValidator className={classes.margin} multiline fullWidth name="titulo" label='Descrição*' value={mainData.descricao} onChange={(e) => setMainData({ ...mainData, descricao: e.target.value })}  variant="outlined" validators={['required']} errorMessages={['Esse campo é obrigatório.']}/> 
             <CustomTextField format={'ZIP'} IDs={IDs} value={IDs.zip} onChange={(e) => setIDs({...IDs, zip: e.target.value})} checked={checked} setChecked={setChecked}/>
@@ -170,15 +168,17 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) =
           </Hidden>
 
           <Hidden smUp>
-          {step === 1 ?
+          {step === 1 && (
           <Button className={classes.margin} variant="contained" color="primary" onClick={handleNextStep} disabled={checked.length === 0 && !mainData.acess}>
              Próximo
-          </Button>
-            :
+          </Button>)}
+            
+
+          {step === 2 &&  (
             <Button className={classes.margin} variant="contained" type="submit" color="primary" disabled={idValues.length === 0 && !mainData.acess}>
             Salvar
           </Button>
-            }
+            )} 
           </Hidden>
 
         </DialogActions>

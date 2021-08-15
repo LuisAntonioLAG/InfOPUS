@@ -56,7 +56,7 @@ const CustomTextField = (props) => {
           
           (
             checked.indexOf(format) !== -1 && (
-            <TextValidator size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
+            <TextValidator className={classes.margin} size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
                       validators={['required']}
                       errorMessages={['Esse campo é obrigatório.']}
             />
