@@ -6,6 +6,9 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 import { SnackbarProvider } from 'notistack';
 import ErrorIcon from '@material-ui/icons/Error';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import WarningIcon from '@material-ui/icons/Warning';
+import InfoIcon from '@material-ui/icons/Info';
 
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -37,12 +40,16 @@ const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
   return (
 
   <SnackbarProvider 
-  dense 
   ref={notistackRef}
   action={(key) => (<IconButton style={{color: 'white'}} size='small' onClick={onClickDismiss(key)}><CloseIcon/></IconButton>)}
-  iconVariant = {{error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>}}
+  iconVariant = {
+    {error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>,
+    success: <CheckCircleIcon style={{marginRight: 8}} fontSize='small'/>,
+    warning: <WarningIcon style={{marginRight: 8}} fontSize='small'/>,
+    info: <InfoIcon style={{marginRight: 8}} fontSize='small'/>
+    }}
   maxSnack={2} 
-  autoHideDuration = {3000}
+  autoHideDuration = {4000}
   variant = {'error'} 
   anchorOrigin = {{
     vertical: 'top',
