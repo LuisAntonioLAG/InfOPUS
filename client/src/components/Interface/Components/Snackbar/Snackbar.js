@@ -5,9 +5,7 @@ import { useStyles } from './Snackbar.styles.js';
 
 const Alert = React.forwardRef((props, ref) => <MuiAlert elevation={6} variant="filled" {...props} ref={ref} />);
 
-  function SlideTransition(props) {
-    return <Slide {...props} direction="left" />;
-  }
+
 
 const CustomizedSnackbars = (props) => {
     const {
@@ -16,8 +14,12 @@ const CustomizedSnackbars = (props) => {
         vertical = '',
         horizontal = '',
         open, setOpen = [],
+        slideDirection='',
     } = props;
 
+    function SlideTransition(props) {
+      return <Slide {...props} direction={slideDirection} />;
+    }
   
     const classes = useStyles()
   

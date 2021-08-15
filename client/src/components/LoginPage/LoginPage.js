@@ -80,7 +80,7 @@ const LoginPage = () => {
 
       <Grid container component="main" className={classes.root}>
 
-      <CustomizedSnackbars vertical={'top'} horizontal={'right'} open={isErrorAlert} setOpen={setErrorAlert} message={errorMessage} severity={'error'} />
+      <CustomizedSnackbars slideDirection={'left'} vertical={'top'} horizontal={'right'} open={isErrorAlert} setOpen={setErrorAlert} message={errorMessage} severity={'error'} />
 
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
