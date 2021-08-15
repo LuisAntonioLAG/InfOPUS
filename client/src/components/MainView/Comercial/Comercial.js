@@ -22,14 +22,14 @@ const Comercial = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [currentId, setCurrentId] = useState(null);
-    const cartoes = useSelector((state) => state.cartoes);
-    
+    const cartoes = useSelector((state) => state.cartoes.cards);
+    const loading = useSelector((state) => state.cartoes.loading);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
       dispatch(getCartoes());
-    }, [currentId, dispatch])
+    }, [currentId, dispatch, loading])
 
     const handleClickFab = () => {
       setOpen(true);
