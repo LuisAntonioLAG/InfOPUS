@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
-import {Container, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
+import {Container, TextField, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -66,7 +66,6 @@ const LoginPage = () => {
       enqueueSnackbar(errorMessage);
     }, [authData, errorMessage])
 
-
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
       console.log(theme)
@@ -111,14 +110,17 @@ const LoginPage = () => {
             )
           }
 
+          {isCadastro ?
+
             <TextValidator
               fullWidth
               name='email'
               margin='normal'
               color='secondary'
               label="E-mail"
-              validators={['required','isEmail']}
-              errorMessages={['Esse campo é obrigatório.','Escreva um e-mail válido.']}
+              error = {errorMessage === 'E-mail já cadastrado'}
+              validators={['isEmail']}
+              errorMessages={['Escreva um e-mail válido.']}
               value={infoUser.email}
               InputProps={{
                 startAdornment: (
@@ -129,7 +131,28 @@ const LoginPage = () => {
               }}
               onChange={handleChange}
           />
+            :
+            <TextField
+              fullWidth
+              name='email'
+              margin='normal'
+              color='secondary'
+              label="E-mail"
+              error = {errorMessage === 'E-mail não cadastrado'}
+              value={infoUser.email}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FontAwesomeIcon className={classes.AwesomeIcon} icon={faAt} />
+                  </InputAdornment>
+                ),
+              }}
+              onChange={handleChange}
+          />
+            }
 
+
+        {isCadastro ? 
           <TextValidator
             fullWidth
             name='senha'
@@ -137,8 +160,9 @@ const LoginPage = () => {
             label="Senha"
             margin='normal'
             type={showPassword ? "text" : "password"}
-            validators={['required', 'minStringLength:8']}
-            errorMessages={['Esse campo é obrigatório.','Sua senha deve conter, no mínimo, 8 caracteres.']}
+            error={errorMessage === 'As senhas devem ser iguais'}
+            validators={['minStringLength:8']}
+            errorMessages={['Sua senha deve conter, no mínimo, 8 caracteres.']}
             value={infoUser.senha}
             InputProps={{
               startAdornment: (
@@ -155,18 +179,45 @@ const LoginPage = () => {
             onChange={handleChange}
           />
 
+          :
+
+          <TextField
+            fullWidth
+            name='senha'
+            color='secondary'
+            label="Senha"
+            margin='normal'
+            error = {errorMessage === 'Senha incorreta'}
+            type={showPassword ? "text" : "password"}
+            value={infoUser.senha}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <LockIcon style={{color: theme.palette.secondary.main}}/>
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end" >
+                  <IconButton color='secondary' onClick={handleShowPassword}>{showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}</IconButton>
+                </InputAdornment>
+              ),
+            }}
+            onChange={handleChange}
+          />
+
+          }
+
             {
             isCadastro && (
               <>
-              <TextValidator
+              <TextField
               fullWidth
               name='confirmSenha'
               color='secondary'
               label="Confirme a senha"
+              error={errorMessage === 'As senhas devem ser iguais'}
               margin='normal'
               type={showPassword ? "text" : "password"}
-              validators={['required']}
-              errorMessages={['Esse campo é obrigatório.']}
               value={infoUser.confirmSenha}
               InputProps={{
                 startAdornment: (
@@ -203,6 +254,7 @@ const LoginPage = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={isCadastro ? !infoUser.nome || !infoUser.email || !infoUser.senha || !infoUser.confirmSenha :  !infoUser.email || !infoUser.senha}
           >
           { isCadastro ? 'Cadastrar' : 'Entrar'}
           </Button>
