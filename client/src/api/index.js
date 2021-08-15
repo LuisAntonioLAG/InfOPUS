@@ -22,3 +22,4 @@ export const cadastrar = (infoUser) => API.post('/usuarios/cadastrar', infoUser)
 export const fetchCartoes = () => API.get('/cartoes');
 export const createCartao = (newCartao) => API.post('/cartoes', newCartao);
 export const updateCartao = (id, updatedCartao) => API.patch(`/cartoes/${id}`, updatedCartao);
+export const deleteCartao = (id) => API.delete(`/cartoes/${id}`);

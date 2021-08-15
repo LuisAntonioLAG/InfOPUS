@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch } from 'react-redux';
-import {Card, Box, CardActions, CardContent, IconButton, Grid, Typography, Icon, Zoom} from "@material-ui/core";
+import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, Card, Box, CardActions, CardContent, IconButton, Grid, Typography, Icon, Zoom} from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import moment from 'moment';
@@ -18,6 +18,7 @@ import Formulario from './Formulario/Formulario.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faFilePdf, faFileWord, faFileExcel, faFilePowerpoint, faFileArchive, faFileImage, faFileVideo, faFileAudio,} from '@fortawesome/free-solid-svg-icons'
+import { deleteCartao } from '../../../../actions/cartoes.js';
 
 const Cartao = ( {cartao, currentId, setCurrentId} ) => {
 
@@ -25,6 +26,8 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
     const theme = useTheme();
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [confirmacao, setConfirmacao] = useState(false);
+    const dispatch = useDispatch();
 
       const handleClickEdit = () => {
         setCurrentId(cartao._id);
@@ -32,8 +35,45 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
       };
 
       const handleClickDelete = () => {
-
+        setConfirmacao(true);
       };
+
+      const handleDelete = () => {
+        dispatch(deleteCartao(cartao._id))
+        setCurrentId(null)
+        setConfirmacao(false);
+      };
+
+      const ConfirmarDelete = () => {
+
+        useEffect(() => {
+          setCurrentId(cartao._id)
+        }, [cartao._id])
+  
+        return(
+          <Dialog
+            open={confirmacao}
+            onClose={() => setConfirmacao(false)}
+          >
+            <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir este card?</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Essa ação é irreversível. Todos os dados do card serão perdidos.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setConfirmacao(false)} color="secondary">
+                Cancelar
+              </Button>
+              <Button onClick={handleDelete} 
+                color="primary">
+                Apagar card
+              </Button>
+            </DialogActions>
+          </Dialog>
+          )
+      }
+
 
     const formatos = (
         <>
@@ -120,6 +160,7 @@ return (
                         <Typography variant='h2' align='center'><IconButton color='secondary' size='small' className={classes.deleteIcon} onClick={handleClickDelete}> <DeleteIcon /> </IconButton> </Typography>
 
                         <Formulario optionsDownload={optionsDownload} currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
+                        <ConfirmarDelete/>
 
                         <Typography
                             display="block"

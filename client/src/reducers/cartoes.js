@@ -1,4 +1,4 @@
-import { FETCH_CARTOES, CREATE_CARTAO, UPDATE_CARTAO} from '../constants/actionTypes';
+import { FETCH_CARTOES, CREATE_CARTAO, UPDATE_CARTAO, DELETE_CARTAO} from '../constants/actionTypes';
 
 
 export default (cartoes = {cards: [], loading: true}, action) => {
@@ -9,6 +9,8 @@ export default (cartoes = {cards: [], loading: true}, action) => {
       return {...cartoes, cards: [...cartoes.cards, action.payload]};
     case UPDATE_CARTAO:
       return {...cartoes, cards: cartoes.cards.map((cartao) => cartao._id === action.payload._id ? action.payload : cartao)};
+    case DELETE_CARTAO:
+      return {...cartoes, cards: cartoes.cards.filter((cartao) => cartao.id !== action.payload)};
     default:
     return cartoes;
     }

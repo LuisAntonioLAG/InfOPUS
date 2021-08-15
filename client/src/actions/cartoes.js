@@ -1,4 +1,4 @@
-import { FETCH_CARTOES, CREATE_CARTAO, UPDATE_CARTAO} from '../constants/actionTypes';
+import { FETCH_CARTOES, CREATE_CARTAO, UPDATE_CARTAO, DELETE_CARTAO} from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -34,4 +34,15 @@ export const updateCartao = (id, cartao) => async (dispatch) => {
   } catch(error) {
     console.log(error);
   };
+};
+
+export const deleteCartao = (id) => async (dispatch) => {
+  try {
+    await api.deleteCartao(id);
+
+    dispatch({ type: DELETE_CARTAO, payload: id});
+  } catch (error) {
+    console.log(error);
+    
+  }
 };

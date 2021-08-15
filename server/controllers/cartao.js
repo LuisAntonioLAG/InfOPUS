@@ -39,9 +39,17 @@ export const updateCartao = async (req, res) => {
     const updatedCartao = await ModeloCartao.findByIdAndUpdate(_id, cartao, {new: true} )
 
     res.json(updatedCartao);
-
 }
 
+export const deleteCartao = async (req, res) => {
+    const { id } = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) res.status(404).send('Nenhum cartao com esse id');
+
+    await ModeloCartao.findByIdAndRemove(id);
+
+    res.json({ message: 'Cartão deletado com sucesso' });
+}
 
 
 
