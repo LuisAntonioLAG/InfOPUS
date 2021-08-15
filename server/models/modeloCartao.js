@@ -15,6 +15,7 @@ const cartaoSchema = mongoose.Schema({
     revit: String, 
     sketch: String, 
     acess: String, 
+    pagina: String,
 }, {timestamps: {createdAt:'dataCriacao', updatedAt: 'dataAtualizacao'}})
 
 var ModeloCartao = mongoose.model('ModeloCartao', cartaoSchema);

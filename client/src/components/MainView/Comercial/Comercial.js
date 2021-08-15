@@ -381,7 +381,7 @@ const Comercial = () => {
         </Box>
         </div>
 
-        <FormularioCartao open={open} setOpen={setOpen}/>
+        <FormularioCartao pagina={'Comercial'} open={open} setOpen={setOpen}/>
         
         <div>
         <Box  mx={13}>
@@ -397,7 +397,7 @@ const Comercial = () => {
 
 
         {loading === true ? (<div style={{margin: 'auto'}}><CircularProgress color="secondary"/> </div>)  : (
-           cartoes.map((cartao) => (
+           cartoes.filter(cartao => cartao.pagina === 'Comercial').map((cartao) => (
                   <Cartao key={cartao._id} currentId={currentId} setCurrentId={setCurrentId} cartao={cartao} />
 
         ))

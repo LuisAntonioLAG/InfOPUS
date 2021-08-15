@@ -12,7 +12,7 @@ import { createCartao, updateCartao } from '../../../../../actions/cartoes.js';
 import CustomTextField from './ListItem.js';
 
 
-const FormularioCartao = ({open, setOpen, currentId, optionsDownload}) => {
+const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) => {
 
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload}) => {
 
     const [mainData, setMainData] = useState({ titulo: '', descricao: '', acess: ''});
 
-    const cardInfo = {...mainData, ...IDs}
+    const cardInfo = {...mainData, ...IDs, pagina: pagina}
 
     const [step, setStep] = useState(1);
 

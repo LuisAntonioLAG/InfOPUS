@@ -16,9 +16,9 @@ export const getCartoes = async (req, res) => {
 }
 
 export const createCartao = async (req, res) => {
-    const { titulo, descricao, zip, pdf, word, excel, ppt, imagem, video, audio, cad, revit, sketch, acess } = req.body;
+    const { titulo, descricao, zip, pdf, word, excel, ppt, imagem, video, audio, cad, revit, sketch, acess, pagina } = req.body;
 
-    const newModeloCartao = new ModeloCartao({ titulo, descricao, zip, pdf, word, excel, ppt, imagem, video, audio, cad, revit, sketch, acess })
+    const newModeloCartao = new ModeloCartao({ titulo, descricao, zip, pdf, word, excel, ppt, imagem, video, audio, cad, revit, sketch, acess, pagina })
 
     try {
         await newModeloCartao.save()
