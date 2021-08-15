@@ -68,7 +68,6 @@ const LoginPage = () => {
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
-      console.log(theme)
     }
 
     const handleCadastro = () => {

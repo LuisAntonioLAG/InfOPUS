@@ -162,14 +162,14 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) =
 
 
           <Hidden xsDown>
-          <Button className={classes.margin} variant="contained" type="submit" color="primary" disabled={idValues.length === 0 && !mainData.acess}>
+          <Button className={classes.margin} variant="contained" type="submit" color="primary" disabled={ !mainData.titulo || !mainData.descricao || idValues.length === 0 && !mainData.acess}>
             Salvar
           </Button>
           </Hidden>
 
           <Hidden smUp>
           {step === 1 && (
-          <Button className={classes.margin} variant="contained" color="primary" onClick={handleNextStep} disabled={checked.length === 0 && !mainData.acess}>
+          <Button className={classes.margin} variant="contained" color="primary" onClick={handleNextStep} disabled={!mainData.titulo || !mainData.descricao || checked.length === 0 && !mainData.acess}>
              Próximo
           </Button>)}
             
