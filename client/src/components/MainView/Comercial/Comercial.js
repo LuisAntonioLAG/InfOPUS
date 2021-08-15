@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import {Box, Grid, Typography, Fab, CircularProgress} from "@material-ui/core";
 
 
@@ -396,11 +395,11 @@ const Comercial = () => {
             <Grid className={classes.root} container spacing={3}>
 
 
-        {loading === true ? (<div style={{margin: 'auto'}}><CircularProgress color="secondary"/> </div>)  : (
+        {
            cartoes.filter(cartao => cartao.pagina === 'Comercial').map((cartao) => (
                   <Cartao key={cartao._id} currentId={currentId} setCurrentId={setCurrentId} cartao={cartao} />
 
-        ))
+        )
         )}
 
 

@@ -56,7 +56,7 @@ const CustomTextField = (props) => {
           
           (
             checked.indexOf(format) !== -1 && (
-            <TextValidator className={classes.margin} size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
+            <TextValidator size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
                       validators={['required']}
                       errorMessages={['Esse campo é obrigatório.']}
             />
@@ -78,7 +78,7 @@ const CustomTextField = (props) => {
         </ListItemIcon>
         <ListItemText primary={`${format}`} />
         { checked.indexOf(format) !== -1 &&
-        <TextValidator size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
+        <TextValidator  style={{margin: 10}} size='small' variant = 'outlined' name={` ID ${format}`} label={`ID ${format}`} value = {value} onChange={onChange}
                   validators={['required']}
                   errorMessages={['Esse campo é obrigatório.']}
         />

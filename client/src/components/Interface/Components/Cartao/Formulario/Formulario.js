@@ -99,9 +99,9 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) =
           <div className={classes.root}>
 
         <Hidden xsDown>
-          <List className={classes.listRoot}>
+          <List>
             
-            <TextValidator className={classes.margin} fullWidth name="titulo" label='Título*' value={mainData.titulo} onChange={(e) => setMainData({ ...mainData, titulo: e.target.value })}  variant="outlined" validators={['required']} errorMessages={['Esse campo é obrigatório.']}/>
+            <TextValidator  className={classes.margin} fullWidth name="titulo" label='Título*' value={mainData.titulo} onChange={(e) => setMainData({ ...mainData, titulo: e.target.value })}  variant="outlined" validators={['required']} errorMessages={['Esse campo é obrigatório.']}/>
             <TextValidator className={classes.margin} multiline fullWidth name="titulo" label='Descrição*' value={mainData.descricao} onChange={(e) => setMainData({ ...mainData, descricao: e.target.value })}  variant="outlined" validators={['required']} errorMessages={['Esse campo é obrigatório.']}/> 
             <CustomTextField format={'ZIP'} IDs={IDs} value={IDs.zip} onChange={(e) => setIDs({...IDs, zip: e.target.value})} checked={checked} setChecked={setChecked}/>
             <CustomTextField format={'PDF'} value={IDs.pdf} onChange={(e) => setIDs({...IDs, pdf: e.target.value })} checked={checked} setChecked={setChecked}/>

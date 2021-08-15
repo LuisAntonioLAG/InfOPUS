@@ -4,9 +4,6 @@ export const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
       },
-    listRoot: {
-        width: '100%',
-      },
       margin: {
         width: '100%',
         marginTop: theme.spacing(1),
