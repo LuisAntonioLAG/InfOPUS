@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux';
 import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button,} from '@material-ui/core'
 
