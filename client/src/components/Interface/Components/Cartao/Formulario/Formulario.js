@@ -52,8 +52,6 @@ const FormularioCartao = ({open, setOpen, currentId, optionsDownload, pagina}) =
         setIDs({ zip: '', pdf: '', word: '', excel: '', ppt: '',imagem: '', video: '', audio: '', cad: '', revit: '', sketch: ''})
         }
 
-      
-
     const handleClose = () => {
         setOpen(false);
         setStep(1);

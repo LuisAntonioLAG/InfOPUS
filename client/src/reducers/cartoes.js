@@ -10,7 +10,7 @@ export default (cartoes = {cards: [], loading: true}, action) => {
     case UPDATE_CARTAO:
       return {...cartoes, cards: cartoes.cards.map((cartao) => cartao._id === action.payload._id ? action.payload : cartao)};
     case DELETE_CARTAO:
-      return {...cartoes, cards: cartoes.cards.filter((cartao) => cartao.id !== action.payload)};
+      return {...cartoes, cards: cartoes.cards.filter((cartao) => cartao._id !== action.payload)};
     default:
     return cartoes;
     }

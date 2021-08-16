@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { useDispatch } from 'react-redux';
-import {Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, Card, Box, CardActions, CardContent, IconButton, Grid, Typography, Icon, Zoom} from "@material-ui/core";
+import { Card, Box, CardActions, CardContent, IconButton, Grid, Typography, Icon, Zoom} from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import moment from 'moment';
@@ -14,11 +14,11 @@ import iconSketch from '../../../../assets/icons/iconSketch.svg'
 
 import BotaoOpcoes from '../BotaoOpcoes/BotaoOpcoes.js';
 import Formulario from './Formulario/Formulario.js';
+import ConfirmarDelete from './ConfirmarDelete.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faFilePdf, faFileWord, faFileExcel, faFilePowerpoint, faFileArchive, faFileImage, faFileVideo, faFileAudio,} from '@fortawesome/free-solid-svg-icons'
-import { deleteCartao } from '../../../../actions/cartoes.js';
 
 const Cartao = ( {cartao, currentId, setCurrentId} ) => {
 
@@ -27,7 +27,6 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [confirmacao, setConfirmacao] = useState(false);
-    const dispatch = useDispatch();
 
       const handleClickEdit = () => {
         setCurrentId(cartao._id);
@@ -38,40 +37,6 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
         setCurrentId(cartao._id);
         setConfirmacao(true);
       };
-
-      const handleDelete = () => {
-        dispatch(deleteCartao(cartao._id))
-        setCurrentId(null)
-        setConfirmacao(false);
-      };
-
-      const ConfirmarDelete = () => {
-
-  
-        return(
-
-          <Dialog
-            open={confirmacao}
-            onClose={() => setConfirmacao(false)}
-          >
-            <DialogTitle id="alert-dialog-title">Tem certeza que deseja excluir este card?</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                Essa ação é irreversível. Todos os dados do card serão perdidos.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setConfirmacao(false)} color="secondary">
-                Cancelar
-              </Button>
-              <Button onClick={handleDelete} 
-                color="primary">
-                Apagar card
-              </Button>
-            </DialogActions>
-          </Dialog>
-          )
-      }
 
 
     const formatos = (
@@ -158,8 +123,8 @@ return (
                         <Typography variant='h2' align='center'><IconButton color='primary' size='small' className={classes.editIcon} onClick={handleClickEdit}> <EditIcon/> </IconButton> </Typography>
                         <Typography variant='h2' align='center'><IconButton color='secondary' size='small' className={classes.deleteIcon} onClick={handleClickDelete}> <DeleteIcon /> </IconButton> </Typography>
 
-                        <Formulario optionsDownload={optionsDownload} currentId={currentId} setCurrentId={setCurrentId} open={open} setOpen={setOpen}/>
-                        <ConfirmarDelete/>
+                        <Formulario optionsDownload={optionsDownload} currentId={currentId} open={open} setOpen={setOpen}/>
+                        <ConfirmarDelete currentId={currentId} open={confirmacao} setOpen={setConfirmacao}/>
 
                         <Typography
                             display="block"
