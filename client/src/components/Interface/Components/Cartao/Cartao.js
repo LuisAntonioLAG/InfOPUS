@@ -48,7 +48,7 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
 
         useEffect(() => {
           setCurrentId(cartao._id)
-        }, [cartao._id])
+        }, [])
   
         return(
           <Dialog
@@ -115,19 +115,19 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
         {cartao.cad ?
         (
             <Icon fontSize='small' classes={{root: classes.iconRoot}}>
-            <img className={classes.cadIcon} src={iconAutocad}/>
+            <img alt={'cad'} className={classes.cadIcon} src={iconAutocad}/>
             </Icon>
         ) : ''} 
         {cartao.revit ?
         (
             <Icon fontSize='small' classes={{root: classes.iconRoot}}>
-            <img className={classes.revitIcon} src={iconRevit}/>
+            <img alt={'rvt'} className={classes.revitIcon} src={iconRevit}/>
             </Icon>
         ) : ''} 
         {cartao.sketch ?
         (
             <Icon fontSize='small' classes={{root: classes.iconRoot}}>
-            <img className={classes.revitIcon} src={iconSketch}/>
+            <img alt={'skp'} className={classes.revitIcon} src={iconSketch}/>
             </Icon>
         ) : ''} 
         </>
@@ -154,7 +154,7 @@ return (
                     duration: theme.transitions.duration.leavingScreen,
             })}}>
                 <Zoom in>
-                    <Card variant={theme.palette.type === 'dark' && 'outlined'} elevation={20} style= {{position:'relative'}}>
+                    <Card variant={theme.palette.type === 'dark' ? 'outlined' : 'elevation'} elevation={20} style= {{position:'relative'}}>
                         <Typography align='center' variant='h6'>{cartao.titulo}  </Typography>
                         <Typography variant='h2' align='center'><IconButton color='primary' size='small' className={classes.editIcon} onClick={handleClickEdit}> <EditIcon/> </IconButton> </Typography>
                         <Typography variant='h2' align='center'><IconButton color='secondary' size='small' className={classes.deleteIcon} onClick={handleClickDelete}> <DeleteIcon /> </IconButton> </Typography>
@@ -188,7 +188,7 @@ return (
 
                         <CardContent style={{display: 'flex', flexDirection:'column'}}>
                             <Box mx={'auto'} mt={-1}>
-                            {cartao.icone}
+                            {cartao.key}
                             </Box>
                             <Box my={1}>
                             <Typography align='center' variant='subtitle2' color='textSecondary'>{cartao.descricao}</Typography>

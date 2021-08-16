@@ -46,7 +46,7 @@ const Contato = ({ contato, currentId, setCurrentId }) => {
 
       useEffect(() => {
         setCurrentId(contato._id)
-      }, [contato._id])
+      }, [])
 
       return(
         <Dialog

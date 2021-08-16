@@ -1,4 +1,4 @@
-import React, {createRef} from 'react';
+import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import { CssBaseline, IconButton } from '@material-ui/core';
 import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
@@ -15,7 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Interface from './components/Interface/Interface';
 import LoginPage from './components/LoginPage/LoginPage.js'
 
-import { useTheme } from '@material-ui/styles';
+
 
 
 
@@ -35,7 +35,6 @@ const onClickDismiss = key => () => {
 
 const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
 
-  const theme=useTheme()
 
   return (
 

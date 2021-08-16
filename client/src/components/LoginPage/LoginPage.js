@@ -32,7 +32,7 @@ const LoginPage = () => {
     const [infoUser, setInfoUser] = useState({nome: '', email: lembrado ? lembrado.email : "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
 
     const authData = useSelector((state) => state.auth)
     const errorMessage = useSelector((state) => state.auth.errorMessage)
@@ -40,7 +40,6 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [devoLembrar, setLembrar] = useState(true);
     const [isCadastro, setCadastro] = useState(false);
-    const [isErrorAlert, setErrorAlert] = useState(false);
 
     const handleChange = (e) => 
     setInfoUser({ ...infoUser, [e.target.name]: e.target.value });
@@ -64,7 +63,7 @@ const LoginPage = () => {
     useEffect(() => {
       errorMessage &&
       enqueueSnackbar(errorMessage);
-    }, [authData, errorMessage])
+    }, [authData, errorMessage, enqueueSnackbar])
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)

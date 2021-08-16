@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Box, Grid, Typography, Fab, CircularProgress} from "@material-ui/core";
+import {Box, Grid, Typography, Fab} from "@material-ui/core";
 
 
 import AddIcon from '@material-ui/icons/Add';

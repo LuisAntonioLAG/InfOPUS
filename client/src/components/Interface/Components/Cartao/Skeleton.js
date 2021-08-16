@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import { Hidden, Grid, Card, Typography, CardContent, CardActions, Box } from '@material-ui/core'; 
 import Skeleton from '@material-ui/lab/Skeleton';
 
