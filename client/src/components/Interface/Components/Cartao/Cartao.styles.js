@@ -49,13 +49,13 @@ export const useStyles = makeStyles((theme) => ({
     editIcon: {
         position:'absolute',
         right: -2,
-        top: -2,
+        top: 0,
         marginleft: '20px',
     },
     deleteIcon: {
         position:'absolute',
         right: -2,
-        top: 25,
+        top: 30,
         marginleft: '20px',
     },
     cadIcon: {
