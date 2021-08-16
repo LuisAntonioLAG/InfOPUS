@@ -35,6 +35,7 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
       };
 
       const handleClickDelete = () => {
+        setCurrentId(cartao._id);
         setConfirmacao(true);
       };
 
@@ -46,11 +47,9 @@ const Cartao = ( {cartao, currentId, setCurrentId} ) => {
 
       const ConfirmarDelete = () => {
 
-        useEffect(() => {
-          setCurrentId(cartao._id)
-        }, [])
   
         return(
+
           <Dialog
             open={confirmacao}
             onClose={() => setConfirmacao(false)}

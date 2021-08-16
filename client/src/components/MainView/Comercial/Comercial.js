@@ -29,7 +29,7 @@ const Comercial = () => {
 
     useEffect(() => {
       dispatch(getCartoes());
-    }, [currentId, dispatch, loading])
+    }, [currentId, dispatch])
 
     const handleClickFab = () => {
       setOpen(true);
