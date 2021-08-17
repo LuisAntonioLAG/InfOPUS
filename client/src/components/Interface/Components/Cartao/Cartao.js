@@ -163,7 +163,7 @@ return (
                         </CardContent>
                         <CardActions style={{width:'100%', display: 'flex',}}> 
                             <Grid container justifyContent='center' spacing={1}>    
-                            {download && <Grid item xs={12} sm={6}>
+                            {download && <Grid item xs={12} sm={optionsView.filter(Boolean).length !== 0 ? 6 : 12}>
                                  <BotaoOpcoes titulo={cartao.titulo} IDsDownload={IDsDownload} IDsView={IDsView} options={optionsDownload.filter(Boolean)} type={'download'}/>
                                 </Grid>
                             }

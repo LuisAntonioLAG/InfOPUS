@@ -126,6 +126,7 @@ const BotaoOpcoes = (props) => {
 
       :
 
+      options.length !== 0 &&
       (<Button variant='contained' color={color} startIcon={icon} className={classes.fullWidth} onClick = {handleButton}><Typography variant='caption'>{options[0]}</Typography></Button>)
       
       } 
