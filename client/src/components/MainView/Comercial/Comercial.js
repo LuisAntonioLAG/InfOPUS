@@ -10,7 +10,7 @@ import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons'
 
 import { useStyles} from './Comercial.styles.js';
 
-import CartaoSkeleton from "../../Interface/Components/Cartao/Skeleton.js";
+import CartoesSkeleton from "../../Interface/Components/Cartao/Skeleton.js";
 
 import FormularioCartao from "../../Interface/Components/Cartao/Formulario/Formulario.js";
 import { getCartoes } from "../../../actions/cartoes.js";
@@ -396,7 +396,7 @@ const Comercial = () => {
             <Grid className={classes.root} container spacing={3}>
 
 
-        {loading === true ? (<><CartaoSkeleton/></>) : 
+        {loading === true ? (<CartoesSkeleton/>) : 
            cartoes.filter(cartao => cartao.pagina === 'Comercial').map((cartao) => (
                   <Cartao key={cartao._id} currentId={currentId} setCurrentId={setCurrentId} cartao={cartao} />
 

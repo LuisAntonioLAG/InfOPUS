@@ -48,15 +48,31 @@ export const useStyles = makeStyles((theme) => ({
     },
     editIcon: {
         position:'absolute',
-        right: -2,
-        top: 0,
+        right: 5,
+        top: 5,
         marginleft: '20px',
     },
     deleteIcon: {
         position:'absolute',
-        right: -2,
-        top: 30,
+        right: 5,
+        top: 40,
         marginleft: '20px',
+    },
+    editIconSkeleton: {
+        position:'absolute',
+        right: 5,
+        top: 5,
+        marginleft: '20px',
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+    },
+    deleteIconSkeleton: {
+        position:'absolute',
+        right: 5,
+        top: 40,
+        marginleft: '20px',
+        width: theme.spacing(3),
+        height: theme.spacing(3),
     },
     cadIcon: {
         
