@@ -365,33 +365,28 @@ const Comercial = () => {
 
 
     return(
-        <>
+        <Grid direction='column' container>
+
+        <FormularioCartao pagina={'Comercial'} open={open} setOpen={setOpen}/>
 
         <Fab color='primary' className={classes.fab} variant="extended" onClick={handleClickFab}>
           <AddIcon/>
           <Box component="span" fontWeight='fontWeightBold'> Cartão </Box>
         </Fab>
 
-        <div>
-        <Box p={5} style={{display:'flex'}} alignItems='center'>
-        <FontAwesomeIcon className={classes.titleIcon} icon={faHandHoldingUsd} />
+        <Box mx = {2} mt = {5} >
+        <Grid item xs={12} style={{display:'flex'}}>
         <Typography color='secondary' align='left' variant='h2'>
+          <FontAwesomeIcon className={classes.titleIcon} icon={faHandHoldingUsd}/>
           Comercial
         </Typography>
-        </Box>
-        </div>
+        </Grid>
 
-        <FormularioCartao pagina={'Comercial'} open={open} setOpen={setOpen}/>
-        
-        <div>
-        <Box  mx={13}>
-        <Typography align='justify' variant='h6'>
-        Bem-vindo à página da diretoria <Box component="span" fontWeight='fontWeightBold'>COMERCIAL</Box>! 
-        </Typography>
-        </Box>
-        </div>
+       
 
-        <Box className={classes.container} mx={2} mt={5} >
+        </Box>
+
+        <Box className={classes.container} mx = {2} my={5} >
 
             <Grid className={classes.root} container spacing={3}>
 
@@ -411,7 +406,7 @@ const Comercial = () => {
 
         </Box>
 
-        </>
+        </Grid>
 
 )};
 
