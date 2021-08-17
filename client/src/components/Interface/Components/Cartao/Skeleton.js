@@ -2,6 +2,7 @@ import React from 'react';
 import { Hidden, Grid, Card, Typography, CardContent, Avatar, CardActions, Box } from '@material-ui/core'; 
 import Skeleton from '@material-ui/lab/Skeleton';
 
+import { useTheme } from '@material-ui/styles';
 
 
 import { useStyles } from './Cartao.styles';
@@ -9,13 +10,13 @@ import { useStyles } from './Cartao.styles';
 const CartaoSkeleton = () => {
 
     const classes = useStyles()
-
+    const theme = useTheme()
 
     return (
 
     <Grid item xs={12} md={6} lg={4} >
 
-        <Card elevation={20} style= {{position:'relative'}}>
+        <Card variant={theme.palette.type === 'dark' ? 'outlined' : 'elevation'} elevation={20} style= {{position:'relative'}}>
             <Typography variant='h6'><Skeleton style={{margin: 'auto'}} width={'30%'} animation="wave" variant='text'/></Typography>
 
             <Typography variant='h2'> <Skeleton variant='circle' className={classes.editIconSkeleton}><Avatar /></Skeleton>  </Typography>
