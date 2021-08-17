@@ -7,6 +7,7 @@ import ColorLensIcon from '@material-ui/icons/ColorLens';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import WorkIcon from '@material-ui/icons/Work';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import TopBar from './TopBar/TopBar.js';
 import SideBar from './SideBar/SideBar.js'
@@ -33,6 +34,7 @@ const Interface = (user) => {
       {txtname: 'Gente e Gestão', name: 'Gg', icon: <FontAwesomeIcon size='lg' fixedWidth icon={faUsers}/>, to: '/gg/'},
       {txtname: 'Marketing', name: 'Marketing', icon: <ColorLensIcon/>, to: '/marketing/'},
       {txtname: 'Projetos', name: 'Projetos', icon: <WorkIcon/>, to: '/projetos/'},
+      {txtname: 'Configurações', name: 'Configuracoes', icon: <SettingsIcon/>, to: '/configuracoes/'},
       {txtname: 'Contatos', name: 'Contatos', icon: <FontAwesomeIcon size='lg' fixedWidth icon={faAddressCard}/> , to: '/contatos/'},
       {txtname: 'Sobre', name: 'Sobre', icon: <InfoIcon/> , to: '/sobre/'},
     ]
@@ -44,7 +46,8 @@ const Interface = (user) => {
       '/comercial': 'Comercial',
       '/gg': 'Gente e Gestão',
       '/marketing': 'Marketing',
-      '/projetos': 'Projetos ',
+      '/projetos': 'Projetos',
+      '/configuracoes': 'Configurações',
       '/contatos': 'Contatos',
       '/sobre': 'Sobre',
     };

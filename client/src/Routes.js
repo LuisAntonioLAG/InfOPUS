@@ -8,6 +8,7 @@ import Comercial from './components/MainView/Comercial/Comercial';
 import GenteGestao from './components/MainView/GenteGestao/GenteGestao';
 import Marketing from './components/MainView/Marketing/Marketing';
 import Projetos from './components/MainView/Projetos/Projetos';
+import Configuracoes from './components/MainView/Configuracoes/Configuracoes';
 import Contatos from './components/MainView/Contatos/Contatos';
 import Sobre from './components/MainView/Sobre/Sobre';
 import Feedback from './components/MainView/Feedback/Feedback';
@@ -24,6 +25,7 @@ const Routes = (user) => {
                 <Route exact path='/gg' component={GenteGestao}/>
                 <Route exact path='/marketing' component={Marketing}/>
                 <Route exact path='/projetos' component={Projetos}/>
+                <Route exact path='/configuracoes' component={Configuracoes}/>
                 <Route exact path='/contatos' component={Contatos}/>
                 <Route exact path='/sobre' component={Sobre}/>
                 <Route exact path='/feedback' component={Feedback}/>    

@@ -19,9 +19,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: "flex",
-    fa: {
-      display: 'inline-table',
-    },
   },
   toolbar: {
     display: "flex",
