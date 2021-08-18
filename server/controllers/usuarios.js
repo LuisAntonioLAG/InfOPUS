@@ -28,7 +28,7 @@ export const logar = async (req, res) => {
 
 
 export const cadastrar = async (req, res) => {
-    const { email, senha, nome, confirmSenha, foto } = req.body;
+    const { email, senha, nome, confirmSenha, diretoria, cargo, foto } = req.body;
 
     try {
         const usuarioExistente = await ModeloUsuario.findOne({ email });
@@ -39,7 +39,7 @@ export const cadastrar = async (req, res) => {
 
         const hashedSenha = await bcrypt.hash(senha, 12);
 
-        const result = await ModeloUsuario.create( { email, senha: hashedSenha, nome, foto } );
+        const result = await ModeloUsuario.create( { email, senha: hashedSenha, nome, diretoria, cargo, foto } );
 
         const token = jwt.sign({ email: result, id: result._id }, secret);
         

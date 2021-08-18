@@ -26,14 +26,13 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
     }
 };
 
-export const cadastrar = (infoUser, history) => async (dispatch) => {
+export const cadastrar = (infoUser) => async (dispatch) => {
     try {
         const { data } = await api.cadastrar(infoUser);
 
         dispatch({ type: AUTH, data })
 
 
-        history.push('/')
     } catch (error) {
         
         dispatch({ type: AUTHERROR, payload: error.response.data.message})

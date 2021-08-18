@@ -38,28 +38,12 @@ const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
 
   return (
 
-  <SnackbarProvider 
-  ref={notistackRef}
-  action={(key) => (<IconButton style={{color: 'white'}} size='small' onClick={onClickDismiss(key)}><CloseIcon/></IconButton>)}
-  iconVariant = {
-    {error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>,
-    success: <CheckCircleIcon style={{marginRight: 8}} fontSize='small'/>,
-    warning: <WarningIcon style={{marginRight: 8}} fontSize='small'/>,
-    info: <InfoIcon style={{marginRight: 8}} fontSize='small'/>
-    }}
-  maxSnack={2} 
-  autoHideDuration = {4000}
-  variant = {'error'} 
-  anchorOrigin = {{
-    vertical: 'top',
-    horizontal: 'right'}
-  }>
+
   <Route {...rest} render={(props) => (
     sessionStorage.getItem('profile')
       ? <Redirect to='/' />
       : <Component {...props} />
   )} />
-  </SnackbarProvider>
   )
   }
 
@@ -77,8 +61,25 @@ const App = () => {
       <CustomThemeProvider>
       <CssBaseline />
       <Switch>
+      <SnackbarProvider 
+  ref={notistackRef}
+  action={(key) => (<IconButton style={{color: 'white'}} size='small' onClick={onClickDismiss(key)}><CloseIcon/></IconButton>)}
+  iconVariant = {
+    {error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>,
+    success: <CheckCircleIcon style={{marginRight: 8}} fontSize='small'/>,
+    warning: <WarningIcon style={{marginRight: 8}} fontSize='small'/>,
+    info: <InfoIcon style={{marginRight: 8}} fontSize='small'/>
+    }}
+  maxSnack={2} 
+  autoHideDuration = {4000}
+  variant = {'error'} 
+  anchorOrigin = {{
+    vertical: 'top',
+    horizontal: 'right'}
+  }>
       <PrivateRouteDeslogado exact path={'/login'} component={LoginPage}/>
       <PrivateRouteLogado path={'/'} component={Interface} />
+      </SnackbarProvider>
       </Switch>
       </CustomThemeProvider>
   );

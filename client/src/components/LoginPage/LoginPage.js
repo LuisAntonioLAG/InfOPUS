@@ -29,7 +29,7 @@ const LoginPage = () => {
     const [lembrado] = useState(JSON.parse(localStorage.getItem('lembrado')));
     const classes = useStyles();
     const theme = useTheme();
-    const [infoUser, setInfoUser] = useState({nome: '', email: lembrado ? lembrado.email : "", senha:'', confirmSenha:''});
+    const [infoUser, setInfoUser] = useState({nome: '', diretoria: '', cargo: '', email: lembrado ? lembrado.email : "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
     const history = useHistory();
     const { enqueueSnackbar } = useSnackbar();
@@ -46,7 +46,7 @@ const LoginPage = () => {
 
     const handleShowPassword = () =>  setShowPassword((prevShowPassword) => !prevShowPassword)
 
-    const partialReset = {nome:'', confirmSenha:'', email: infoUser.email, senha: infoUser.senha}
+    const partialReset = {nome:'', diretoria: '', cargo: '', confirmSenha:'',  email: infoUser.email, senha: infoUser.senha}
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -107,6 +107,36 @@ const LoginPage = () => {
               />
             )
           }
+
+
+
+            {isCadastro && (
+              <TextValidator autoFocus fullWidth name='diretoria' color='secondary'  margin='normal' label='Diretoria' onChange={handleChange} value={infoUser.diretoria} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="start">
+                                  <AccountCircleIcon color='secondary'/>
+                                </InputAdornment>
+                              ),
+                            }}
+              />
+            )
+          }
+
+          {isCadastro && (
+              <TextValidator autoFocus fullWidth name='cargo' color='secondary'  margin='normal' label='Cargo' onChange={handleChange} value={infoUser.cargo} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="start">
+                                  <AccountCircleIcon color='secondary'/>
+                                </InputAdornment>
+                              ),
+                            }}
+              />
+            )
+          }
+
+          
 
           {isCadastro ?
 
@@ -252,7 +282,7 @@ const LoginPage = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            disabled={isCadastro ? !infoUser.nome || !infoUser.email || !infoUser.senha || !infoUser.confirmSenha :  !infoUser.email || !infoUser.senha}
+            disabled={isCadastro ? !infoUser.nome || !infoUser.diretoria || !infoUser.cargo || !infoUser.email || !infoUser.senha || !infoUser.confirmSenha :  !infoUser.email || !infoUser.senha}
           >
           { isCadastro ? 'Cadastrar' : 'Entrar'}
           </Button>
