@@ -113,13 +113,13 @@ const Configuracoes = () => {
 
                         
 
+                    {isEditProfile &&
                         <Grid container spacing = {4} justifyContent='space-between'>
-
 
                                 <Grid item xs={12} md={6}>
 
-                                {isEditProfile &&
-                                        <>
+                               
+                                       
                                         <Typography  variant='body1'> Senha </Typography>
                                         <TextField color='primary' name='senha' type={showPassword ? "text" : "password"} helperText={'Preencha para mudar sua senha'} fullWidth disabled={!isEditProfile} value={infoUser.senha} onChange={handleChange}
                                             InputProps={{
@@ -130,15 +130,14 @@ const Configuracoes = () => {
                                                 ),
                                             }}
                                         />
-                                        </>
-                                    } 
+                                       
+                                    
 
                                 </Grid> 
         
 
                                 <Grid item xs={12} md={6}>
-                                    {isEditProfile &&
-                                        <>
+
                                         <Typography variant='body1'> Confirmar senha </Typography>
                                         <TextField color='primary' name='confirmSenha' type={showPassword ? "text" : "password"} helperText={'Sua senha deve conter 8 dígitos'} fullWidth disabled={!isEditProfile} value={infoUser.confirmSenha} onChange={handleChange}
                                             InputProps={{
@@ -149,9 +148,9 @@ const Configuracoes = () => {
                                                 ),
                                             }}
                                         />
-                                        </>
-                                    }   
-                                </Grid>                                 
+
+                                       
+                                </Grid>                               
 
                                 <Grid item xs={12}>
                                     <Hidden mdUp>   
@@ -168,6 +167,7 @@ const Configuracoes = () => {
                                 
                             
                         </Grid>
+                    }
 
                     </CardContent>
                     
