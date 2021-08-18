@@ -8,7 +8,6 @@ export const useStyles = makeStyles((theme) => ({
       },
     titleIcon: {
         marginRight: 15,
-        color: theme.palette.secondary.main
     },
     cardIcon: {
        fontSize: '5em',
