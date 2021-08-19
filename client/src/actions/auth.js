@@ -1,4 +1,4 @@
-import { AUTH, AUTHERROR, LEMBRAR } from '../constants/actionTypes';
+import { AUTH, AUTHERROR, SIGN, LEMBRAR } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -30,8 +30,7 @@ export const cadastrar = (infoUser) => async (dispatch) => {
     try {
         const { data } = await api.cadastrar(infoUser);
 
-        dispatch({ type: AUTH, data })
-
+        dispatch({ type: SIGN, data })     
 
     } catch (error) {
         
