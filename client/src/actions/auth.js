@@ -1,12 +1,15 @@
 import { AUTH, AUTHERROR, SIGN, LEMBRAR } from '../constants/actionTypes';
-
 import * as api from '../api/index.js';
+
+import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction,} from './notificacoes.js'
+
 
 //ACTION CREATORS
 
 export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
     try {
         const { data } = await api.logar(infoUser);
+        const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
 
         dispatch({ type: AUTH, data })
 
@@ -19,21 +22,69 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
             localStorage.clear()
         }
 
+        {/* MANDAR A NOTIFICAÇÃO  */}
+        enqueueSnackbar({
+            message: 'Login realizado com sucesso',
+            options: {
+                variant: 'success',
+                autoHideDuration: 1500,
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                },
+            },
+        });
+
         history.push('/')
+        
     } catch (error) {
 
-        dispatch({ type: AUTHERROR, payload: error.response.data.message})
+        const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
+        enqueueSnackbar({
+            message: error.response.data.message,
+            options: {
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'top',
+                    horizontal: 'right',
+                },
+            },
+        });
     }
+
 };
 
 export const cadastrar = (infoUser) => async (dispatch) => {
     try {
         const { data } = await api.cadastrar(infoUser);
 
-        dispatch({ type: SIGN, data })     
+        dispatch({ type: SIGN, data })   
+        
+        const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
+        enqueueSnackbar({
+            message: 'Usuário cadastrado!',
+            options: {
+                variant: 'success',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                },
+            },
+        });
+
 
     } catch (error) {
         
-        dispatch({ type: AUTHERROR, payload: error.response.data.message})
+        const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
+        enqueueSnackbar({
+            message: error.response.data.message,
+            options: {
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                },
+            },
+        });
     }
 };

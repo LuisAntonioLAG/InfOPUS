@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import {Box, Grid, Card, CardMedia, Hidden, CardActions, Button, TextField,Typography, IconButton, InputAdornment,CardContent} from "@material-ui/core";
 import FileBase from 'react-file-base64';
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useSnackbar } from 'notistack';
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 import { cadastrar } from "../../../actions/auth";
@@ -200,13 +198,9 @@ const Configuracoes = () => {
 
 const FormularioCadastro = () => {
 
-    const authData = useSelector((state) => state.auth)
-    const errorMessage = useSelector((state) => state.auth.errorMessage)
-
     const [infoUser, setInfoUser] = useState({nome: '', diretoria: user?.result.diretoria !== 'Presidente' ? user?.result.diretoria : '', cargo: user?.result.cargo !== 'Presidente' ? 'Gerente' : '', email: "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
-    const history = useHistory();
-    const { enqueueSnackbar } = useSnackbar();
+
 
 
     const [showPassword, setShowPassword] = useState(false);
@@ -223,10 +217,6 @@ const FormularioCadastro = () => {
           dispatch(cadastrar(infoUser))
       };
 
-      useEffect(() => {
-        errorMessage &&
-        enqueueSnackbar(errorMessage);
-      }, [authData, errorMessage, enqueueSnackbar])
 
 
       return (
@@ -253,12 +243,12 @@ const FormularioCadastro = () => {
 
                 <Box my={2}>
                 <Typography  variant='body1'>Cargo</Typography>
-                    <TextValidator fullWidth name='cargo' color='primary'   disabled={user?.result.diretoria !== 'Presidente'} onChange={handleChange} value={infoUser.cargo} validators={['required']} errorMessages={['Esse campo é obrigatório.']} />
+                    <TextValidator fullWidth name='cargo' color='primary' disabled={user?.result.diretoria !== 'Presidente'} onChange={handleChange} value={infoUser.cargo} validators={['required']} errorMessages={['Esse campo é obrigatório.']} />
                 </Box>
 
                 <Box my={2}>
                 <Typography  variant='body1'>E-mail</Typography>
-                    <TextValidator fullWidth name='email'  color='primary' error = {errorMessage === 'E-mail já cadastrado'} validators={['isEmail']} errorMessages={['Escreva um e-mail válido.']} value={infoUser.email} onChange={handleChange} />
+                    <TextValidator fullWidth name='email'  color='primary' validators={['isEmail']} errorMessages={['Escreva um e-mail válido.']} value={infoUser.email} onChange={handleChange} />
                 </Box>
 
                 <Box my={2}>
@@ -268,7 +258,6 @@ const FormularioCadastro = () => {
                         name='senha'
                         color='primary'
                         type={showPassword ? "text" : "password"}
-                        error={errorMessage === 'As senhas devem ser iguais'}
                         validators={['minStringLength:8']}
                         errorMessages={['Sua senha deve conter, no mínimo, 8 caracteres.']}
                         value={infoUser.senha}
@@ -288,7 +277,6 @@ const FormularioCadastro = () => {
                         fullWidth
                         name='confirmSenha'
                         color='primary'
-                        error={errorMessage === 'As senhas devem ser iguais'}
                         type={showPassword ? "text" : "password"}
                         value={infoUser.confirmSenha}
                         onChange={handleChange}

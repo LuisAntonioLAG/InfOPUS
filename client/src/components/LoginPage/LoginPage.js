@@ -8,7 +8,6 @@ import { ValidatorForm } from 'react-material-ui-form-validator';
 import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import { useSnackbar } from 'notistack';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -30,10 +29,6 @@ const LoginPage = () => {
     const [infoUser, setInfoUser] = useState({email: lembrado ? lembrado.email : "", senha:''});
     const dispatch = useDispatch();
     const history = useHistory();
-    const { enqueueSnackbar } = useSnackbar();
-
-    const authData = useSelector((state) => state.auth)
-    const errorMessage = useSelector((state) => state.auth.errorMessage)
 
     const [showPassword, setShowPassword] = useState(false);
     const [devoLembrar, setLembrar] = useState(true);
@@ -50,19 +45,6 @@ const LoginPage = () => {
       dispatch(logar(infoUser, history, devoLembrar))
     };
  
-
-    useEffect(() => {
-      errorMessage &&
-        enqueueSnackbar(errorMessage, 
-          {
-            variant: 'error',
-            anchorOrigin: {
-              vertical: 'top',
-              horizontal: 'right',
-            }
-          }
-        );
-    }, [authData, errorMessage, enqueueSnackbar])
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
@@ -93,7 +75,6 @@ const LoginPage = () => {
               margin='normal'
               color='secondary'
               label="E-mail"
-              error = {errorMessage === 'E-mail não cadastrado'}
               value={infoUser.email}
               InputProps={{
                 startAdornment: (
@@ -112,7 +93,6 @@ const LoginPage = () => {
               color='secondary'
               label="Senha"
               margin='normal'
-              error = {errorMessage === 'Senha incorreta'}
               type={showPassword ? "text" : "password"}
               value={infoUser.senha}
               InputProps={{
