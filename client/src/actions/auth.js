@@ -1,6 +1,4 @@
-import React, {useState} from 'react';
 import { AUTH, SIGN, LEMBRAR } from '../constants/actionTypes';
-import { useSelector } from 'react-redux';
 import * as api from '../api/index.js';
 
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction,} from './notificacoes.js'
