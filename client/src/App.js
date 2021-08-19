@@ -19,6 +19,15 @@ import LoginPage from './components/LoginPage/LoginPage.js'
 
 
 
+  const notistackRef = React.createRef();
+
+  const onClickDismiss = key => () => { 
+  notistackRef.current.closeSnackbar(key);
+  }
+  
+
+
+
 const PrivateRouteLogado = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     sessionStorage.getItem('profile')
@@ -27,11 +36,6 @@ const PrivateRouteLogado = ({ component: Component, ...rest }) => (
   )} />
 )
 
-const notistackRef = React.createRef();
-
-const onClickDismiss = key => () => { 
-  notistackRef.current.closeSnackbar(key);
-}
 
 const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
 
@@ -60,27 +64,25 @@ const App = () => {
   return (
       <CustomThemeProvider>
       <CssBaseline />
+
+       <SnackbarProvider 
+          ref={notistackRef}
+          action={(key) => (<IconButton style={{color: 'white'}} size='small' onClick={onClickDismiss(key)}><CloseIcon/></IconButton>)}
+          preventDuplicate = {true}
+          iconVariant = {
+            {error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>,
+            success: <CheckCircleIcon style={{marginRight: 8}} fontSize='small'/>,
+            warning: <WarningIcon style={{marginRight: 8}} fontSize='small'/>,
+            info: <InfoIcon style={{marginRight: 8}} fontSize='small'/>
+            }}
+          maxSnack={2} 
+          autoHideDuration = {4000}
+         >
       <Switch>
-      <SnackbarProvider 
-  ref={notistackRef}
-  action={(key) => (<IconButton style={{color: 'white'}} size='small' onClick={onClickDismiss(key)}><CloseIcon/></IconButton>)}
-  iconVariant = {
-    {error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>,
-    success: <CheckCircleIcon style={{marginRight: 8}} fontSize='small'/>,
-    warning: <WarningIcon style={{marginRight: 8}} fontSize='small'/>,
-    info: <InfoIcon style={{marginRight: 8}} fontSize='small'/>
-    }}
-  maxSnack={2} 
-  autoHideDuration = {4000}
-  variant = {'error'} 
-  anchorOrigin = {{
-    vertical: 'top',
-    horizontal: 'right'}
-  }>
       <PrivateRouteDeslogado exact path={'/login'} component={LoginPage}/>
       <PrivateRouteLogado path={'/'} component={Interface} />
-      </SnackbarProvider>
       </Switch>
+      </SnackbarProvider>
       </CustomThemeProvider>
   );
 }
