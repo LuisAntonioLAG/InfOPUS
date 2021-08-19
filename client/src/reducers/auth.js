@@ -1,4 +1,4 @@
-import { AUTH, AUTHERROR, LOGOUT, LEMBRAR } from "../constants/actionTypes";
+import { AUTH, AUTHERROR, SIGN, LOGOUT, LEMBRAR } from "../constants/actionTypes";
 
 
 const authReducer = (state = { authData: null, errorMessage: null}, action) => {
@@ -10,6 +10,9 @@ const authReducer = (state = { authData: null, errorMessage: null}, action) => {
         case AUTHERROR:
             
             return {...state, errorMessage: action?.payload}
+        case SIGN:
+
+            return {...state, errorMessage: null}
         case LOGOUT:
             sessionStorage.clear();
 
