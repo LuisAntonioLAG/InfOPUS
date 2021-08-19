@@ -11,6 +11,10 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
         const { data } = await api.logar(infoUser);
         const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
 
+        function avancar() {
+            history.push('/')
+        } 
+
         dispatch({ type: AUTH, data })
 
         if(devoLembrar === true) {
@@ -22,12 +26,17 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
             localStorage.clear()
         }
 
+        {/* FECHAR NOTIFICAÇÕES ANTIGAS */}
+        const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));
+        closeSnackbar();
+
+
         {/* MANDAR A NOTIFICAÇÃO  */}
         enqueueSnackbar({
             message: 'Login realizado com sucesso',
             options: {
                 variant: 'success',
-                autoHideDuration: 1500,
+                autoHideDuration: 2000,
                 anchorOrigin: {
                     vertical: 'bottom',
                     horizontal: 'center',
@@ -35,7 +44,8 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
             },
         });
 
-        history.push('/')
+        setTimeout(avancar, 1500)
+
         
     } catch (error) {
 
