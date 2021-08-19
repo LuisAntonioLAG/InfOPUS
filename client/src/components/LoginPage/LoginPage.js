@@ -2,11 +2,9 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import FileBase from 'react-file-base64';
 import {Container, TextField, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
-import { ValidatorForm,TextValidator } from 'react-material-ui-form-validator';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { ValidatorForm } from 'react-material-ui-form-validator';
 import LockIcon from '@material-ui/icons/Lock';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
@@ -21,7 +19,7 @@ import LogoGrandeBranco from '../../assets/images/LogoGrandeBranco.png'
 import LogoGrandePreto from '../../assets/images/LogoGrandePreto.png'
 
 
-import { logar, cadastrar} from '../../actions/auth.js'
+import { logar } from '../../actions/auth.js'
 
 
 const LoginPage = () => {
@@ -29,7 +27,7 @@ const LoginPage = () => {
     const [lembrado] = useState(JSON.parse(localStorage.getItem('lembrado')));
     const classes = useStyles();
     const theme = useTheme();
-    const [infoUser, setInfoUser] = useState({nome: '', diretoria: '', cargo: '', email: lembrado ? lembrado.email : "", senha:'', confirmSenha:''});
+    const [infoUser, setInfoUser] = useState({email: lembrado ? lembrado.email : "", senha:''});
     const dispatch = useDispatch();
     const history = useHistory();
     const { enqueueSnackbar } = useSnackbar();
@@ -39,42 +37,36 @@ const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [devoLembrar, setLembrar] = useState(true);
-    const [isCadastro, setCadastro] = useState(false);
+
 
     const handleChange = (e) => 
     setInfoUser({ ...infoUser, [e.target.name]: e.target.value });
 
     const handleShowPassword = () =>  setShowPassword((prevShowPassword) => !prevShowPassword)
 
-    const partialReset = {nome:'', diretoria: '', cargo: '', confirmSenha:'',  email: infoUser.email, senha: infoUser.senha}
-
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      if (isCadastro) {
-        dispatch(cadastrar(infoUser, history))
-      } else {
-        dispatch(logar(infoUser, history, devoLembrar))
-      }
-
+      dispatch(logar(infoUser, history, devoLembrar))
     };
  
 
     useEffect(() => {
       errorMessage &&
-      enqueueSnackbar(errorMessage);
+        enqueueSnackbar(errorMessage, 
+          {
+            variant: 'error',
+            anchorOrigin: {
+              vertical: 'top',
+              horizontal: 'right',
+            }
+          }
+        );
     }, [authData, errorMessage, enqueueSnackbar])
 
     const handleLembrar = () => {
       setLembrar(!devoLembrar)
     }
-
-    const handleCadastro = () => {
-    setCadastro(!isCadastro);
-    setInfoUser(partialReset)
-    setShowPassword(false)
-    
-  };
 
 
     return (
@@ -89,77 +81,12 @@ const LoginPage = () => {
           <Container className={classes.logoContainer}> <img className={classes.logo} alt='Logo da OPUS' src={theme.palette.type === 'light' ? LogoGrandePreto: LogoGrandeBranco}/> </Container>
           
           <Typography component="h1" variant="h5" color='primary'>
-            {isCadastro ? 'Cadastre-se no InfOPUS!' : 'Bem-vindo ao InfOPUS!'} 
+            Bem-vindo ao InfOPUS!
           </Typography>
 
           <ValidatorForm className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
             
-          {
-            isCadastro && (
-              <TextValidator autoFocus fullWidth name='nome' color='secondary'  margin='normal' label='Nome' onChange={handleChange} value={infoUser.nome} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
-                            InputProps={{
-                              startAdornment: (
-                                <InputAdornment position="start">
-                                  <AccountCircleIcon color='secondary'/>
-                                </InputAdornment>
-                              ),
-                            }}
-              />
-            )
-          }
-
-
-
-            {isCadastro && (
-              <TextValidator autoFocus fullWidth name='diretoria' color='secondary'  margin='normal' label='Diretoria' onChange={handleChange} value={infoUser.diretoria} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
-                            InputProps={{
-                              startAdornment: (
-                                <InputAdornment position="start">
-                                  <AccountCircleIcon color='secondary'/>
-                                </InputAdornment>
-                              ),
-                            }}
-              />
-            )
-          }
-
-          {isCadastro && (
-              <TextValidator autoFocus fullWidth name='cargo' color='secondary'  margin='normal' label='Cargo' onChange={handleChange} value={infoUser.cargo} validators={['required']} errorMessages={['Esse campo é obrigatório.']}
-                            InputProps={{
-                              startAdornment: (
-                                <InputAdornment position="start">
-                                  <AccountCircleIcon color='secondary'/>
-                                </InputAdornment>
-                              ),
-                            }}
-              />
-            )
-          }
-
-          
-
-          {isCadastro ?
-
-            <TextValidator
-              fullWidth
-              name='email'
-              margin='normal'
-              color='secondary'
-              label="E-mail"
-              error = {errorMessage === 'E-mail já cadastrado'}
-              validators={['isEmail']}
-              errorMessages={['Escreva um e-mail válido.']}
-              value={infoUser.email}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <FontAwesomeIcon className={classes.AwesomeIcon} icon={faAt} />
-                  </InputAdornment>
-                ),
-              }}
-              onChange={handleChange}
-          />
-            :
+         
             <TextField
               fullWidth
               name='email'
@@ -176,81 +103,22 @@ const LoginPage = () => {
                 ),
               }}
               onChange={handleChange}
-          />
-            }
+            />
+            
 
-
-        {isCadastro ? 
-          <TextValidator
-            fullWidth
-            name='senha'
-            color='secondary'
-            label="Senha"
-            margin='normal'
-            type={showPassword ? "text" : "password"}
-            error={errorMessage === 'As senhas devem ser iguais'}
-            validators={['minStringLength:8']}
-            errorMessages={['Sua senha deve conter, no mínimo, 8 caracteres.']}
-            value={infoUser.senha}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LockIcon style={{color: theme.palette.secondary.main}}/>
-                </InputAdornment>
-              ),
-              endAdornment: (
-                <InputAdornment position="end" >
-                  <IconButton color='secondary' onClick={handleShowPassword}>{showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}</IconButton>
-                </InputAdornment>
-              ),
-            }}
-            onChange={handleChange}
-          />
-
-          :
-
-          <TextField
-            fullWidth
-            name='senha'
-            color='secondary'
-            label="Senha"
-            margin='normal'
-            error = {errorMessage === 'Senha incorreta'}
-            type={showPassword ? "text" : "password"}
-            value={infoUser.senha}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LockIcon style={{color: theme.palette.secondary.main}}/>
-                </InputAdornment>
-              ),
-              endAdornment: (
-                <InputAdornment position="end" >
-                  <IconButton color='secondary' onClick={handleShowPassword}>{showPassword ? <VisibilityIcon/> : <VisibilityOffIcon/>}</IconButton>
-                </InputAdornment>
-              ),
-            }}
-            onChange={handleChange}
-          />
-
-          }
-
-            {
-            isCadastro && (
-              <>
-              <TextField
+            <TextField
               fullWidth
-              name='confirmSenha'
+              name='senha'
               color='secondary'
-              label="Confirme a senha"
-              error={errorMessage === 'As senhas devem ser iguais'}
+              label="Senha"
               margin='normal'
+              error = {errorMessage === 'Senha incorreta'}
               type={showPassword ? "text" : "password"}
-              value={infoUser.confirmSenha}
+              value={infoUser.senha}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <LockIcon color='secondary'/>
+                    <LockIcon style={{color: theme.palette.secondary.main}}/>
                   </InputAdornment>
                 ),
                 endAdornment: (
@@ -262,19 +130,12 @@ const LoginPage = () => {
               onChange={handleChange}
             />
 
-            <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })} /></div>
-            </>
-            )
-          }
 
-
-            {
-            !isCadastro && (
               <FormControlLabel
                   control={<Checkbox checked={devoLembrar} onChange={handleLembrar} value="lembrar" color="primary" />}
                   label="Lembre-se de mim"
               />
-            )}
+
 
           <Button
             type="submit"
@@ -282,30 +143,9 @@ const LoginPage = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            disabled={isCadastro ? !infoUser.nome || !infoUser.diretoria || !infoUser.cargo || !infoUser.email || !infoUser.senha || !infoUser.confirmSenha :  !infoUser.email || !infoUser.senha}
+            disabled={!infoUser.email || !infoUser.senha}
           >
-          { isCadastro ? 'Cadastrar' : 'Entrar'}
-          </Button>
-
-
-         
-
-
-
-          {!isCadastro &&
-          <Link href="contatos" variant="body2">
-                Esqueci minha senha
-              </Link>}
-      
-
-          <Button
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-            onClick={handleCadastro}
-          >
-            { isCadastro ? 'Já fui cadastrado' : 'Fazer cadastro'}
+          Entrar
           </Button>
 
 
