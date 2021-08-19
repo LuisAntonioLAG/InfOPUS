@@ -1,4 +1,6 @@
-import { AUTH, AUTHERROR, SIGN, LEMBRAR } from '../constants/actionTypes';
+import React, {useState} from 'react';
+import { AUTH, SIGN, LEMBRAR } from '../constants/actionTypes';
+import { useSelector } from 'react-redux';
 import * as api from '../api/index.js';
 
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction,} from './notificacoes.js'
@@ -9,11 +11,6 @@ import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackba
 export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
     try {
         const { data } = await api.logar(infoUser);
-        const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
-
-        function avancar() {
-            history.push('/')
-        } 
 
         dispatch({ type: AUTH, data })
 
@@ -26,17 +23,18 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
             localStorage.clear()
         }
 
-        {/* FECHAR NOTIFICAÇÕES ANTIGAS */}
+        /* FECHAR NOTIFICAÇÕES ANTIGAS */
         const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));
         closeSnackbar();
 
 
-        {/* MANDAR A NOTIFICAÇÃO  */}
+        /* MANDAR A NOTIFICAÇÃO  */
+        const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
         enqueueSnackbar({
-            message: 'Login realizado com sucesso',
+            message: 'Login realizado com sucesso.',
             options: {
                 variant: 'success',
-                autoHideDuration: 2000,
+                autoHideDuration: 1000,
                 anchorOrigin: {
                     vertical: 'bottom',
                     horizontal: 'center',
@@ -44,7 +42,8 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
             },
         });
 
-        setTimeout(avancar, 1500)
+        function avancar() {history.push('/')} 
+        setTimeout(avancar, 500)
 
         
     } catch (error) {
@@ -54,6 +53,7 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
             message: error.response.data.message,
             options: {
                 variant: 'error',
+                autoHideDuration: 5000,
                 anchorOrigin: {
                     vertical: 'top',
                     horizontal: 'right',
@@ -64,15 +64,20 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
 
 };
 
-export const cadastrar = (infoUser) => async (dispatch) => {
+export const cadastrar = (infoUser, setInfoUser) => async (dispatch) => {
     try {
         const { data } = await api.cadastrar(infoUser);
 
         dispatch({ type: SIGN, data })   
+
+        /* NOTIFICAÇÕES */
+
+        const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));
+        closeSnackbar();
         
         const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
         enqueueSnackbar({
-            message: 'Usuário cadastrado!',
+            message: 'Usuário cadastrado.',
             options: {
                 variant: 'success',
                 anchorOrigin: {
@@ -82,6 +87,7 @@ export const cadastrar = (infoUser) => async (dispatch) => {
             },
         });
 
+        setInfoUser({nome: '', email: '', confirmSenha: '', foto: ''})
 
     } catch (error) {
         

@@ -1,7 +1,7 @@
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {Container, TextField, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm } from 'react-material-ui-form-validator';

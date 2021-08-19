@@ -15,7 +15,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import WarningIcon from '@material-ui/icons/Warning';
 import InfoIcon from '@material-ui/icons/Info';
 import CloseIcon from '@material-ui/icons/Close';
-import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction,} from './actions/notificacoes.js'
+import { closeSnackbar as closeSnackbarAction} from './actions/notificacoes.js'
 
 
 import Interface from './components/Interface/Interface';
@@ -58,7 +58,6 @@ const App = () => {
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));  
 
 
-
     moment.locale('pt-br');
     //states
 
@@ -70,7 +69,8 @@ const App = () => {
       <SnackbarProvider maxSnack={2}
         key = {new Date().getTime() + Math.random()}
         action = { key => (<IconButton style={{color:'white'}} size='small' onClick={() => closeSnackbar(key)}><CloseIcon/></IconButton>)}
-        preventDuplicate = {true}
+        autoHideDuration = {4000}
+        disableWindowBlurListener
         iconVariant = {
           {error: <ErrorIcon style={{marginRight: 8}} fontSize='small'/>,
           success: <CheckCircleIcon style={{marginRight: 8}} fontSize='small'/>,

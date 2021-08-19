@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Box, Grid, Card, CardMedia, Hidden, CardActions, Button, TextField,Typography, IconButton, InputAdornment,CardContent} from "@material-ui/core";
 import FileBase from 'react-file-base64';
@@ -201,6 +201,8 @@ const FormularioCadastro = () => {
     const [infoUser, setInfoUser] = useState({nome: '', diretoria: user?.result.diretoria !== 'Presidente' ? user?.result.diretoria : '', cargo: user?.result.cargo !== 'Presidente' ? 'Gerente' : '', email: "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
 
+    const authData = useSelector((store) => store.auth)
+
 
 
     const [showPassword, setShowPassword] = useState(false);
@@ -214,9 +216,8 @@ const FormularioCadastro = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
   
-          dispatch(cadastrar(infoUser))
+          dispatch(cadastrar(infoUser, setInfoUser))
       };
-
 
 
       return (
@@ -234,16 +235,16 @@ const FormularioCadastro = () => {
                 <ValidatorForm className={classes.form} autoComplete="off" onSubmit={handleSubmit}>
 
                 <Typography  variant='body1'>Nome</Typography>
-                    <TextValidator fullWidth name='nome' color='primary' onChange={handleChange} value={infoUser.nome} validators={['required']} errorMessages={['Esse campo é obrigatório.']}/>
+                    <TextField fullWidth name='nome' color='primary' onChange={handleChange} value={infoUser.nome} />
 
                 <Box my={2}>
                 <Typography variant='body1'>Diretoria</Typography>
-                    <TextValidator fullWidth name='diretoria' color='primary'  disabled={user?.result.diretoria !== 'Presidente' } onChange={handleChange} value={infoUser.diretoria} validators={['required']} errorMessages={['Esse campo é obrigatório.']}/>
+                    <TextField fullWidth name='diretoria' color='primary'  disabled={user?.result.diretoria !== 'Presidente' } onChange={handleChange} value={infoUser.diretoria} />
                 </Box>
 
                 <Box my={2}>
                 <Typography  variant='body1'>Cargo</Typography>
-                    <TextValidator fullWidth name='cargo' color='primary' disabled={user?.result.diretoria !== 'Presidente'} onChange={handleChange} value={infoUser.cargo} validators={['required']} errorMessages={['Esse campo é obrigatório.']} />
+                    <TextField fullWidth name='cargo' color='primary' disabled={user?.result.diretoria !== 'Presidente'} onChange={handleChange} value={infoUser.cargo} />
                 </Box>
 
                 <Box my={2}>
