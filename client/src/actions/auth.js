@@ -85,7 +85,7 @@ export const cadastrar = (infoUser, setInfoUser) => async (dispatch) => {
             },
         });
 
-        setInfoUser({nome: '', email: '', confirmSenha: '', foto: ''})
+        setInfoUser({...infoUser, nome: '', email: '', confirmSenha: '', foto: ''})
 
     } catch (error) {
         
