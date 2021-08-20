@@ -50,11 +50,11 @@ const Configuracoes = () => {
 
 
 
-        <Grid item xs={12} sm={6} md={12} lg={7} >
+        <Grid item xs={12} sm={6} md={6} lg={7} >
 
                 <Card variant={theme.palette.type === 'dark' ? 'outlined' : 'elevation'} elevation={20}>
 
-                        <Typography noWrap color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
+                        <Typography color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
                         <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserAlt} style={{margin: '0 15px'}}/>
                             Meu Perfil  
                         </Typography>
@@ -221,11 +221,11 @@ const FormularioCadastro = () => {
 
 
       return (
-        <Grid item xs={12} sm={6} md={12} lg={5} >
+        <Grid item xs={12} sm={6} md={6} lg={5} >
 
             <Card variant={theme.palette.type === 'dark' ? 'outlined' : 'elevation'} elevation={20}>
 
-                <Typography noWrap color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
+                <Typography color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
                     <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserPlus} style={{margin: '0 15px'}}/>
                      Cadastrar Usuário  
                 </Typography>
@@ -291,9 +291,10 @@ const FormularioCadastro = () => {
                 </Box>    
 
                                 
-                    <Box my={2}>
-                    <Typography  variant='body1'>Foto</Typography>
-                        <FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })} /></Box>
+                    <Box my={2} style={{width:'100%'}}>
+                        <Typography  variant='body1'>Foto</Typography>
+                        <FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
+                    </Box>
 
                     
 
@@ -337,6 +338,8 @@ const FormularioCadastro = () => {
     
         </Grid>
         </Box>
+
+
     )
 
 };
