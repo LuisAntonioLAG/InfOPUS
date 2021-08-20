@@ -66,7 +66,7 @@ const App = () => {
     const BaseTheme = responsiveFontSizes(
       createTheme({
         palette: {
-          type: themeMode
+          type: themeMode || 'light'
         },
         typography: {
           fontFamily: ["Ubuntu", "sans-serif"].join(",")
@@ -127,7 +127,7 @@ const App = () => {
 
 
   return (
-      <ThemeProvider theme={(getTheme(user?.result.tema))}>
+      <ThemeProvider theme={(getTheme(user?.result.tema)) || Verde}>
       <CssBaseline />
 
       <SnackbarProvider maxSnack={2}
