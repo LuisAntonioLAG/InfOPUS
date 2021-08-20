@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useSelector } from 'react-redux';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import { CssBaseline} from '@material-ui/core';
-import CustomThemeProvider from './assets/themes/CustomThemeProvider.js';
+import { ThemeProvider } from "@material-ui/styles";
+import colors from './assets/themes/colors.js';
+import { createTheme, responsiveFontSizes } from '@material-ui/core';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
@@ -35,6 +38,7 @@ const PrivateRouteLogado = ({ component: Component, ...rest }) => (
 )
 
 
+
 const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
 
 
@@ -49,13 +53,73 @@ const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
   )
   }
 
-
+//------- TEMAS ------------//
 
 
 const App = () => {
 
+    const themeMode = useSelector((store) => store.tema.modo);
+    const [user] = useState(JSON.parse(sessionStorage.getItem("profile")));
     const dispatch = useDispatch();
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));  
+
+    const BaseTheme = responsiveFontSizes(
+      createTheme({
+        palette: {
+          type: themeMode
+        },
+        typography: {
+          fontFamily: ["Ubuntu", "sans-serif"].join(",")
+        }
+      })
+    );
+    
+    const Azul = {
+      ...BaseTheme,
+      palette: {
+        ...BaseTheme.palette,
+        primary: {
+          ...BaseTheme.palette.primary,
+          main: colors.blue3,
+          light: colors.blue1,
+          dark: colors.blue5
+        },
+        secondary: {
+          ...BaseTheme.palette.primary,
+          main: colors.green3,
+          light: colors.green1,
+          dark: colors.green5
+        }
+      }
+    };
+    
+    const Verde = {
+      ...BaseTheme,
+      palette: {
+        ...BaseTheme.palette,
+        primary: {
+          ...BaseTheme.palette.primary,
+          main: colors.green3,
+          light: colors.green1,
+          dark: colors.green5
+        },
+        secondary: {
+          ...BaseTheme.palette.primary,
+          main: colors.blue3,
+          light: colors.blue1,
+          dark: colors.blue5
+        }
+      }
+    };
+    
+    const themes = {
+      Azul,
+      Verde
+    };
+    
+    function getTheme(theme) {
+      return themes[theme];
+    }
 
 
     moment.locale('pt-br');
@@ -63,7 +127,7 @@ const App = () => {
 
 
   return (
-      <CustomThemeProvider>
+      <ThemeProvider theme={(getTheme(user?.result.tema))}>
       <CssBaseline />
 
       <SnackbarProvider maxSnack={2}
@@ -87,7 +151,7 @@ const App = () => {
 
       </SnackbarProvider>
 
-      </CustomThemeProvider>
+      </ThemeProvider>
   );
 }
 

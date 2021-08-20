@@ -1,5 +1,5 @@
-import React, {useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {Box, Grid, Card, CardMedia, Hidden, CardActions, Button, TextField,Typography, IconButton, InputAdornment,CardContent} from "@material-ui/core";
 import FileBase from 'react-file-base64';
 import moment from 'moment'
@@ -13,8 +13,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { faUserAlt} from '@fortawesome/free-solid-svg-icons'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
-
-
 
 import { useStyles } from "./Configuracoes.styles";
 import { useTheme } from "@material-ui/styles";
@@ -200,10 +198,6 @@ const FormularioCadastro = () => {
 
     const [infoUser, setInfoUser] = useState({nome: '', diretoria: user?.result.diretoria !== 'Presidente' ? user?.result.diretoria : '', cargo: user?.result.cargo !== 'Presidente' ? 'Gerente' : '', email: "", senha:'', confirmSenha:''});
     const dispatch = useDispatch();
-
-    const authData = useSelector((store) => store.auth)
-
-
 
     const [showPassword, setShowPassword] = useState(false);
 
