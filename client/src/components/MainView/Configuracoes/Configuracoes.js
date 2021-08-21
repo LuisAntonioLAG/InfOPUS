@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {Box, Grid, Card, CardMedia, Hidden, CardActions, Button, TextField,Typography, IconButton, Paper, InputAdornment,CardContent} from "@material-ui/core";
-import FileBase from 'react-file-base64';
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
@@ -9,6 +8,7 @@ import colors from '../../../assets/themes/colors.js'
 
 import { cadastrar } from "../../../actions/auth";
 
+import Dropzone from "../../Interface/Components/File_Upload/File_Upload.js";
 
 import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -210,7 +210,7 @@ const Configuracoes = () => {
 
 const FormularioCadastro = () => {
 
-    const [infoUser, setInfoUser] = useState({nome: '', diretoria: user?.result.diretoria !== 'Presidente' ? user?.result.diretoria : '', cargo: user?.result.cargo !== 'Presidente' ? 'Gerente' : '', email: "", senha:'', confirmSenha:''});
+    const [infoUser, setInfoUser] = useState({nome: '', diretoria: user?.result.diretoria !== 'Presidente' ? user?.result.diretoria : '', cargo: user?.result.cargo !== 'Presidente' ? 'Gerente' : '', email: "", senha:'', confirmSenha:'', foto: ''});
     const dispatch = useDispatch();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -298,13 +298,12 @@ const FormularioCadastro = () => {
                     />
                 </Box>    
 
-                                
+        
                     <Box my={2} style={{width:'100%'}}>
                         <Typography  variant='body1'>Foto</Typography>
-                        <FileBase type="file" multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
+                        <Dropzone dropzoneProps={{accept: 'image/jpeg, image/png', maxFiles:1, multiple: false}} multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
                     </Box>
 
-                    
 
                     <Button
                         type="submit"
