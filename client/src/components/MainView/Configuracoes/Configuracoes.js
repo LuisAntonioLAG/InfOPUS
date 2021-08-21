@@ -22,6 +22,7 @@ import { useTheme } from "@material-ui/styles";
 import ContatoFotoPadrao from '../../../assets/images/ContatoFotoPadrao.png'
 
 import {switchTheme} from '../../../actions/temas'
+import { updateUsuario } from "../../../actions/auth";
 
 
 const Configuracoes = () => {
@@ -29,12 +30,21 @@ const Configuracoes = () => {
     const theme = useTheme()
     const classes = useStyles()
     const [user] = useState(JSON.parse(sessionStorage.getItem('profile')));
+    const dispatch = useDispatch()
 
 
     const MeuPerfil = () => {
 
+        const handleSubmit = () => {
+
+            const id = user?.result._id
+
+            dispatch(updateUsuario(id, infoUser))
+        }
+
         const handleEditProfile = () => {
             setEditProfile((prevIsEditProfile) => !prevIsEditProfile)
+            console.log(infoUser)
         }
     
         const handleChange = (e) => 
@@ -44,7 +54,7 @@ const Configuracoes = () => {
 
         const [isEditProfile, setEditProfile] = useState(false)
         const [showPassword, setShowPassword] = useState(false)
-        const [infoUser, setInfoUser] = useState({nome: user?.result.nome ? user?.result.nome : "Nome", senha:'', confirmSenha:''});
+        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:''});
 
     return(
 
@@ -56,9 +66,10 @@ const Configuracoes = () => {
 
                         <Typography color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
                         <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserAlt} style={{margin: '0 15px'}}/>
-                            Meu Perfil  
+                            Meu Perfil 
                         </Typography>
 
+                <ValidatorForm autoComplete="off" onSubmit={handleSubmit}>
 
                     <CardContent>
 
@@ -82,7 +93,7 @@ const Configuracoes = () => {
 
                                 
                                     <Typography variant='body1'>Nome</Typography>
-                                    <TextField name='nome' fullWidth disabled={!isEditProfile} value={infoUser.nome} onChange={handleChange} />
+                                    <TextField name='nome' fullWidth disabled value={infoUser.nome} onChange={handleChange} />
                                
                                
 
@@ -119,7 +130,7 @@ const Configuracoes = () => {
                                
                                        
                                         <Typography  variant='body1'> Senha </Typography>
-                                        <TextField color='primary' name='senha' type={showPassword ? "text" : "password"} helperText={'Preencha para mudar sua senha'} fullWidth disabled={!isEditProfile} value={infoUser.senha} onChange={handleChange}
+                                        <TextValidator color='primary' name='senha' type={showPassword ? "text" : "password"} validators={['required']} errorMessages={['Preencha este campo']} fullWidth disabled={!isEditProfile} value={infoUser.senha} onChange={handleChange}
                                             InputProps={{
                                                 endAdornment: (
                                                 <InputAdornment position="end" >
@@ -137,7 +148,7 @@ const Configuracoes = () => {
                                 <Grid item xs={12} md={6}>
 
                                         <Typography variant='body1'> Confirmar senha </Typography>
-                                        <TextField color='primary' name='confirmSenha' type={showPassword ? "text" : "password"} helperText={'Sua senha deve conter 8 dígitos'} fullWidth disabled={!isEditProfile} value={infoUser.confirmSenha} onChange={handleChange}
+                                        <TextValidator color='primary' name='confirmSenha' type={showPassword ? "text" : "password"} validators={['required']} errorMessages={['Preencha este campo']} fullWidth disabled={!isEditProfile} value={infoUser.confirmSenha} onChange={handleChange}
                                             InputProps={{
                                                 endAdornment: (
                                                 <InputAdornment position="end" >
@@ -184,11 +195,12 @@ const Configuracoes = () => {
                     </Hidden>
                         
                         <Button style={{minWidth:110}} variant='contained' onClick = {handleEditProfile} color='secondary'> {!isEditProfile ? 'Editar' : 'Cancelar'}</Button>
-                        <Button variant='contained' color='primary' disabled={!isEditProfile}>Salvar</Button>
+                        <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile}>Salvar</Button>
                                        
 
                     </CardActions>
 
+                    </ValidatorForm>
 
                 </Card>
  
@@ -313,9 +325,6 @@ const FormularioCadastro = () => {
       )
 
 }
-
-
-const dispatch = useDispatch();
 
 const id = user?.result._id
 

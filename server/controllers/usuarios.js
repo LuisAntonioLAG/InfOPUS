@@ -51,6 +51,25 @@ export const cadastrar = async (req, res) => {
     }
 };
 
+export const updateUsuario = async (req, res) => {
+
+    const { id: _id } = req.params;
+    const usuario = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) res.status(404).send('Nenhum usuário com esse id');
+
+    if (usuario.senha !== usuario.confirmSenha) return res.status(400).send({ message: "As senhas devem ser iguais" });
+
+    const hashedSenha = await bcrypt.hash(usuario.senha, 12);
+
+    const updatedUsuario = await ModeloUsuario.findByIdAndUpdate(_id, {...usuario, 'senha': hashedSenha}, {new: true} )
+
+    const token = jwt.sign({ email: updatedUsuario.email , id: updatedUsuario._id }, secret);
+
+    res.json({result: updatedUsuario, token});
+        
+}
+
 export const mudarTema = async (req, res) => {
     const { id: _id  } = req.params
     const  tema  = req.body;

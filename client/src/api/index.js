@@ -17,7 +17,8 @@ export const deleteContato = (id) => API.delete(`/contatos/${id}`);
 
 export const logar = (infoUser) => API.post('/usuarios/logar', infoUser);
 export const cadastrar = (infoUser) => API.post('/usuarios/cadastrar', infoUser);
-export const mudarTema = (id, updatedTema) => API.patch(`/usuarios/${id}`, updatedTema);
+export const updateUsuario = (id, updatedUsuario) => API.patch(`/usuarios/${id}`, updatedUsuario);
+export const mudarTema = (id, updatedTema) => API.patch(`/usuarios/${id}/tema`, updatedTema);
 
 
 export const fetchCartoes = () => API.get('/cartoes');

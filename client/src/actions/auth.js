@@ -1,4 +1,4 @@
-import { AUTH, SIGN, LEMBRAR } from '../constants/actionTypes';
+import { AUTH, SIGN, LEMBRAR, UPDATE_USUARIO } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction,} from './notificacoes.js'
@@ -85,7 +85,7 @@ export const cadastrar = (infoUser, setInfoUser) => async (dispatch) => {
             },
         });
 
-        setInfoUser({...infoUser, nome: '', email: '', confirmSenha: '', foto: ''})
+        setInfoUser({...infoUser, nome: '', email: '', senha: '', confirmSenha: '', foto: ''})
 
     } catch (error) {
         
@@ -101,4 +101,46 @@ export const cadastrar = (infoUser, setInfoUser) => async (dispatch) => {
             },
         });
     }
+};
+
+
+export const updateUsuario = (id, usuario) => async (dispatch) => {
+    try {
+        
+        const { data } = await api.updateUsuario(id, usuario);
+
+
+        dispatch({type: UPDATE_USUARIO, data})
+
+       /* FECHAR NOTIFICAÇÕES ANTIGAS */
+     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));
+     closeSnackbar();
+   
+       /* MANDAR A NOTIFICAÇÃO  */
+       const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
+       enqueueSnackbar({
+           message: 'Perfil atualizado.',
+           options: {
+               variant: 'success',
+               anchorOrigin: {
+                   vertical: 'bottom',
+                   horizontal: 'center',
+               },
+           },
+       });
+
+
+  } catch(error) {
+    const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
+        enqueueSnackbar({
+            message: error.response.data.message,
+            options: {
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                },
+            },
+        });
+  };
 };
