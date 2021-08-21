@@ -1,6 +1,6 @@
 import { FETCH_CONTATOS, CREATE_CONTATO, UPDATE_CONTATO, DELETE_CONTATO } from '../constants/actionTypes';
 
-export default (contatos = [], action) => {
+const contatosReducer = (contatos = [], action) => {
   switch (action.type) {
     case FETCH_CONTATOS:
       return action.payload;
@@ -16,3 +16,4 @@ export default (contatos = [], action) => {
   }
 };
 
+export default contatosReducer

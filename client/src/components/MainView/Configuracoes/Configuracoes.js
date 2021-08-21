@@ -318,7 +318,6 @@ const FormularioCadastro = () => {
 const dispatch = useDispatch();
 
 const id = user?.result._id
-const atualizar = {tema: ''}
 
 const handleThemeClick = (event, item) => {
     

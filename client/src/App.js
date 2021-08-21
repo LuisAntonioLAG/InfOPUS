@@ -115,6 +115,12 @@ const App = () => {
       return themes[theme];
     }
 
+    const [currentTheme, setCurrentTheme] = useState(user?.result.tema)
+
+    useEffect(()=> {
+      setCurrentTheme(themeMode.cor)
+    },[themeMode.cor])
+
     const PrivateRouteLogado = ({ component: Component, ...rest }) => (
   
       <ThemeProvider theme={(getTheme(currentTheme)) || (getTheme(user?.result.tema))}>
@@ -129,17 +135,6 @@ const App = () => {
 
     moment.locale('pt-br');
     //states
-
-    const [currentTheme, setCurrentTheme] = useState(user?.result.tema)
-    const [currentMode, setCurrentMode] = useState(themeMode.modo)
-
-useEffect(()=> {
-  setCurrentTheme(themeMode.cor)
-},[themeMode.cor])
-
-useEffect(()=> {
-  setCurrentMode(themeMode.modo)
-},[themeMode.modo])
 
   return (
       <ThemeProvider theme={Verde}>

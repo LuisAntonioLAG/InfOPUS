@@ -1,6 +1,6 @@
 import { LIGHT_DARK, GREEN_BLUE } from "../constants/actionTypes.js";
 
-export default (tema = {modo: "light", cor: ""}, action) => {
+const temaReducer = (tema = {modo: "light", cor: ""}, action) => {
   switch (action.type) {
     case LIGHT_DARK:
       const themeMode = action.payload === "light" ? "dark" : "light";
@@ -15,3 +15,5 @@ export default (tema = {modo: "light", cor: ""}, action) => {
       return tema;
   }
 };
+
+export default temaReducer

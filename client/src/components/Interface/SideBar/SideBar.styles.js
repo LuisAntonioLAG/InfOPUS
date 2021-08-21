@@ -16,30 +16,18 @@ export const MenuItemTooltip = withStyles((theme) => ({
 export const MenuItem = withStyles((theme) => ({
 
   root: {
-    overflowX:'hidden',
-    "&$selected": {
-      backgroundColor: theme.palette.background.default,
+    "&$selected" : {
+      background: theme.palette.background.default,
       color: theme.palette.secondary.main,
-      "& .MuiListItemIcon-root": {
-        color: theme.palette.secondary.main
-      }
     },
     "&$selected:hover": {
-      backgroundColor: theme.palette.background.default,
+      background: theme.palette.background.default,
       color: theme.palette.secondary.main,
-      "& .MuiListItemIcon-root": {
-        color: theme.palette.secondary.main
-      }
     },
-    "&:hover": {
-      color: theme.palette.secondary.contrastText,
-      "& .MuiListItemIcon-root": {
-        color: theme.palette.secondary.contrastText
-      }
-    }
   },
   selected: {},
 }))(ListItem);
+
 
 export const useStyles = makeStyles((theme) => ({
 
@@ -99,5 +87,7 @@ export const useStyles = makeStyles((theme) => ({
         textDecoration: 'none', 
         color: 'inherit'
       },
+
+      //------------------
       
 }))
