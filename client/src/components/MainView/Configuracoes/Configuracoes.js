@@ -194,7 +194,7 @@ const Configuracoes = () => {
                         </Typography>
                     </Hidden>
                         
-                        <Button style={{minWidth:110}} variant='contained' onClick = {handleEditProfile} color='secondary'> {!isEditProfile ? 'Editar' : 'Cancelar'}</Button>
+                        <Button  variant='contained' onClick = {handleEditProfile} color='secondary'> {!isEditProfile ? 'Mudar Senha' : 'Cancelar'}</Button>
                         <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile}>Salvar</Button>
                                        
 
