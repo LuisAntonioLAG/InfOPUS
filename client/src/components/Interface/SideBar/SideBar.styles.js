@@ -15,7 +15,10 @@ export const MenuItemTooltip = withStyles((theme) => ({
 
 export const MenuItem = withStyles((theme) => ({
 
+  
+
   root: {
+    color: theme.palette.primary.dark,
     "&$selected" : {
       background: theme.palette.background.default,
       color: theme.palette.secondary.main,

@@ -80,7 +80,7 @@ const SideBar = props => {
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                     <MenuItem button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
-                    <ListItemIcon style={{color: selectedListItem === item.name && theme.palette.secondary.main}}>
+                    <ListItemIcon style={{color: selectedListItem === item.name ? theme.palette.secondary.main : theme.palette.primary.dark}}>
                         {item.icon}
                     </ListItemIcon>
                     <ListItemText primary={item.txtname} />
@@ -99,7 +99,7 @@ const SideBar = props => {
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                     <MenuItem button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
-                    <ListItemIcon style={{color: selectedListItem === item.name && theme.palette.secondary.main}}>{item.icon}</ListItemIcon>
+                    <ListItemIcon style={{color: selectedListItem === item.name ? theme.palette.secondary.main : theme.palette.primary.dark}}>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
                 </MenuItemTooltip>
@@ -116,7 +116,7 @@ const SideBar = props => {
                 <Link className={classes.link} to={item.to}>
                 <MenuItemTooltip interactive placement="right" title={open===false ? item.txtname : ''} TransitionComponent={Zoom}>
                     <MenuItem button selected={selectedListItem === item.name} onClick={(event) => handleListItemClick(event, item.name)}>
-                    <ListItemIcon style={{color: selectedListItem === item.name && theme.palette.secondary.main}}>{item.icon}</ListItemIcon>
+                    <ListItemIcon style={{color: selectedListItem === item.name ? theme.palette.secondary.main : theme.palette.primary.dark}}>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.txtname} />
                     </MenuItem>
                 </MenuItemTooltip>
