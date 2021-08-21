@@ -1,8 +1,8 @@
 
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
-import {Container, TextField, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, IconButton, InputAdornment} from '@material-ui/core'
+import { useDispatch, useSelector} from 'react-redux';
+import {Container, TextField, Button, Checkbox, Link, Paper, Box, Grid, Typography, FormControlLabel, CircularProgress, IconButton, InputAdornment} from '@material-ui/core'
 import { useTheme } from '@material-ui/styles';
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import LockIcon from '@material-ui/icons/Lock';
@@ -29,6 +29,7 @@ const LoginPage = () => {
     const [infoUser, setInfoUser] = useState({email: lembrado ? lembrado.email : "", senha:''});
     const dispatch = useDispatch();
     const history = useHistory();
+    const [isLogando, setLogando] = useState(false)
 
     const [showPassword, setShowPassword] = useState(false);
     const [devoLembrar, setLembrar] = useState(true);
@@ -42,7 +43,7 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      dispatch(logar(infoUser, history, devoLembrar))
+      dispatch(logar(infoUser, history, devoLembrar, setLogando))
     };
  
 
@@ -60,8 +61,15 @@ const LoginPage = () => {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
 
-          <Container className={classes.logoContainer}> <img className={classes.logo} alt='Logo da OPUS' src={theme.palette.type === 'light' ? LogoGrandePreto: LogoGrandeBranco}/> </Container>
-          
+      
+          <Container className={classes.logoContainer}> {isLogando ?  
+          <CircularProgress thickness={2.5} size={82} color='secondary'/>
+          : 
+          <img className={classes.logo} alt='Logo da OPUS' src={theme.palette.type === 'light' ? LogoGrandePreto: LogoGrandeBranco}/> 
+          }
+          </Container>
+        
+
           <Typography component="h1" variant="h5" color='primary'>
             Bem-vindo ao InfOPUS!
           </Typography>

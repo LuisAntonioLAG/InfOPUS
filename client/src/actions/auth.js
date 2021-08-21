@@ -6,11 +6,16 @@ import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackba
 
 //ACTION CREATORS
 
-export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
+export const logar = (infoUser, history, devoLembrar, setLogando) => async (dispatch) => {
     try {
+
+        setLogando(true)
+        
         const { data } = await api.logar(infoUser);
 
         dispatch({ type: AUTH, data })
+
+        setLogando(false)
 
         if(devoLembrar === true) {
             const email = infoUser.email
@@ -45,6 +50,8 @@ export const logar = (infoUser, history, devoLembrar) => async (dispatch) => {
 
         
     } catch (error) {
+
+        setLogando(false)
 
         const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
         enqueueSnackbar({
