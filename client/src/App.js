@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import { CssBaseline} from '@material-ui/core';
@@ -29,13 +29,7 @@ import Notifier from './components/Interface/Components/Notifier.js';
 
 
 
-const PrivateRouteLogado = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    sessionStorage.getItem('profile')
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} />
-)
+
 
 
 
@@ -44,7 +38,7 @@ const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
 
   return (
 
-
+  
   <Route {...rest} render={(props) => (
     sessionStorage.getItem('profile')
       ? <Redirect to='/' />
@@ -58,15 +52,15 @@ const PrivateRouteDeslogado = ({ component: Component, ...rest }) => {
 
 const App = () => {
 
-    const themeMode = useSelector((store) => store.tema.modo);
-    const [user] = useState(JSON.parse(sessionStorage.getItem("profile")));
+    const themeMode = useSelector((store) => store.tema);
+    const [user] = useState(JSON.parse(sessionStorage.getItem('profile')));
     const dispatch = useDispatch();
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));  
 
     const BaseTheme = responsiveFontSizes(
       createTheme({
         palette: {
-          type: themeMode || 'light'
+          type: themeMode.modo || 'light'
         },
         typography: {
           fontFamily: ["Ubuntu", "sans-serif"].join(",")
@@ -121,18 +115,40 @@ const App = () => {
       return themes[theme];
     }
 
+    const PrivateRouteLogado = ({ component: Component, ...rest }) => (
+  
+      <ThemeProvider theme={(getTheme(currentTheme)) || (getTheme(user?.result.tema))}>
+      <Route {...rest} render={(props) => (
+        sessionStorage.getItem('profile')
+          ? <Component {...props} />
+          : <Redirect to='/login' />
+      )} />
+       </ThemeProvider>
+    )
+
 
     moment.locale('pt-br');
     //states
 
+    const [currentTheme, setCurrentTheme] = useState(user?.result.tema)
+    const [currentMode, setCurrentMode] = useState(themeMode.modo)
+
+useEffect(()=> {
+  setCurrentTheme(themeMode.cor)
+},[themeMode.cor])
+
+useEffect(()=> {
+  setCurrentMode(themeMode.modo)
+},[themeMode.modo])
 
   return (
-      <ThemeProvider theme={(getTheme(user?.result.tema)) || Verde}>
+      <ThemeProvider theme={Verde}>
       <CssBaseline />
+      
 
       <SnackbarProvider maxSnack={2}
         key = {new Date().getTime() + Math.random()}
-        action = { key => (<IconButton style={{color:'white'}} size='small' onClick={() => closeSnackbar(key)}><CloseIcon/></IconButton>)}
+        action = { key => (<IconButton style={{color:'white'}} size='small' onClick={() => closeSnackbar(key)}> <CloseIcon/></IconButton>)}
         autoHideDuration = {4000}
         disableWindowBlurListener
         iconVariant = {
@@ -146,7 +162,10 @@ const App = () => {
 
       <Switch>
         <PrivateRouteDeslogado exact path={'/login'} component={LoginPage}/>
+
+        
         <PrivateRouteLogado path={'/'} component={Interface} />
+       
       </Switch>
 
       </SnackbarProvider>

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {Box, Grid, Card, CardMedia, Hidden, CardActions, Button, TextField,Typography, IconButton, InputAdornment,CardContent} from "@material-ui/core";
+import {Box, Grid, Card, CardMedia, Hidden, CardActions, Button, TextField,Typography, IconButton, Paper, InputAdornment,CardContent} from "@material-ui/core";
 import FileBase from 'react-file-base64';
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import colors from '../../../assets/themes/colors.js'
 
 import { cadastrar } from "../../../actions/auth";
 
 
+import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { faUserAlt} from '@fortawesome/free-solid-svg-icons'
@@ -19,7 +21,7 @@ import { useTheme } from "@material-ui/styles";
 
 import ContatoFotoPadrao from '../../../assets/images/ContatoFotoPadrao.png'
 
-
+import {switchTheme} from '../../../actions/temas'
 
 
 const Configuracoes = () => {
@@ -313,14 +315,15 @@ const FormularioCadastro = () => {
 }
 
 
+const dispatch = useDispatch();
 
+const id = user?.result._id
+const atualizar = {tema: ''}
 
-
-
-
-
-
-
+const handleThemeClick = (event, item) => {
+    
+    dispatch(switchTheme(id, item))
+}
 
     return (
 
@@ -329,6 +332,16 @@ const FormularioCadastro = () => {
 
         <MeuPerfil/>
         <FormularioCadastro/>
+
+        <Paper style={{display: 'flex', borderRadius: '20px'}} elevation={20} className={classes.fab}>
+            {[{nome:'Verde', cor: colors.green3}, {nome: 'Azul', cor: colors.blue3}].map((item) => (
+                <div key={item.nome} style={{padding: '5px'}}>
+                <IconButton size='small'  onClick = {(event) => handleThemeClick(event, item)}> 
+                    <FiberManualRecordTwoToneIcon style={{color: item.cor}} fontSize='large'/>
+                </IconButton>  
+                </div>
+            ))}
+        </Paper>
     
         </Grid>
         </Box>

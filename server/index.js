@@ -17,8 +17,8 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 
 
 app.use('/contatos', contatosRoutes);
-app.use('/usuarios', usuariosRoutes)
-app.use('/cartoes', cartaoRoutes)
+app.use('/usuarios', usuariosRoutes);
+app.use('/cartoes', cartaoRoutes);
 
 const PORT = process.env.PORT;
 

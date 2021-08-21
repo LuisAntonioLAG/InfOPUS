@@ -15,9 +15,10 @@ export const createContato = (newPost) => API.post('/contatos', newPost);
 export const updateContato = (id, updatedPost) => API.patch(`/contatos/${id}`, updatedPost);
 export const deleteContato = (id) => API.delete(`/contatos/${id}`);
 
-
 export const logar = (infoUser) => API.post('/usuarios/logar', infoUser);
 export const cadastrar = (infoUser) => API.post('/usuarios/cadastrar', infoUser);
+export const mudarTema = (id, updatedTema) => API.patch(`/usuarios/${id}`, updatedTema);
+
 
 export const fetchCartoes = () => API.get('/cartoes');
 export const createCartao = (newCartao) => API.post('/cartoes', newCartao);

@@ -17,8 +17,13 @@ export const useStyles = makeStyles((theme) => ({
         padding: 8,
         justifyContent: 'flex-end',
         flex: '0 0 auto'
+    },
+    fab: {
+        position: 'fixed',
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+        zIndex: 1  
     }
-
 
 
 

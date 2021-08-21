@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 import ModeloUsuario from '../models/modeloUsuario.js';
 
@@ -48,4 +49,27 @@ export const cadastrar = async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: "Algo deu errado..." });
     }
+};
+
+export const mudarTema = async (req, res) => {
+    const { id: _id  } = req.params
+    const  tema  = req.body;
+    try {
+
+        if(!mongoose.Types.ObjectId.isValid(_id)) res.status(404).send('Nenhum contato com esse id');
+
+        const updatedTheme = await ModeloUsuario.findByIdAndUpdate(_id, {'tema': tema.nome }, {new: true} );
+
+        const token = jwt.sign({ email: updatedTheme.email , id: updatedTheme._id }, secret);
+    
+        res.json({ result: updatedTheme, token });
+
+        
+    } catch (error) {
+        res.status(500).send({ message: "Algo deu errado..." });
+        console.log(error)
+    }
+
+   
+
 }
