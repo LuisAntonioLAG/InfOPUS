@@ -36,10 +36,6 @@ const Configuracoes = () => {
 
     const MeuPerfil = () => {
 
-        const clear = () => {
-            setInfoUser({...user?.result, senha: '', confirmSenha:'', foto: user?.result.foto})
-        }
-
         const handleSubmit = () => {
 
             const id = user?.result._id
@@ -49,7 +45,7 @@ const Configuracoes = () => {
         const handleCancelEdit = () => {
             setEditProfile(false)
 
-            clear()
+            setInfoUser({...user?.result, senha: '', confirmSenha:'', foto: user?.result.foto})
         }
 
         const handleEditProfile = () => {
@@ -63,7 +59,7 @@ const Configuracoes = () => {
 
         const [isEditProfile, setEditProfile] = useState(false)
         const [showPassword, setShowPassword] = useState(false)
-        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:'', foto: ''});
+        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:'', foto: user?.result.foto});
 
     return(
 
@@ -89,7 +85,7 @@ const Configuracoes = () => {
                                 <CardMedia   
                                 component={'img'} 
                                 className={classes.image}
-                                src={infoUser.foto || user?.result.foto || ContatoFotoPadrao}
+                                src={infoUser.foto || ContatoFotoPadrao}
                                 title={user?.result.nome}
                                 />
                                 <UploadButton multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
@@ -205,8 +201,8 @@ const Configuracoes = () => {
                     </Hidden>
                         
                     {(isEditProfile || (infoUser.foto !== user?.result.foto)) && <Button  variant='contained' onClick = {handleCancelEdit} color='secondary'> Cancelar </Button> }
-                    {!isEditProfile  &&  <Button  variant='contained' onClick = {handleEditProfile} color='secondary'> Mudar Senha </Button> }
-                        <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile && infoUser.foto === user?.result.foto}>Salvar</Button>
+                    {!isEditProfile  &&  <Button variant='contained' onClick = {handleEditProfile} color='secondary'> Mudar Senha </Button> }
+                        <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile && (infoUser.foto === user?.result.foto)}>Salvar</Button>
                                        
 
                     </CardActions>
