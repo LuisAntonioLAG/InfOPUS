@@ -377,7 +377,7 @@ const Comercial = () => {
         <Box mx = {2} mt = {5} >
         <Grid item xs={12} style={{display:'flex'}}>
         <Typography color='secondary' align='left' variant='h2'>
-          <FontAwesomeIcon className={classes.titleIcon} icon={faHandHoldingUsd}/>
+          <FontAwesomeIcon fixedWidth className={classes.titleIcon} icon={faHandHoldingUsd}/>
           Comercial
         </Typography>
         </Grid>

@@ -64,8 +64,8 @@ const Configuracoes = () => {
 
                 <Card variant={theme.palette.type === 'dark' ? 'outlined' : 'elevation'} elevation={20}>
 
-                        <Typography color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
-                        <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserAlt} style={{margin: '0 15px'}}/>
+                        <Typography color='secondary' style={{margin: '10px 15px 0'}} align='left' variant= 'h3'> 
+                        <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserAlt} style={{marginRight: '15px'}}/>
                             Meu Perfil 
                         </Typography>
 
@@ -233,8 +233,8 @@ const FormularioCadastro = () => {
 
             <Card variant={theme.palette.type === 'dark' ? 'outlined' : 'elevation'} elevation={20}>
 
-                <Typography color='secondary' style={{marginTop: '10px'}} align='left' variant= 'h3'> 
-                    <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserPlus} style={{margin: '0 15px'}}/>
+                <Typography color='secondary' style={{margin: '10px 15px 0'}} align='left' variant= 'h3'> 
+                    <FontAwesomeIcon className={classes.titleIcon} fixedWidth icon={faUserPlus} style={{marginRight: '15px'}}/>
                      Cadastrar Usuário  
                 </Typography>
 

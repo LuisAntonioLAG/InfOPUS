@@ -45,7 +45,7 @@ return(
 
 <div>
 <Box p={5} style={{display:'flex'}} alignItems='center'>
-<FontAwesomeIcon className={classes.titleIcon} icon={faAddressCard}/>
+<FontAwesomeIcon fixedWidth className={classes.titleIcon} icon={faAddressCard}/>
 <Typography color='secondary' align='left' variant='h2'>
 Contatos
 </Typography>
