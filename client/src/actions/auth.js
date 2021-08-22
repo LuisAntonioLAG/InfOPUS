@@ -111,11 +111,12 @@ export const cadastrar = (infoUser, setInfoUser) => async (dispatch) => {
 };
 
 
-export const updateUsuario = (id, usuario) => async (dispatch) => {
+export const updateUsuario = (id, usuario, setInfoUser) => async (dispatch) => {
     try {
         
         const { data } = await api.updateUsuario(id, usuario);
 
+        setInfoUser({...usuario, senha:'', confirmSenha: ''})
 
         dispatch({type: UPDATE_USUARIO, data})
 
@@ -135,6 +136,8 @@ export const updateUsuario = (id, usuario) => async (dispatch) => {
                },
            },
        });
+
+       window.location.reload(false);
 
 
   } catch(error) {

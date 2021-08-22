@@ -60,9 +60,10 @@ export const updateUsuario = async (req, res) => {
 
     if (usuario.senha !== usuario.confirmSenha) return res.status(400).send({ message: "As senhas devem ser iguais" });
 
+
     const hashedSenha = await bcrypt.hash(usuario.senha, 12);
 
-    const updatedUsuario = await ModeloUsuario.findByIdAndUpdate(_id, {...usuario, 'senha': hashedSenha}, {new: true} )
+    const updatedUsuario = usuario.senha !== '' ? (await ModeloUsuario.findByIdAndUpdate(_id, {...usuario, 'senha': hashedSenha }, {new: true} )) : (await ModeloUsuario.findByIdAndUpdate(_id, {'foto': usuario.foto }, {new: true} ))
 
     const token = jwt.sign({ email: updatedUsuario.email , id: updatedUsuario._id }, secret);
 

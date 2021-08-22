@@ -9,6 +9,7 @@ import colors from '../../../assets/themes/colors.js'
 import { cadastrar } from "../../../actions/auth";
 
 import MyDropzone from "../../Interface/Components/File_Upload/File_Upload.js";
+import UploadButton from "../../Interface/Components/File_Upload/Photo_UploadButton.js";
 
 import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -35,16 +36,24 @@ const Configuracoes = () => {
 
     const MeuPerfil = () => {
 
+        const clear = () => {
+            setInfoUser({...infoUser, senha: '', confirmSenha:'', foto: user?.result.foto})
+        }
+
         const handleSubmit = () => {
 
             const id = user?.result._id
+            dispatch(updateUsuario(id, infoUser, setInfoUser))
+        }
 
-            dispatch(updateUsuario(id, infoUser))
+        const handleCancelEdit = () => {
+            setEditProfile(false)
+
+            clear()
         }
 
         const handleEditProfile = () => {
-            setEditProfile((prevIsEditProfile) => !prevIsEditProfile)
-            console.log(infoUser)
+            setEditProfile(true)
         }
     
         const handleChange = (e) => 
@@ -54,7 +63,7 @@ const Configuracoes = () => {
 
         const [isEditProfile, setEditProfile] = useState(false)
         const [showPassword, setShowPassword] = useState(false)
-        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:''});
+        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:'', foto: user?.result.foto});
 
     return(
 
@@ -80,9 +89,10 @@ const Configuracoes = () => {
                                 <CardMedia   
                                 component={'img'} 
                                 className={classes.image}
-                                src={user.result.foto ? user.result.foto : ContatoFotoPadrao}
+                                src={infoUser.foto ? infoUser.foto : ContatoFotoPadrao}
                                 title={user?.result.nome}
                                 />
+                                <UploadButton multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
                                 </div>
 
                             </Grid>
@@ -130,7 +140,7 @@ const Configuracoes = () => {
                                
                                        
                                         <Typography  variant='body1'> Senha </Typography>
-                                        <TextValidator color='primary' name='senha' type={showPassword ? "text" : "password"} validators={['required']} errorMessages={['Preencha este campo']} fullWidth disabled={!isEditProfile} value={infoUser.senha} onChange={handleChange}
+                                        <TextValidator color='primary' name='senha' type={showPassword ? "text" : "password"} validators={[ isEditProfile && 'required']} errorMessages={['Preencha este campo']} fullWidth disabled={!isEditProfile} value={infoUser.senha} onChange={handleChange}
                                             InputProps={{
                                                 endAdornment: (
                                                 <InputAdornment position="end" >
@@ -194,8 +204,9 @@ const Configuracoes = () => {
                         </Typography>
                     </Hidden>
                         
-                        <Button  variant='contained' onClick = {handleEditProfile} color='secondary'> {!isEditProfile ? 'Mudar Senha' : 'Cancelar'}</Button>
-                        <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile}>Salvar</Button>
+                    {(isEditProfile || infoUser.foto !== user?.result.foto) && <Button  variant='contained' onClick = {handleCancelEdit} color='secondary'> Cancelar </Button> }
+                    {!isEditProfile  &&  <Button  variant='contained' onClick = {handleEditProfile} color='secondary'> Mudar Senha </Button> }
+                        <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile && infoUser.foto === user?.result.foto}>Salvar</Button>
                                        
 
                     </CardActions>
