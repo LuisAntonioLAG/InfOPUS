@@ -8,7 +8,7 @@ import colors from '../../../assets/themes/colors.js'
 
 import { cadastrar } from "../../../actions/auth";
 
-import Dropzone from "../../Interface/Components/File_Upload/File_Upload.js";
+import MyDropzone from "../../Interface/Components/File_Upload/File_Upload.js";
 
 import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -301,8 +301,9 @@ const FormularioCadastro = () => {
         
                     <Box my={2} style={{width:'100%'}}>
                         <Typography  variant='body1'>Foto</Typography>
-                        <Dropzone dropzoneProps={{accept: 'image/jpeg, image/png', maxFiles:1, multiple: false}} multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
+                        <MyDropzone accept={'image/jpeg, image/png'} multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
                     </Box>
+
 
 
                     <Button
