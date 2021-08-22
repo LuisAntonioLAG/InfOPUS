@@ -129,15 +129,17 @@ export const updateUsuario = (id, usuario, setInfoUser) => async (dispatch) => {
        enqueueSnackbar({
            message: 'Perfil atualizado.',
            options: {
-               variant: 'success',
-               anchorOrigin: {
+                autoHideDuration: 1000,
+                variant: 'success',
+                anchorOrigin: {
                    vertical: 'bottom',
                    horizontal: 'center',
                },
            },
        });
 
-       window.location.reload(false);
+       function recarregar() {window.location.reload(false)};
+       setTimeout(recarregar, 1000)
 
 
   } catch(error) {

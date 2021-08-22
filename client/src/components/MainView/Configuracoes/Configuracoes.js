@@ -37,7 +37,7 @@ const Configuracoes = () => {
     const MeuPerfil = () => {
 
         const clear = () => {
-            setInfoUser({...infoUser, senha: '', confirmSenha:'', foto: user?.result.foto})
+            setInfoUser({...infoUser, senha: '', confirmSenha:'', foto: ''})
         }
 
         const handleSubmit = () => {
@@ -63,7 +63,7 @@ const Configuracoes = () => {
 
         const [isEditProfile, setEditProfile] = useState(false)
         const [showPassword, setShowPassword] = useState(false)
-        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:'', foto: user?.result.foto});
+        const [infoUser, setInfoUser] = useState({...user?.result, senha: '', confirmSenha:'', foto: ''});
 
     return(
 
@@ -89,7 +89,7 @@ const Configuracoes = () => {
                                 <CardMedia   
                                 component={'img'} 
                                 className={classes.image}
-                                src={infoUser.foto ? infoUser.foto : ContatoFotoPadrao}
+                                src={infoUser.foto || user?.result.foto || ContatoFotoPadrao}
                                 title={user?.result.nome}
                                 />
                                 <UploadButton multiple={false} onDone={({ base64 }) => setInfoUser({ ...infoUser, foto: base64 })}/> 
