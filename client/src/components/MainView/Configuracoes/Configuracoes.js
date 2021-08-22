@@ -37,7 +37,7 @@ const Configuracoes = () => {
     const MeuPerfil = () => {
 
         const clear = () => {
-            setInfoUser({...infoUser, senha: '', confirmSenha:'', foto: ''})
+            setInfoUser({...user?.result, senha: '', confirmSenha:'', foto: user?.result.foto})
         }
 
         const handleSubmit = () => {
@@ -204,7 +204,7 @@ const Configuracoes = () => {
                         </Typography>
                     </Hidden>
                         
-                    {(isEditProfile || infoUser.foto !== user?.result.foto) && <Button  variant='contained' onClick = {handleCancelEdit} color='secondary'> Cancelar </Button> }
+                    {(isEditProfile || (infoUser.foto !== user?.result.foto)) && <Button  variant='contained' onClick = {handleCancelEdit} color='secondary'> Cancelar </Button> }
                     {!isEditProfile  &&  <Button  variant='contained' onClick = {handleEditProfile} color='secondary'> Mudar Senha </Button> }
                         <Button variant='contained' color='primary' type="submit" disabled={!isEditProfile && infoUser.foto === user?.result.foto}>Salvar</Button>
                                        
